@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1700.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="https://pds.nasa.gov/pds4/sp/v1/PDS4_SP_1700_1100.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+
+<!-- 
+    This test label demonstrates:
+    
+      o Tabulated-Flat spectra in a Table_Character 
+      o Tabulated-Parameter Group spectra in Table_Binary
+      o Tabulated-Point Group spectra in a Table_Character
+      o Spectral_Lookup for referencing bin centers and widths as lists of field numbers 
+        in the Tabulated-Flat table
+      o Spectral_Lookup for referencing a single field in the Tabulated-Parameter Group
+        for the bin center and bin width fields
+      o Spectral_Lookup for referencing a single field in the Tabulated-Point Group
+        for the bin center and bin width fields
+      o Wavelength spectral classes
+      o Frequency spectral classes
+      o Circular_FOV
+      o Rectangular_FOV
+      o Complex_FOV 
+      
+    Note that these examples are neither exhaustive nor exclusive.  Any Table-type object,
+    for example, can hold a 1D spectrum of any spectral_bin_type; other bin-definition
+    methods (Uniformly_Sampled, etc.) may be used to define bins for tabulated spectra.
+-->
+
+<Product_Observational xmlns="http://pds.nasa.gov/pds4/pds/v1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:sp="http://pds.nasa.gov/pds4/sp/v1"
+    xsi:schemaLocation="http://pds.nasa.gov/pds4/pds/v1 https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1700.xsd
+                        http://pds.nasa.gov/pds4/sp/v1  https://pds.nasa.gov/pds4/sp/v1/PDS4_SP_1700_1100.xsd">
+    <Identification_Area>
+        <logical_identifier>urn:nasa:pds:bundle:collection:product</logical_identifier>
+        <version_id>1.0</version_id>
+        <title>Test Label for Spectral Dictionary, Tabulated Spectra - Valid Label</title>
+        <information_model_version>1.7.0.0</information_model_version>
+        <product_class>Product_Observational</product_class>
+        
+        <Citation_Information>
+            <author_list>Raugh, Anne C.</author_list>
+            <publication_year>2019</publication_year>
+            <description>
+                TEST LABEL
+                
+                This label is used to test the classes and constraints defined in the Spectral Discipline
+                Dictionary related to tabulated spectra - data tables in which each row represents a single,
+                complete spectral observation.  
+                
+                While this label may be schematically valid with respect to the PDS core namespace and does
+                provide a rudimentary demonstration of spectral labelling techniques, it should not be taken 
+                as a "good example" of a product label or of how to use the classes within the Spectral
+                Discipline Dictionary.  It does not represent any "real" data product.
+            </description>
+        </Citation_Information>
+    </Identification_Area>
+    
+    <Observation_Area>
+        <Time_Coordinates>
+            <start_date_time xsi:nil="true" nilReason="inapplicable"/>
+            <stop_date_time xsi:nil="true" nilReason="inapplicable"/>
+        </Time_Coordinates>
+        
+        <Investigation_Area>
+            <name>None</name>
+            <type>Individual Investigation</type>
+            <Internal_Reference>
+                <lid_reference>urn:nasa:pds:context:investigation:individual.none</lid_reference>
+                <reference_type>data_to_investigation</reference_type>
+            </Internal_Reference>
+        </Investigation_Area>
+        <Observing_System>
+            <Observing_System_Component>
+                <name>None</name>
+                <type>Balloon</type>
+            </Observing_System_Component>
+        </Observing_System>
+        <Target_Identification>
+            <name>None</name>
+            <type>Comet</type>
+        </Target_Identification>
+        
+        <Discipline_Area>
+            
+            <!-- 
+                 This label should throw a number of errors on validation with the Spectral Discipline
+                 Dictionary.  Planted errors are documented at the point they are inserted. Total error
+                 counts:
+         
+                 Invalid <local_reference_type>: 1
+                 <value_field_name> used with Tabulated-Flat spectra: 1
+                 Invalid <value_field_number_list> syntax: 1
+                 <value_field_number_list> user with Tab.-Group type spectra: 1
+                 Invalid <value_field_name>: 1
+    
+            -->
+            
+            <!-- Tabulated-Flat Spectra -->
+            
+            <sp:Spectral_Characteristics>
+                <Local_Internal_Reference>
+                    <local_identifier_reference>TabFlat</local_identifier_reference>
+                    <!-- The following value is not valid for table-type spectra -->
+                    <local_reference_type>spectral_characteristics_to_array_object</local_reference_type>
+                </Local_Internal_Reference>
+                <sp:spectrum_format>Tabulated-Flat</sp:spectrum_format>
+                <!-- Tabulated-Flat spectra may not use <value_field_name> (flagged on <spectrum_format>) -->
+                <sp:value_field_name>(Point 1 Value, Point 2 Value, Point 3 Value, Point 4 Value)</sp:value_field_name>
+                <sp:value_field_number_list>(2, 5, 8, 11)</sp:value_field_number_list>
+                <sp:spectral_bin_type>wavelength</sp:spectral_bin_type>
+                <sp:Field_of_View>
+                    <sp:description>
+                        This description must contain a human-readable description of the slit/aperture.
+                        It should tell a user what they need to understand fundamentally before using 
+                        the spectral data.  It may be as simple as "Circular aperture" if that is all
+                        there is to say.
+                    </sp:description>
+                    <sp:Circular_FOV>
+                        <sp:diameter_angle unit="arcsec">5.0</sp:diameter_angle>
+                    </sp:Circular_FOV>
+                </sp:Field_of_View>
+                <sp:Bin_Description>
+                    <sp:bin_profile_description>
+                        This text should describe HOW bin profiles were determined/defined.
+                    </sp:bin_profile_description>
+                    
+                    <!-- 
+                        Because the bin data are in fields in the table rather than being defined
+                        within this class, it's a "lookup" operation.
+                    -->
+                    
+                    <sp:Spectral_Lookup>
+                        <sp:Bin_Center_Lookup>
+                            <!-- The following value is not well-formatted (the values should be comma-separated as well). -->
+                            <sp:bin_center_field_number_list>(3, 6, 9 12)</sp:bin_center_field_number_list>
+                        </sp:Bin_Center_Lookup>
+                        <sp:Bin_Width_Lookup>
+                            <sp:bin_width_field_number_list>(4, 7, 10, 13)</sp:bin_width_field_number_list>
+                        </sp:Bin_Width_Lookup>
+                    </sp:Spectral_Lookup>
+                </sp:Bin_Description>
+            </sp:Spectral_Characteristics>
+            
+            <!-- Tabulated-Parameter Groups -->
+            
+            <sp:Spectral_Characteristics>
+                <Local_Internal_Reference>
+                    <local_identifier_reference>TabParamGroups</local_identifier_reference>
+                    <local_reference_type>spectral_characteristics_to_table_object</local_reference_type>
+                </Local_Internal_Reference>
+                <sp:spectrum_format>Tabulated-Parameter Groups</sp:spectrum_format>
+                <sp:value_field_name>Counts</sp:value_field_name>
+                <!-- Cannot use value_field_number_list in non "Flat" tables -->
+                <sp:value_field_number_list>Counts</sp:value_field_number_list>
+                <sp:spectral_bin_type>frequency</sp:spectral_bin_type>
+                <sp:Field_of_View>
+                    <sp:description>
+                        This is what a rectangular field of view looks like.  Note that it is still
+                        defined in terms of angular measurements on the sky.  You can specify the
+                        orientation of the aperture with respect to either the pole of the body 
+                        observerd or celestial north. This is not required, but if the orientation 
+                        is known, it should be provided for completeness.
+                    </sp:description>
+                    <sp:Rectangular_FOV>
+                        <sp:width_angle unit="arcmin">3.5</sp:width_angle>
+                        <sp:length_angle unit="arcmin">5.0</sp:length_angle>
+                        <sp:celestial_north_position_angle unit="deg">72</sp:celestial_north_position_angle>
+                    </sp:Rectangular_FOV>
+                </sp:Field_of_View>
+                <sp:Bin_Description>
+                    <sp:bin_profile_description>
+                        This is where you describe HOW the bin profiles were determined/defined.
+                    </sp:bin_profile_description>
+                    <sp:Spectral_Lookup>
+                        <sp:Bin_Center_Lookup>
+                            <sp:bin_center_field_name>Bin Center</sp:bin_center_field_name>
+                        </sp:Bin_Center_Lookup>
+                        <sp:Bin_Width_Lookup>
+                            <sp:bin_width_field_name>Bin Width</sp:bin_width_field_name>
+                        </sp:Bin_Width_Lookup>
+                    </sp:Spectral_Lookup>
+                </sp:Bin_Description>
+            </sp:Spectral_Characteristics>
+            
+            <!-- Tabulated-Point Groups -->
+            
+            <sp:Spectral_Characteristics>
+                <Local_Internal_Reference>
+                    <local_identifier_reference>TabPointGroups</local_identifier_reference>
+                    <local_reference_type>spectral_characteristics_to_table_object</local_reference_type>
+                </Local_Internal_Reference>
+                <sp:spectrum_format>Tabulated-Point Group</sp:spectrum_format>
+                <!-- The following field name does not exist in the referenced object -->
+                <sp:value_field_name>Point 1 Value</sp:value_field_name>
+                <sp:spectral_bin_type>wavelength</sp:spectral_bin_type>
+                <sp:Field_of_View>
+                    <sp:description>
+                        If the FOV is complex (if the aperture has varying width, for example), then
+                        a description of the overall shape of the aperture needs to be supplied in 
+                        this field, but you will need to supply a detailed description as part of the
+                        documentation for the data.  You can and should specify any dimensions that are
+                        relevant, whether they are "real" or "effective", but detailed documentation
+                        should be formally referenced elsewhere in the archive so users can get to it
+                        easily.  
+                    </sp:description>
+                    <sp:Complex_FOV>
+                        <sp:width_angle unit="arcsec">5.43</sp:width_angle>
+                        <sp:length_angle unit="arcsec">1.23</sp:length_angle>
+                        <sp:body_positive_pole_position_angle unit="deg">90</sp:body_positive_pole_position_angle>
+                    </sp:Complex_FOV>
+                    <Internal_Reference>
+                        <lid_reference>urn:nasa:pds:bindle:collection:document</lid_reference>
+                        <reference_type>spectral_characteristics_to_document</reference_type>
+                        <comment>
+                            This document provides details of the aperture geometry defining the 
+                            Field of View, with implications for data reduction.
+                        </comment>
+                    </Internal_Reference>
+                </sp:Field_of_View>
+                <sp:Bin_Description>
+                    <sp:bin_profile_description>
+                        HOW the bin parameters were determined/defined/derived
+                    </sp:bin_profile_description>
+                    <sp:Spectral_Lookup>
+                        <sp:Bin_Center_Lookup>
+                            <sp:bin_center_field_name>Band Center</sp:bin_center_field_name>
+                        </sp:Bin_Center_Lookup>
+                        <sp:Bin_Width_Lookup>
+                            <sp:bin_width_field_name>Bandpass</sp:bin_width_field_name>
+                        </sp:Bin_Width_Lookup>
+                    </sp:Spectral_Lookup>
+                </sp:Bin_Description>
+            </sp:Spectral_Characteristics>
+            
+        </Discipline_Area>
+    </Observation_Area>
+    
+    <File_Area_Observational>
+        <File>
+            <file_name>No.Data</file_name>
+        </File>
+        
+        <!-- Tabulated-Flat Spectra -->
+        
+        <Table_Character>
+            <name>Flat Spectra Table</name>
+            <local_identifier>TabFlat</local_identifier>
+            <offset unit="byte">0</offset>
+            <records>1000</records>
+            <description>
+                In this format, each row of the table contains a single spectrum, and the fields (columns) are defined without
+                the use of "Group_Field" classes.  This spectrum has only 4 points.
+            </description>
+            <record_delimiter>Carriage-Return Line-Feed</record_delimiter>
+            <Record_Character>
+                <fields>13</fields>
+                <groups>0</groups>
+                <record_length unit="byte">82</record_length>
+                
+                <Field_Character>
+                    <name>Target Name</name>
+                    <field_number>1</field_number>
+                    <field_location unit="byte">1</field_location>
+                    <data_type>ASCII_String</data_type>
+                    <field_length unit="byte">19</field_length>
+                    <field_format>%-19s</field_format>
+                </Field_Character>
+                
+                <Field_Character>
+                    <name>Point 1 Value</name>
+                    <field_number>2</field_number>
+                    <field_location unit="byte">20</field_location>
+                    <data_type>ASCII_Integer</data_type>
+                    <field_length unit="byte">4</field_length>
+                    <field_format>%4d</field_format>
+                    <unit>DN</unit>
+                </Field_Character>
+                
+                <Field_Character>
+                    <name>Point 1 Center Wavelength</name>
+                    <field_number>3</field_number>
+                    <field_location unit="byte">25</field_location>
+                    <data_type>ASCII_Integer</data_type>
+                    <field_length unit="byte">4</field_length>
+                    <field_format>%4d</field_format>
+                    <unit>angstrom</unit>
+                </Field_Character>
+                
+                <Field_Character>
+                    <name>Point 1 FWHM</name>
+                    <field_number>4</field_number>
+                    <field_location unit="byte">30</field_location>
+                    <data_type>ASCII_Integer</data_type>
+                    <field_length unit="byte">4</field_length>
+                    <field_format>%4d</field_format>
+                    <unit>angstrom</unit>
+                </Field_Character>
+                
+                <Field_Character>
+                    <name>Point 2 Value</name>
+                    <field_number>5</field_number>
+                    <field_location unit="byte">35</field_location>
+                    <data_type>ASCII_Integer</data_type>
+                    <field_length unit="byte">4</field_length>
+                    <field_format>%4d</field_format>
+                    <unit>DN</unit>
+                </Field_Character>
+                
+                <Field_Character>
+                    <name>Point 2 Center Wavelength</name>
+                    <field_number>6</field_number>
+                    <field_location unit="byte">40</field_location>
+                    <data_type>ASCII_Integer</data_type>
+                    <field_length unit="byte">4</field_length>
+                    <field_format>%4d</field_format>
+                    <unit>angstrom</unit>
+                </Field_Character>
+                
+                <Field_Character>
+                    <name>Point 2 FWHM</name>
+                    <field_number>7</field_number>
+                    <field_location unit="byte">45</field_location>
+                    <data_type>ASCII_Integer</data_type>
+                    <field_length unit="byte">4</field_length>
+                    <field_format>%4d</field_format>
+                    <unit>angstrom</unit>
+                </Field_Character>
+                
+                <Field_Character>
+                    <name>Point 3 Value</name>
+                    <field_number>8</field_number>
+                    <field_location unit="byte">50</field_location>
+                    <data_type>ASCII_Integer</data_type>
+                    <field_length unit="byte">4</field_length>
+                    <field_format>%4d</field_format>
+                    <unit>DN</unit>
+                </Field_Character>
+                
+                <Field_Character>
+                    <name>Point 3 Center Wavelength</name>
+                    <field_number>9</field_number>
+                    <field_location unit="byte">55</field_location>
+                    <data_type>ASCII_Integer</data_type>
+                    <field_length unit="byte">4</field_length>
+                    <field_format>%4d</field_format>
+                    <unit>angstrom</unit>
+                </Field_Character>
+                
+                <Field_Character>
+                    <name>Point 3 FWHM</name>
+                    <field_number>10</field_number>
+                    <field_location unit="byte">60</field_location>
+                    <data_type>ASCII_Integer</data_type>
+                    <field_length unit="byte">4</field_length>
+                    <field_format>%4d</field_format>
+                    <unit>angstrom</unit>
+                </Field_Character>
+                
+                <Field_Character>
+                    <name>Point 4 Value</name>
+                    <field_number>11</field_number>
+                    <field_location unit="byte">65</field_location>
+                    <data_type>ASCII_Integer</data_type>
+                    <field_length unit="byte">4</field_length>
+                    <field_format>%4d</field_format>
+                    <unit>DN</unit>
+                </Field_Character>
+                
+                <Field_Character>
+                    <name>Point 4 Center Wavelength</name>
+                    <field_number>12</field_number>
+                    <field_location unit="byte">70</field_location>
+                    <data_type>ASCII_Integer</data_type>
+                    <field_length unit="byte">4</field_length>
+                    <field_format>%4d</field_format>
+                    <unit>angstrom</unit>
+                </Field_Character>
+                
+                <Field_Character>
+                    <name>Point 4 FWHM</name>
+                    <field_number>13</field_number>
+                    <field_location unit="byte">75</field_location>
+                    <data_type>ASCII_Integer</data_type>
+                    <field_length unit="byte">4</field_length>
+                    <field_format>%4d</field_format>
+                    <unit>angstrom</unit>
+                </Field_Character>
+            </Record_Character>
+        </Table_Character>
+        
+        <!-- Tabulated-Parameter Groups -->
+        
+        <Table_Binary>
+            <name>Grouped Parameters Spectra Table</name>
+            <local_identifier>TabParamGroups</local_identifier>
+            <offset unit="byte">1000</offset>
+            <records>132</records>
+            <description>
+                This table contains one spectrum per row, but the values for intensity, error, bin center, and bin width occur 
+                in contiguous groups within the row.  So each row first lists all the observed counts, then all the errors, etc.
+                
+                In this case each group MUST contain only a single parameter, but there may be additional groups (unrelated to
+                spectral parameters) within the record.
+            </description>
+            
+            <Record_Binary>
+                <fields>2</fields>
+                <groups>4</groups>
+                <record_length unit="byte">1500</record_length>
+                
+                <Field_Binary>
+                    <name>Target</name>
+                    <field_location unit="byte">1</field_location>
+                    <data_type>ASCII_String</data_type>
+                    <field_length unit="byte">30</field_length>
+                </Field_Binary>
+                
+                <Field_Binary>
+                    <name>Date Observed</name>
+                    <field_location unit="byte">31</field_location>
+                    <data_type>ASCII_Date_YMD</data_type>
+                    <field_length unit="byte">10</field_length>
+                </Field_Binary>
+                
+                <Group_Field_Binary>
+                    <name>Spectrum</name>
+                    <repetitions>50</repetitions>
+                    <fields>1</fields>
+                    <groups>0</groups>
+                    <description>
+                        This array contains the observed values at each point in the spectrum.
+                    </description>
+                    <group_location unit="byte">41</group_location>
+                    <group_length unit="byte">100</group_length>
+                    <Field_Binary>
+                        <name>Counts</name>
+                        <field_location unit="byte">1</field_location>
+                        <data_type>UnsignedMSB2</data_type>
+                        <field_length unit="byte">2</field_length>
+                        <unit>DN</unit>
+                    </Field_Binary>
+                </Group_Field_Binary>
+                
+                <Group_Field_Binary>
+                    <name>Error</name>
+                    <repetitions>50</repetitions>
+                    <fields>1</fields>
+                    <groups>0</groups>
+                    <group_location unit="byte">141</group_location>
+                    <group_length unit="byte">100</group_length>
+                    <Field_Binary>
+                        <name>OneSigma</name>
+                        <field_location unit="byte">1</field_location>
+                        <data_type>UnsignedMSB2</data_type>
+                        <field_length unit="byte">2</field_length>
+                        <unit>DN</unit>
+                    </Field_Binary>
+                </Group_Field_Binary>
+                
+                <Group_Field_Binary>
+                    <name>Center Frequency</name>
+                    <repetitions>50</repetitions>
+                    <fields>1</fields>
+                    <groups>0</groups>
+                    <group_location unit="byte">241</group_location>
+                    <group_length unit="byte">200</group_length>
+                    <Field_Binary>
+                        <name>Bin Center</name>
+                        <field_location unit="byte">1</field_location>
+                        <data_type>IEEE754MSBSingle</data_type>
+                        <field_length unit="byte">4</field_length>
+                        <unit>Hz</unit>
+                    </Field_Binary>
+                </Group_Field_Binary>
+                
+                <Group_Field_Binary>
+                    <name>FWHM</name>
+                    <repetitions>50</repetitions>
+                    <fields>1</fields>
+                    <groups>0</groups>
+                    <group_location unit="byte">441</group_location>
+                    <group_length unit="byte">200</group_length>
+                    <Field_Binary>
+                        <name>Bin Width</name>
+                        <field_location unit="byte">1</field_location>
+                        <data_type>IEEE754MSBSingle</data_type>
+                        <field_length unit="byte">4</field_length>
+                        <unit>Hz</unit>
+                    </Field_Binary>
+                </Group_Field_Binary>
+            </Record_Binary>
+        </Table_Binary>
+        
+        <!-- Tabulated-Point Group -->
+        
+        <Table_Character>
+            <name>Point Groups Spectra Table</name>
+            <local_identifier>TabPointGroups</local_identifier>
+            <offset unit="byte">3500</offset>
+            <records>100</records>
+            <description>
+                This table contains one spectrum per row, but in this case all the parameters associated with each point are 
+                grouped together, and that group repeats for each point in the spectrum - so the observed counts, error, 
+                bin center, and bin width for the first spectral point are listed; then the (counts, error, center, width)
+                for the second point, and so on.
+                
+                In this case all the spectral parameters should be contained in the same group, but there may be other parameters
+                included in that same group if desired.
+            </description>
+            <record_delimiter>Carriage-Return Line-Feed</record_delimiter>
+            
+            <Record_Character>
+                <fields>2</fields>
+                <groups>1</groups>
+                <record_length unit="byte">1200</record_length>
+                
+                <Field_Character>
+                    <name>Target</name>
+                    <field_location unit="byte">1</field_location>
+                    <data_type>ASCII_String</data_type>
+                    <field_length unit="byte">24</field_length>
+                    <field_format>%-24s</field_format>
+                </Field_Character>
+                
+                <Field_Character>
+                    <name>Date Observed</name>
+                    <field_location unit="byte">25</field_location>
+                    <data_type>ASCII_Date_YMD</data_type>
+                    <field_length unit="byte">10</field_length>
+                    <field_format>%10s</field_format>
+                </Field_Character>
+                
+                <Group_Field_Character>
+                    <name>Spectral Point</name>
+                    <repetitions>25</repetitions>
+                    <fields>3</fields>
+                    <groups>0</groups>
+                    <group_location unit="byte">40</group_location>
+                    <group_length unit="byte">20</group_length>
+                    
+                    <Field_Character>
+                        <name>Counts</name>
+                        <field_location unit="byte">1</field_location>
+                        <data_type>ASCII_Integer</data_type>
+                        <field_length unit="byte">6</field_length>
+                        <field_format>%6d</field_format>
+                        <unit>DN</unit>
+                    </Field_Character>
+                    
+                    <Field_Character>
+                        <name>Band Center</name>
+                        <field_location unit="byte">8</field_location>
+                        <data_type>ASCII_Real</data_type>
+                        <field_length unit="byte">6</field_length>
+                        <field_format>%6.1f</field_format>
+                        <unit>nm</unit>
+                    </Field_Character>
+                    
+                    <Field_Character>
+                        <name>Bandpass</name>
+                        <field_location unit="byte">15</field_location>
+                        <data_type>ASCII_Integer</data_type>
+                        <field_length unit="byte">5</field_length>
+                        <field_format>%5d</field_format>
+                        <unit>nm</unit>
+                    </Field_Character>
+                </Group_Field_Character>
+            </Record_Character>
+        </Table_Character>
+        
+    </File_Area_Observational>
+</Product_Observational>

@@ -1,0 +1,1273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!-- PDS4 XML/Schema for Name Space Id:sp  Version:1.1.0.0 - Fri Mar 29 20:14:17 EDT 2019 -->
+  <!-- Generated from the PDS4 Information Model Version 1.12.0.0 - System Build 9b -->
+  <!-- *** This PDS4 product schema is an operational deliverable. *** -->
+  <!--                                                                           -->
+  <!--               Dictionary Stack                                            -->
+  <!-- 1.12.0.0 - pds: - Common Dictionary - N/A                                 -->
+  <!-- 1.1.0.0 - sp: - Spectral Discipline Dictionary - SpectraLDD-1C00_1100.xml -->
+  <!--                                                                           -->
+  <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://pds.nasa.gov/pds4/sp/v1"
+    xmlns:sp="http://pds.nasa.gov/pds4/sp/v1"
+    xmlns:pds="http://pds.nasa.gov/pds4/pds/v1"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified"
+    version="1.1.0.0">
+ 
+    <xs:import namespace="http://pds.nasa.gov/pds4/pds/v1" schemaLocation="https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1C00.xsd"/>
+ 
+  <xs:annotation>
+    <xs:documentation>
+
+        This is a complete re-write of the Spectral Dictionary version 1.1.0.0  (i.e., PDS4_SP_1100, 
+        released with core IM 1.4.0.0) to bring it into compliance with requirements and best practices 
+        established since the original version was created.  
+        
+        Existing attribute definitions have been reviewed and in some cases updated.  This should be 
+        reflected in the version_id value of the attribute.
+        
+        The "submitter_name" of "ACR" indicates Anne (C.) Raugh.
+        
+        Modification History:
+        
+           2018-05-25  ACR  Version 1.0.0.0  First release
+           
+           2018-11-02  ACR  Version 1.1.0.0  Added support for tabulated spectra
+           2019-03-08  ACR  Version 1.1.0.0  Replaced "data()" with equivalent "data(.)" to work around
+                                             a Validate Tool issue
+           2019-03-15  ACR  Version 1.1.0.0  Fixed bug in range checking for Uniformly Sampled data by
+                                             adding "number()" function
+    
+    </xs:documentation>
+  </xs:annotation>
+ 
+  <xs:element name="Spectral_Characteristics" type="sp:Spectral_Characteristics"> </xs:element>
+
+  <xs:complexType name="Axis_Bin_Set_Frequency">
+    <xs:annotation>
+      <xs:documentation> The Axis_Bin_Set class describes the spectral
+        characteristics of each band along a spectral axis of an Array.
+        This class is used in cases where the spectral information is
+        not uniform along the spectral axis. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="axis_name" type="sp:axis_name" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="Bin_Frequency" type="sp:Bin_Frequency" minOccurs="1" maxOccurs="unbounded"> </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Axis_Bin_Set_Wavelength">
+    <xs:annotation>
+      <xs:documentation> The Axis_Bin_Set class describes the spectral
+        characteristics of each band along a spectral axis of an Array.
+        This class is used in cases where the spectral information is
+        not uniform along the spectral axis. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="axis_name" type="sp:axis_name" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="Bin_Wavelength" type="sp:Bin_Wavelength" minOccurs="1" maxOccurs="unbounded"> </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Axis_Bin_Set_Wavenumber">
+    <xs:annotation>
+      <xs:documentation> The Axis_Bin_Set class describes the spectral
+        characteristics of each band along a spectral axis of an Array.
+        This class is used in cases where the spectral information is
+        not uniform along the spectral axis. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="axis_name" type="sp:axis_name" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="Bin_Wavenumber" type="sp:Bin_Wavenumber" minOccurs="1" maxOccurs="unbounded"> </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Bin_Center_Lookup">
+    <xs:annotation>
+      <xs:documentation> The Bin_Center_Lookup class provides a link to
+        a map or list of bin center values - either to a field in a
+        spectral table, or to a distinct data object that is part of the
+        same product, or to a separate PDS product containing the
+        information. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="bin_center_field_name" type="sp:bin_center_field_name" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="bin_center_field_number_list" type="sp:bin_center_field_number_list" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element ref="pds:Local_Internal_Reference" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element ref="pds:Internal_Reference" minOccurs="0" maxOccurs="1"> </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Bin_Description">
+    <xs:annotation>
+      <xs:documentation> This class groups the various bin description
+        options, allowing a user to choose one. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="bin_profile_description" type="sp:bin_profile_description" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:choice minOccurs="1" maxOccurs="1">
+        <xs:element name="Axis_Bin_Set_Frequency" type="sp:Axis_Bin_Set_Frequency"> </xs:element>
+        <xs:element name="Axis_Bin_Set_Wavelength" type="sp:Axis_Bin_Set_Wavelength"> </xs:element>
+        <xs:element name="Axis_Bin_Set_Wavenumber" type="sp:Axis_Bin_Set_Wavenumber"> </xs:element>
+        <xs:element name="Bin_Width_Constant" type="sp:Bin_Width_Constant"> </xs:element>
+        <xs:element name="Spectral_Lookup" type="sp:Spectral_Lookup"> </xs:element>
+        <xs:element name="Uniformly_Sampled_Frequency" type="sp:Uniformly_Sampled_Frequency"> </xs:element>
+        <xs:element name="Uniformly_Sampled_Wavelength" type="sp:Uniformly_Sampled_Wavelength"> </xs:element>
+        <xs:element name="Uniformly_Sampled_Wavenumber" type="sp:Uniformly_Sampled_Wavenumber"> </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Bin_Frequency">
+    <xs:annotation>
+      <xs:documentation> The Bin_Frequency class specifies the
+        characteristics of an individual bin along a spectral or other
+        binned axis in an Array object, in units of frequency.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="bin_sequence_number" type="sp:bin_sequence_number" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="center_frequency" type="sp:center_frequency" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="bin_width_frequency" type="sp:bin_width_frequency" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="detector_number" type="sp:detector_number" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="grating_position" type="sp:grating_position" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="original_bin_number" type="sp:original_bin_number" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="Filter" type="sp:Filter" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="comment" type="sp:comment" minOccurs="0" maxOccurs="1"> </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Bin_Wavelength">
+    <xs:annotation>
+      <xs:documentation> The Bin_Wavelength class specifies the
+        characteristics of an individual bin along a spectral or other
+        binned axis in an Array object, in units of wavelength.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="bin_sequence_number" type="sp:bin_sequence_number" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="center_wavelength" type="sp:center_wavelength" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="bin_width_wavelength" type="sp:bin_width_wavelength" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="detector_number" type="sp:detector_number" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="grating_position" type="sp:grating_position" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="original_bin_number" type="sp:original_bin_number" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="Filter" type="sp:Filter" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="comment" type="sp:comment" minOccurs="0" maxOccurs="1"> </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Bin_Wavenumber">
+    <xs:annotation>
+      <xs:documentation> The Bin_Wavenumber class specifies the
+        characteristics of an individual bin along a spectral or other
+        binned axis in an Array object, in units of wavenumber.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="bin_sequence_number" type="sp:bin_sequence_number" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="center_wavenumber" type="sp:center_wavenumber" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="bin_width_wavenumber" type="sp:bin_width_wavenumber" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="detector_number" type="sp:detector_number" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="grating_position" type="sp:grating_position" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="original_bin_number" type="sp:original_bin_number" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="Filter" type="sp:Filter" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="comment" type="sp:comment" minOccurs="0" maxOccurs="1"> </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Bin_Width_Constant">
+    <xs:annotation>
+      <xs:documentation> The Bin_Width_Constant class is used inside a
+        Bin_Width_Lookup class for those cases where the bin width is
+        either not well known or unknown. It provides a way to specify a
+        nominal constant width or indicate that there is no available
+        information about the bin width. If the bin width is completely
+        unknown, use the appropriate bin_width attribute for the
+        spectral type (frequency, wavelength, or wavenumber), and
+        indicate that it is nil, with a reason of "unknown". When this
+        class is used, a full explanation of the situation should be
+        provided by the bin_width_desc attribute of the parent class.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:choice minOccurs="1" maxOccurs="1">
+        <xs:element name="bin_width_frequency" type="sp:bin_width_frequency"> </xs:element>
+        <xs:element name="bin_width_wavelength" type="sp:bin_width_wavelength"> </xs:element>
+        <xs:element name="bin_width_wavenumber" type="sp:bin_width_wavenumber"> </xs:element>
+    </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Bin_Width_Lookup">
+    <xs:annotation>
+      <xs:documentation> The Bin_Width_Lookup class provides a link to a
+        map or list of bin width values - either to a field in a
+        spectral table, or to a distinct data object that is part of the
+        same product, or to a separate PDS product containing the
+        information. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="bin_width_field_name" type="sp:bin_width_field_name" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="bin_width_field_number_list" type="sp:bin_width_field_number_list" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element ref="pds:Local_Internal_Reference" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element ref="pds:Internal_Reference" minOccurs="0" maxOccurs="1"> </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Circular_FOV">
+    <xs:annotation>
+      <xs:documentation> The Circular_FOV class contains attributes to
+        describe a circular aperture/field of view. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="diameter_angle" nillable="true" type="sp:diameter_angle" minOccurs="1" maxOccurs="1"> </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Complex_FOV">
+    <xs:annotation>
+      <xs:documentation> The Complex_FOV class is used for apertures
+        (slits) that are not either circular or a simple rectangular
+        shape. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="width_angle" nillable="true" type="sp:width_angle" minOccurs="0" maxOccurs="unbounded"> </xs:element>
+      <xs:element name="length_angle" nillable="true" type="sp:length_angle" minOccurs="0" maxOccurs="unbounded"> </xs:element>
+      <xs:element name="celestial_north_position_angle" nillable="true" type="sp:celestial_north_position_angle" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="body_positive_pole_position_angle" nillable="true" type="sp:body_positive_pole_position_angle" minOccurs="0" maxOccurs="1"> </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Field_of_View">
+    <xs:annotation>
+      <xs:documentation> The Field_of_View class is used to describe the
+        field of view corresponding to the spectral data object. This
+        class should describe the aperture or slit used in making the
+        spectral observation, when applicable, as opposed to the
+        theoretical full field of view of a telescope or boresight
+        (which should be defined in a Geometry Dictionary class).
+        </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="description" type="sp:description" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:choice minOccurs="1" maxOccurs="1">
+        <xs:element name="Circular_FOV" type="sp:Circular_FOV"> </xs:element>
+        <xs:element name="Complex_FOV" type="sp:Complex_FOV"> </xs:element>
+        <xs:element name="Rectangular_FOV" type="sp:Rectangular_FOV"> </xs:element>
+      </xs:choice>
+      <xs:element ref="pds:Internal_Reference" minOccurs="0" maxOccurs="1"> </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Filter">
+    <xs:annotation>
+      <xs:documentation> The Filter class identifies the filter
+        associated with a specific band or bin along a spectral axis in
+        an Array object. The filter may be identified by either name,
+        identifier, or number or some combination of these.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="filter_name" type="sp:filter_name" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="filter_number" type="sp:filter_number" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="comment" type="sp:comment" minOccurs="0" maxOccurs="1"> </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Observation_Parameters">
+    <xs:annotation>
+      <xs:documentation> The Observation_Parameters class collects
+        various values related to the observational circumstances. In
+        general, this class should be present, and all parameters
+        applicable to the situation should be included, even though
+        optional. In some complex cases or for high-level derived
+        products this class may not be applicable, in which case it may
+        be omitted. Use the 'comment' attribute to describe any special
+        circumstances users should be aware of. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="number_of_exposures" type="sp:number_of_exposures" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="net_integration_time" type="sp:net_integration_time" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:choice minOccurs="0" maxOccurs="1">
+        <xs:element name="resolution_limit_frequency" type="sp:resolution_limit_frequency"> </xs:element>
+        <xs:element name="resolution_limit_wavelength" type="sp:resolution_limit_wavelength"> </xs:element>
+        <xs:element name="resolution_limit_wavenumber" type="sp:resolution_limit_wavenumber"> </xs:element>
+      </xs:choice>
+      <xs:element name="solar_analog_star_name" type="sp:solar_analog_star_name" minOccurs="0" maxOccurs="unbounded"> </xs:element>
+      <xs:element name="absolute_calibration_star_name" type="sp:absolute_calibration_star_name" minOccurs="0" maxOccurs="unbounded"> </xs:element>
+      <xs:element name="comment" type="sp:comment" minOccurs="0" maxOccurs="1"> </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Rectangular_FOV">
+    <xs:annotation>
+      <xs:documentation> This class is used to describe a rectangular
+        (i.e., slit) aperture. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="width_angle" nillable="true" type="sp:width_angle" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="length_angle" nillable="true" type="sp:length_angle" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="celestial_north_position_angle" nillable="true" type="sp:celestial_north_position_angle" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="body_positive_pole_position_angle" nillable="true" type="sp:body_positive_pole_position_angle" minOccurs="0" maxOccurs="1"> </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Spectral_Characteristics">
+    <xs:annotation>
+      <xs:documentation> The Spectral_Characteristics class provides
+        information about the spectral characteristics of a 1D, 2D, or
+        3D spectral data object. It is note used for tabulated spectra -
+        tables in which each row </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="pds:Local_Internal_Reference" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="description" type="sp:description" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="spectrum_format" type="sp:spectrum_format" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="value_field_name" type="sp:value_field_name" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="value_field_number_list" type="sp:value_field_number_list" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="spectral_bin_type" type="sp:spectral_bin_type" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="Observation_Parameters" type="sp:Observation_Parameters" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="Field_of_View" type="sp:Field_of_View" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="Bin_Description" type="sp:Bin_Description" minOccurs="1" maxOccurs="1"> </xs:element>
+    </xs:sequence>
+    <!-- Begin assert statements for schematron - Enumerated Values -->
+    <!-- <xs:assert test="sp:spectrum_format = ('1D', '2D', '3D', 'Tabulated-Flat', 'Tabulated-Parameter Groups', 'Tabulated-Point Group')"/> -->
+    <!-- <xs:assert test="sp:spectral_bin_type = ('frequency', 'wavelength', 'wavenumber')"/> -->
+    <!-- End assert statements for schematron - Enumerated Values -->
+  </xs:complexType>
+
+  <xs:complexType name="Spectral_Lookup">
+    <xs:annotation>
+      <xs:documentation> The Spectral_Lookup class references either
+        specific Fields included in a spectral table (for 1D and
+        tabulated spectra), or a 2-dimensional lookup map providing
+        spectral characteristics for a corresponding spectral Array
+        object. In the latter case, the referenced lookup map may either
+        be to the referencing product, or an external stand-alone
+        product. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Bin_Center_Lookup" type="sp:Bin_Center_Lookup" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="Bin_Width_Lookup" type="sp:Bin_Width_Lookup" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="comment" type="sp:comment" minOccurs="0" maxOccurs="1"> </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Uniformly_Sampled_Frequency">
+    <xs:annotation>
+      <xs:documentation> The Uniformly_Sampled_Frequency class provides
+        attributes describing the spectral characteristics of a named
+        axis of an Array object or the rows of a Table object, in cases
+        where the spectral sampling interval is regular and the sampling
+        parameters are in frequency units. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="axis_name" type="sp:axis_name" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="sampling_interval_frequency" type="sp:sampling_interval_frequency" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="sampling_scale" type="sp:sampling_scale" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="sampling_base" type="sp:sampling_base" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="bin_width_frequency" type="sp:bin_width_frequency" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="first_center_frequency" type="sp:first_center_frequency" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="last_center_frequency" type="sp:last_center_frequency" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="comment" type="sp:comment" minOccurs="0" maxOccurs="1"> </xs:element>
+    </xs:sequence>
+    <!-- Begin assert statements for schematron - Enumerated Values -->
+    <!-- <xs:assert test="sp:sampling_scale = ('Linear', 'Logarithmic')"/> -->
+    <!-- End assert statements for schematron - Enumerated Values -->
+  </xs:complexType>
+
+  <xs:complexType name="Uniformly_Sampled_Wavelength">
+    <xs:annotation>
+      <xs:documentation> The Uniformly_Sampled_Wavelength class provides
+        attributes describing the spectral characteristics of a named
+        axis of an Array object or the rows of a Table object, in cases
+        where the spectral sampling interval is regular and the sampling
+        parameters are in wavelength units. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="axis_name" type="sp:axis_name" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="sampling_interval_wavelength" type="sp:sampling_interval_wavelength" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="sampling_scale" type="sp:sampling_scale" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="sampling_base" type="sp:sampling_base" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="bin_width_wavelength" type="sp:bin_width_wavelength" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="first_center_wavelength" type="sp:first_center_wavelength" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="last_center_wavelength" type="sp:last_center_wavelength" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="comment" type="sp:comment" minOccurs="0" maxOccurs="1"> </xs:element>
+    </xs:sequence>
+    <!-- Begin assert statements for schematron - Enumerated Values -->
+    <!-- <xs:assert test="sp:sampling_scale = ('Linear', 'Logarithmic')"/> -->
+    <!-- End assert statements for schematron - Enumerated Values -->
+  </xs:complexType>
+
+  <xs:complexType name="Uniformly_Sampled_Wavenumber">
+    <xs:annotation>
+      <xs:documentation> The Uniformly_Sampled_Wavenumber class provides
+        attributes describing the spectral characteristics of a named
+        axis of an Array object or the rows of a Table object, in cases
+        where the spectral sampling interval is regular and the sampling
+        parameters are in wavenumber units. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="axis_name" type="sp:axis_name" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="sampling_interval_wavenumber" type="sp:sampling_interval_wavenumber" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="sampling_scale" type="sp:sampling_scale" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="sampling_base" type="sp:sampling_base" minOccurs="0" maxOccurs="1"> </xs:element>
+      <xs:element name="bin_width_wavenumber" type="sp:bin_width_wavenumber" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="first_center_wavenumber" type="sp:first_center_wavenumber" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="last_center_wavenumber" type="sp:last_center_wavenumber" minOccurs="1" maxOccurs="1"> </xs:element>
+      <xs:element name="comment" type="sp:comment" minOccurs="0" maxOccurs="1"> </xs:element>
+    </xs:sequence>
+    <!-- Begin assert statements for schematron - Enumerated Values -->
+    <!-- <xs:assert test="sp:sampling_scale = ('Linear', 'Logarithmic')"/> -->
+    <!-- End assert statements for schematron - Enumerated Values -->
+  </xs:complexType>
+
+    <xs:annotation>
+      <xs:documentation>This section contains the simpleTypes that provide more constraints
+        than those at the base data type level. The simpleTypes defined here build on the base data
+        types. This is another component of the common dictionary and therefore falls within the
+        common namespace.
+      </xs:documentation>
+    </xs:annotation>
+
+  <xs:simpleType name="absolute_calibration_star_name">
+    <xs:annotation>
+      <xs:documentation> The absolute_calibration_star_name attribute
+        provides a name in a standard format (i.e., one that is
+        recognized by the SIMBAD system) for the star used to reduce the
+        raw spectral data to the units presented in this spectrum. This
+        is the analog to solar_calibration_star_name for non-reflectance
+        spectra. </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:UTF8_Short_String_Collapsed">
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="axis_name">
+    <xs:annotation>
+      <xs:documentation> The axis_name attribute contains a string that
+        matches the axis_name attribute in the associated array-type
+        spectrum object. </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="bin_center_field_name">
+    <xs:annotation>
+      <xs:documentation> The bin_center_field_name must contain the
+        value of a 'name' attribute of a Field defined in the referenced
+        Table object. This named Field contains the bin center
+        information for each row in a 1D spectrum presented in tabular
+        form. It will have units (and possibly offset and scaling
+        factor) as indicated in the Field definition. This will usually
+        be accompanied by a bin_width_field_name. </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="bin_center_field_number_list">
+    <xs:annotation>
+      <xs:documentation> The bin_center_field_number_list attribute is
+        used only in the case of spectra in the format "Tabulated-Flat",
+        where each row of a table contains a spectrum and the spectral
+        points are defined as individual Fields - one Field defined for
+        each point. The format is a parenthesized, ordered list of the
+        field_number values from the Field definitions that correspond
+        to the bin center values. </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
+    	<xs:pattern value='\(\s*[0-9]+(\s*,\s*[0-9]+)*\s*\)'/>
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="bin_profile_description">
+    <xs:annotation>
+      <xs:documentation> The bin_profile_description attributes provides
+        a text description of the method used to determine or otherwise
+        define the bin widths following. The description should include
+        information on the shape (e.g. gaussian, square wave, etc.) and
+        what the bin_width value means (i.e., standard deviation of a
+        gaussian function or full-width at half max (FWHM)).
+        </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:UTF8_Text_Preserved">
+     <xs:minLength value="1"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="bin_sequence_number">
+    <xs:annotation>
+      <xs:documentation> The bin_sequence_number provides the sequential
+        numbering of bins along an axis in an Array object.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_NonNegative_Integer">
+    	<xs:pattern value='[0-9]+'/>
+     <xs:minInclusive value="0"/>
+     <xs:maxInclusive value="18446744073709551615"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="bin_width_field_name">
+    <xs:annotation>
+      <xs:documentation> The bin_width_field_name must contain the value
+        of a 'name' attribute of a Field defined in the referenced Table
+        object. This named Field contains the bin width information for
+        each row in a 1D spectrum presented in tabular form. It will
+        have units (and possibly offset and scaling factor) as indicated
+        in the Field definition. This attribute must be accompanied by a
+        bin_center_field_name. </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="bin_width_field_number_list">
+    <xs:annotation>
+      <xs:documentation> The bin_width_field_number_list attribute is
+        used only in the case of spectra in the format "Tabulated-Flat",
+        where each row of a table contains a spectrum and the spectral
+        points are defined as individual Fields - one Field defined for
+        each point. The format is a parenthesized, ordered list of the
+        field_number values from the Field definitions that correspond
+        to the bin width values. </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
+    	<xs:pattern value='\(\s*[0-9]+(\s*,\s*[0-9]+)*\s*\)'/>
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="bin_width_frequency_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="5.0e-324"/>
+     <xs:maxInclusive value="1.7976931348623157e308"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="bin_width_frequency">
+    <xs:annotation>
+      <xs:documentation> The bin_width_frequency attribute provides the
+        width of a bin along a spectral axis in a spectral object, in
+        frequency units. The method used to calculate the width must be
+        specified using the bin_width_desc attribute. </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:bin_width_frequency_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Frequency" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="bin_width_wavelength_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="5.0e-324"/>
+     <xs:maxInclusive value="1.7976931348623157e308"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="bin_width_wavelength">
+    <xs:annotation>
+      <xs:documentation> The bin_width_wavelength attribute provides the
+        width of a bin along a spectral axis in a spectral object, in
+        wavelength units. The method used to calculate the width must be
+        specified using the bin_width_desc attribute. </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:bin_width_wavelength_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Length" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="bin_width_wavenumber_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="5.0e-324"/>
+     <xs:maxInclusive value="1.7976931348623157e308"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="bin_width_wavenumber">
+    <xs:annotation>
+      <xs:documentation> The bin_width_wavenumber attribute provides the
+        width of a bin along a spectral axis in a spectral object, in
+        wavenumber units. The method used to calculate the width must be
+        specified using the bin_width_desc attribute. </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:bin_width_wavenumber_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Wavenumber" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="body_positive_pole_position_angle_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="0.0"/>
+     <xs:maxInclusive value="180.0"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="body_positive_pole_position_angle">
+    <xs:annotation>
+      <xs:documentation> The body_positive_pole_position_angle attribute
+        provides the angle the long axis of the slit makes with respect
+        to the positive (or "north") pole of the target body, measured
+        clockwise from the pole in the range 0-180 degrees.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:body_positive_pole_position_angle_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Angle" use="required" />
+        <xs:attribute name="nilReason" type="pds:nil_reason" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="celestial_north_position_angle_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="0.0"/>
+     <xs:maxInclusive value="180.0"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="celestial_north_position_angle">
+    <xs:annotation>
+      <xs:documentation> The celestial_north_position_angle attribute
+        provides the angle the long axis of the slit makes with respect
+        to celestial north, measured eastward of celestial north in the
+        range 0-180 degrees. </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:celestial_north_position_angle_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Angle" use="required" />
+        <xs:attribute name="nilReason" type="pds:nil_reason" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="center_frequency_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="5.0e-324"/>
+     <xs:maxInclusive value="1.7976931348623157e308"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="center_frequency">
+    <xs:annotation>
+      <xs:documentation> The center_frequency attribute provides the
+        value at the center of a bin along the band axis of a spectral
+        data object. When describing data from a spectrometer, the value
+        corresponds to the peak of the response function for a
+        particular detector and/or grating. </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:center_frequency_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Frequency" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="center_wavelength_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="5.0e-324"/>
+     <xs:maxInclusive value="1.7976931348623157e308"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="center_wavelength">
+    <xs:annotation>
+      <xs:documentation> The center_wavelength attribute provides the
+        value at the center of a bin along the band axis of a spectral
+        data object. When describing data from a spectrometer, the value
+        corresponds to the peak of the response function for a
+        particular detector and/or grating. </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:center_wavelength_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Length" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="center_wavenumber_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="5.0e-324"/>
+     <xs:maxInclusive value="1.7976931348623157e308"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="center_wavenumber">
+    <xs:annotation>
+      <xs:documentation> The center_wavenumber attribute provides the
+        value at the center of a bin along the band axis of a spectral
+        data object. When describing data from a spectrometer, the value
+        corresponds to the peak of the response function for a
+        particular detector and/or grating. </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:center_wavenumber_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Wavenumber" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="comment">
+    <xs:annotation>
+      <xs:documentation> The comment attribute is an unlimited length,
+        format-preserved, UTF-8 text field for comments relevant to the
+        context in which it appears. </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:UTF8_Text_Preserved">
+     <xs:minLength value="1"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="description">
+    <xs:annotation>
+      <xs:documentation> The description attribute is an unlimited
+        length, format-preserved, UTF-8 text field used specifically for
+        description of circumstances related to the data product of
+        which a user should be aware and might logically expect to find
+        in the label. </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:UTF8_Text_Preserved">
+     <xs:minLength value="1"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="detector_number">
+    <xs:annotation>
+      <xs:documentation> The detector_number attribute provides the
+        spectrometer detector number corresponding to a band of a
+        spectral qube. Detector numbers are usually assigned
+        consecutively from 1, in order of increasing wavelength.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_NonNegative_Integer">
+    	<xs:pattern value='[0-9]+'/>
+     <xs:minInclusive value="1"/>
+     <xs:maxInclusive value="18446744073709551615"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="diameter_angle_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="5.0e-324"/>
+     <xs:maxInclusive value="1.7976931348623157e308"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="diameter_angle">
+    <xs:annotation>
+      <xs:documentation> The diameter_angle attribute provides the angle
+        subtended on the sky by the diameter of a circular aperture.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:diameter_angle_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Angle" use="required" />
+        <xs:attribute name="nilReason" type="pds:nil_reason" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="filter_name">
+    <xs:annotation>
+      <xs:documentation> The filter_name attribute provides the
+        commonly-used name of the instrument filter through which an
+        image or measurement was acquired or which is associated with a
+        given instrument mode. </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="filter_number">
+    <xs:annotation>
+      <xs:documentation> The filter_number attribute provides the
+        numeric identifier of an instrument filter through which an
+        image or measurement was acquired or which is associated with a
+        given instrument mode. Within the bin class of a spectral data
+        object, it identifies the filter through which data in the given
+        band were acquired. </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_NonNegative_Integer">
+    	<xs:pattern value='[0-9]+'/>
+     <xs:minInclusive value="0"/>
+     <xs:maxInclusive value="18446744073709551615"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="first_center_frequency_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="5.0e-324"/>
+     <xs:maxInclusive value="1.7976931348623157e308"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="first_center_frequency">
+    <xs:annotation>
+      <xs:documentation> The first_center_frequency attribute provides
+        the value at the center of the first bin along the spectral axis
+        of a spectral data object in frequency units. </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:first_center_frequency_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Frequency" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="first_center_wavelength_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="5.0e-324"/>
+     <xs:maxInclusive value="1.7976931348623157e308"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="first_center_wavelength">
+    <xs:annotation>
+      <xs:documentation> The first_center_wavelength attribute provides
+        the value at the center of the first bin along the spectral axis
+        of a spectral data object in wavelength units.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:first_center_wavelength_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Length" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="first_center_wavenumber_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="5.0e-324"/>
+     <xs:maxInclusive value="1.7976931348623157e308"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="first_center_wavenumber">
+    <xs:annotation>
+      <xs:documentation> The first_center_wavenumber attribute provides
+        the value at the center of the first bin along the spectral axis
+        of a spectral data object in wavenumber units.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:first_center_wavenumber_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Wavenumber" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="grating_position">
+    <xs:annotation>
+      <xs:documentation> The grating_position attribute of a spectral
+        cube describes the grating position which corresponds to the
+        band. Grating positions are usually assigned consecutively from
+        0, and increasing position causes increasing wavelength for each
+        detector. </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_NonNegative_Integer">
+    	<xs:pattern value='[0-9]+'/>
+     <xs:minInclusive value="0"/>
+     <xs:maxInclusive value="18446744073709551615"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="last_center_frequency_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="5.0e-324"/>
+     <xs:maxInclusive value="1.7976931348623157e308"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="last_center_frequency">
+    <xs:annotation>
+      <xs:documentation> The last_center_frequency attribute provides
+        the value at the center of the last bin along the spectral axis
+        of a spectral data object in frequency units. </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:last_center_frequency_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Frequency" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="last_center_wavelength_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="5.0e-324"/>
+     <xs:maxInclusive value="1.7976931348623157e308"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="last_center_wavelength">
+    <xs:annotation>
+      <xs:documentation> The last_center_wavelength attribute provides
+        the value at the center of the last bin along the spectral axis
+        of a spectral data object in wavelength units.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:last_center_wavelength_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Length" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="last_center_wavenumber_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="5.0e-324"/>
+     <xs:maxInclusive value="1.7976931348623157e308"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="last_center_wavenumber">
+    <xs:annotation>
+      <xs:documentation> The last_center_wavenumber attribute provides
+        the value at the center of the last bin along the spectral axis
+        of a spectral data object in wavenumber units.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:last_center_wavenumber_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Wavenumber" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="length_angle_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="5.0e-324"/>
+     <xs:maxInclusive value="1.7976931348623157e308"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="length_angle">
+    <xs:annotation>
+      <xs:documentation> The length_angle attribute provides the angle
+        subtended on the sky by the long dimension of a simple slit.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:length_angle_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Angle" use="required" />
+        <xs:attribute name="nilReason" type="pds:nil_reason" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="net_integration_time_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="5.0e-324"/>
+     <xs:maxInclusive value="1.7976931348623157e308"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="net_integration_time">
+    <xs:annotation>
+      <xs:documentation> The net_integration_time for a spectrum is the
+        total integration time per pixel. For many detectors (CCDs, for
+        example), all pixels are exposed simultaneously, so this value
+        will correspond to the observation interval. In some cases,
+        however, an instrument will sweep across pixels, rows, or
+        planes, so that the observation period may be substantially
+        longer than the actual integration time contributing to the
+        individual pixels. </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:net_integration_time_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Time" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="number_of_exposures">
+    <xs:annotation>
+      <xs:documentation> The number_of_exposures attribute indicates how
+        many individual exposures or distinct integrations were combined
+        to produce the spectrum. </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Integer">
+     <xs:minInclusive value="1"/>
+     <xs:maxInclusive value="9223372036854775807"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="original_bin_number">
+    <xs:annotation>
+      <xs:documentation> The original_bin_number attribute of a spectral
+        Array object is used when the current data object is a subset of
+        some original data object. The original_bin_number for each band
+        identifies the bin_sequence_number of the corresponding band in
+        the original data object. </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_NonNegative_Integer">
+    	<xs:pattern value='[0-9]+'/>
+     <xs:minInclusive value="0"/>
+     <xs:maxInclusive value="18446744073709551615"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="resolution_limit_frequency_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="5.0e-324"/>
+     <xs:maxInclusive value="1.7976931348623157e308"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="resolution_limit_frequency">
+    <xs:annotation>
+      <xs:documentation> The resolution_limit_frequency is the smallest
+        possible distinguishable interval in frequency for the
+        instrument. </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:resolution_limit_frequency_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Frequency" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="resolution_limit_wavelength_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="5.0e-324"/>
+     <xs:maxInclusive value="1.7976931348623157e308"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="resolution_limit_wavelength">
+    <xs:annotation>
+      <xs:documentation> The resolution_limit_wavelength is the smallest
+        possible distinguishable interval in wavelengths for the
+        instrument. </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:resolution_limit_wavelength_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Length" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="resolution_limit_wavenumber_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="5.0e-324"/>
+     <xs:maxInclusive value="1.7976931348623157e308"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="resolution_limit_wavenumber">
+    <xs:annotation>
+      <xs:documentation> The resolution_limit_wavenumber is the smallest
+        possible distinguishable interval in wavenumber for the
+        instrument. </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:resolution_limit_wavenumber_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Wavenumber" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="sampling_base">
+    <xs:annotation>
+      <xs:documentation> The sampling_base attribute indicates the
+        numeric base of the associated logarithmic sampling interval.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="5.0e-324"/>
+     <xs:maxInclusive value="1.7976931348623157e308"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="sampling_interval_frequency_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="5.0e-324"/>
+     <xs:maxInclusive value="1.7976931348623157e308"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="sampling_interval_frequency">
+    <xs:annotation>
+      <xs:documentation> The sampling_interval_frequency attribute
+        provides the spacing of points, in frequency units, at which
+        data are sampled and at which a value for an instrument or data
+        parameter is available. This sampling interval can be either the
+        original (raw) sampling or the result of some resampling
+        process. </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:sampling_interval_frequency_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Frequency" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="sampling_interval_wavelength_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="5.0e-324"/>
+     <xs:maxInclusive value="1.7976931348623157e308"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="sampling_interval_wavelength">
+    <xs:annotation>
+      <xs:documentation> The sampling_interval_wavelength attribute
+        provides the spacing of points, in wavelength units, at which
+        data are sampled and at which a value for an instrument or data
+        parameter is available. This sampling interval can be either the
+        original (raw) sampling or the result of some resampling
+        process. </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:sampling_interval_wavelength_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Length" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="sampling_interval_wavenumber_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="5.0e-324"/>
+     <xs:maxInclusive value="1.7976931348623157e308"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="sampling_interval_wavenumber">
+    <xs:annotation>
+      <xs:documentation> The sampling_interval_wavelength attribute
+        provides the spacing of points, in eavenumber units, at which
+        data are sampled and at which a value for an instrument or data
+        parameter is available. This sampling interval can be either the
+        original (raw) sampling or the result of some resampling
+        process. </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:sampling_interval_wavenumber_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Wavenumber" use="required" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="sampling_scale">
+    <xs:annotation>
+      <xs:documentation> The sampling_scale attribute indicates the type
+        of scale that applies to the sample interval increments. It must
+        have a value of either Linear or Logarithmic. </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="solar_analog_star_name">
+    <xs:annotation>
+      <xs:documentation> The solar_analog_star_name attribute provides a
+        name in a standard format (i.e., one that is recognized by the
+        SIMBAD system) for the solar analog star used to reduce the raw
+        spectral data to the reflectance units presented in this
+        spectrum. </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:UTF8_Short_String_Collapsed">
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="spectral_bin_type">
+    <xs:annotation>
+      <xs:documentation> The spectral_bin_type attribute contains one of
+        a defined set of values that indicates the binned sampling
+        parameter type (frequency, wavelength, or wavenumber) of the
+        spectrum. </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="spectrum_format">
+    <xs:annotation>
+      <xs:documentation> The spectrum_format attribute is required to
+        define the specific dimensionality of the structure or
+        substructure that contains the intensity values.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="value_field_name">
+    <xs:annotation>
+      <xs:documentation> The value_field_name attribute is required for
+        1D (linear) spectra. 1D spectra are presented as a table, where
+        each row presents one point in the spectrum. This field must
+        contain a string corresponding to the 'name' attribute of the
+        table field that contains the spectral value. </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="value_field_number_list">
+    <xs:annotation>
+      <xs:documentation> The value_field_number_list attribute is used
+        only in the case spectra in the format "Tabulated-Flat", where
+        each row of a table contains a spectrum and the spectral points
+        are defined as individual Fields - one Field defined for each
+        point. The format is a parenthesized, ordered list of the
+        field_number values from the Field definitions that correspond
+        to the spectral values. </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="pds:ASCII_Short_String_Collapsed">
+    	<xs:pattern value='\(\s*[0-9]+(\s*,\s*[0-9]+)*\s*\)'/>
+     <xs:minLength value="1"/>
+     <xs:maxLength value="255"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="width_angle_WO_Units">
+    <xs:restriction base="pds:ASCII_Real">
+     <xs:minInclusive value="5.0e-324"/>
+     <xs:maxInclusive value="1.7976931348623157e308"/>
+	   </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="width_angle">
+    <xs:annotation>
+      <xs:documentation> The width_angle is the angle subtended on the
+        sky by the short dimension of a simple slit. </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="sp:width_angle_WO_Units">
+        <xs:attribute name="unit" type="pds:Units_of_Angle" use="required" />
+        <xs:attribute name="nilReason" type="pds:nil_reason" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>

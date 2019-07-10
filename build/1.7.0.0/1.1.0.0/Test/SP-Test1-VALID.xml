@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1700.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="https://pds.nasa.gov/pds4/sp/v1/PDS4_SP_1700_1100.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+
+<Product_Observational xmlns="http://pds.nasa.gov/pds4/pds/v1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:sp="http://pds.nasa.gov/pds4/sp/v1"
+    xsi:schemaLocation="http://pds.nasa.gov/pds4/pds/v1 https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1700.xsd
+                        http://pds.nasa.gov/pds4/sp/v1  https://pds.nasa.gov/pds4/sp/v1/PDS4_SP_1700.xsd">
+    <Identification_Area>
+        <logical_identifier>urn:nasa:pds:bundle:collection:product</logical_identifier>
+        <version_id>1.0</version_id>
+        <title>Test Label 1 for Spectral Dictionary - Valid Label</title>
+        <information_model_version>1.7.0.0</information_model_version>
+        <product_class>Product_Observational</product_class>
+    </Identification_Area>
+    
+    <Observation_Area>
+        <Time_Coordinates>
+            <start_date_time xsi:nil="true" nilReason="inapplicable"/>
+            <stop_date_time xsi:nil="true" nilReason="inapplicable"/>
+        </Time_Coordinates>
+        
+        <Investigation_Area>
+            <name>None</name>
+            <type>Individual Investigation</type>
+            <Internal_Reference>
+                <lid_reference>urn:nasa:pds:context:investigation:individual.none</lid_reference>
+                <reference_type>data_to_investigation</reference_type>
+            </Internal_Reference>
+        </Investigation_Area>
+        <Observing_System>
+            <Observing_System_Component>
+                <name>None</name>
+                <type>Balloon</type>
+            </Observing_System_Component>
+        </Observing_System>
+        <Target_Identification>
+            <name>None</name>
+            <type>Comet</type>
+        </Target_Identification>
+        
+        <Discipline_Area>
+            
+            <!-- Uniformly Sampled Array Axis  -->
+            
+            <sp:Spectral_Characteristics>
+                <Local_Internal_Reference>
+                    <local_identifier_reference>Spectrum2D</local_identifier_reference>
+                    <local_reference_type>spectral_characteristics_to_array_object</local_reference_type>
+                </Local_Internal_Reference>
+                <sp:spectrum_format>2D</sp:spectrum_format>
+                <sp:spectral_bin_type>wavelength</sp:spectral_bin_type>
+                
+                <sp:Observation_Parameters>
+                    <sp:number_of_exposures>1</sp:number_of_exposures>
+                    <sp:net_integration_time unit="s">100</sp:net_integration_time>
+                </sp:Observation_Parameters>
+                
+                <sp:Field_of_View>
+                    <sp:description>
+                        This FOV in this case is a simple slit.  
+                    </sp:description>
+                    <sp:Rectangular_FOV>
+                        <sp:width_angle unit="deg">0.01</sp:width_angle>
+                        <sp:length_angle unit="deg">0.1</sp:length_angle>
+                        <sp:celestial_north_position_angle unit="deg">47.6</sp:celestial_north_position_angle>
+                        <sp:body_positive_pole_position_angle unit="deg">90</sp:body_positive_pole_position_angle>
+                    </sp:Rectangular_FOV>
+                </sp:Field_of_View>
+                
+                <sp:Bin_Description>
+                    <sp:bin_profile_description>
+                        Bin widths are FWHM as described in the instrument documentation.
+                    </sp:bin_profile_description>
+                    <sp:Uniformly_Sampled_Wavelength>
+                        <sp:axis_name>Sample</sp:axis_name>
+                        <sp:sampling_interval_wavelength unit="nm">100</sp:sampling_interval_wavelength>
+                        <sp:sampling_scale>Linear</sp:sampling_scale>
+                        <sp:bin_width_wavelength unit="nm">100</sp:bin_width_wavelength>
+                        <sp:first_center_wavelength unit="nm">3550</sp:first_center_wavelength>
+                        <sp:last_center_wavelength unit="nm">3600</sp:last_center_wavelength>
+                    </sp:Uniformly_Sampled_Wavelength>
+                </sp:Bin_Description>
+                
+            </sp:Spectral_Characteristics>
+            
+            <!-- Spectral Lookup for 3D spectra, internal -->
+            
+            <sp:Spectral_Characteristics>
+                <Local_Internal_Reference>
+                    <local_identifier_reference>Cube</local_identifier_reference>
+                    <local_reference_type>spectral_characteristics_to_array_object</local_reference_type>
+                </Local_Internal_Reference>
+                <sp:spectrum_format>3D</sp:spectrum_format>
+                <sp:spectral_bin_type>frequency</sp:spectral_bin_type>
+                
+                <sp:Observation_Parameters>
+                    <sp:number_of_exposures>2</sp:number_of_exposures>
+                    <sp:net_integration_time unit="s">10</sp:net_integration_time>
+                    <sp:resolution_limit_frequency unit="Hz">1</sp:resolution_limit_frequency>
+                </sp:Observation_Parameters>
+                
+                <sp:Field_of_View>
+                    <sp:description>
+                        This FOV is circular.
+                    </sp:description>
+                    <sp:Circular_FOV>
+                        <sp:diameter_angle unit="deg">0.05</sp:diameter_angle>
+                    </sp:Circular_FOV>
+                </sp:Field_of_View>
+                
+                <sp:Bin_Description>
+                    <sp:bin_profile_description>
+                        Bin centers and widths are specified as part of the mission documentation,
+                        specifically in the detector specifications [usually there would be some 
+                        sort of reference here].
+                    </sp:bin_profile_description>
+                    <sp:Spectral_Lookup>
+                        <sp:Bin_Center_Lookup>
+                            <Local_Internal_Reference>
+                                <local_identifier_reference>BinCenterMap</local_identifier_reference>
+                                <local_reference_type>spectral_characteristics_to_bin_center_values</local_reference_type>
+                            </Local_Internal_Reference>
+                        </sp:Bin_Center_Lookup>
+                        <sp:Bin_Width_Lookup>
+                            <Local_Internal_Reference>
+                                <local_identifier_reference>BinWidthMap</local_identifier_reference>
+                                <local_reference_type>spectral_characteristics_to_bin_width_values</local_reference_type>
+                            </Local_Internal_Reference>
+                        </sp:Bin_Width_Lookup>
+                    </sp:Spectral_Lookup>
+                </sp:Bin_Description>
+            </sp:Spectral_Characteristics>
+            
+            <!-- Spectral Lookup for 1D spectrum (table), in Table fields -->
+            
+            <sp:Spectral_Characteristics>
+                <Local_Internal_Reference>
+                    <comment>
+                        The spectral bin centers are included in the table in the named field.  In
+                        this case, FWHM values are also included in the table as a separate field.
+                        Table field classes must have 'name' attributes (although these are not
+                        currently required to be unique).  
+                    </comment>
+                    <local_identifier_reference>TableChar1D</local_identifier_reference>
+                    <local_reference_type>spectral_characteristics_to_table_object</local_reference_type>
+                </Local_Internal_Reference>
+                <sp:spectrum_format>1D</sp:spectrum_format>
+                <sp:value_field_name>Intensity</sp:value_field_name>
+                <sp:spectral_bin_type>wavelength</sp:spectral_bin_type>
+                
+                <sp:Observation_Parameters>
+                    <sp:number_of_exposures>1</sp:number_of_exposures>
+                    <sp:net_integration_time unit="s">20</sp:net_integration_time>
+                    <sp:resolution_limit_wavelength unit="nm">5</sp:resolution_limit_wavelength>
+                </sp:Observation_Parameters>
+                
+                <sp:Field_of_View>
+                    <sp:description>
+                        This field of view is not a regular shape.  Typically this should be 
+                        described in some detail in a document that is referenced within this
+                        class (we'll assume one exists in this case as a demonstration).  For
+                        example, the Alice spectrometer on New Horizons has a "lollipop" shaped
+                        slit.  I don't know the actual dimensions of that slit, so the 
+                        description below is fake.  This description would specify that the
+                        'width' indicated here is for the widest part of the slit, for example.
+                    </sp:description>
+                    <sp:Complex_FOV>
+                        <sp:width_angle unit="arcsec">10</sp:width_angle>
+                        <sp:length_angle unit="arcsec">100</sp:length_angle>
+                        <sp:celestial_north_position_angle unit="deg">70</sp:celestial_north_position_angle>
+                    </sp:Complex_FOV>
+                    <Internal_Reference>
+                        <lid_reference>urn:nasa:pds:nh_docs:slit_specs</lid_reference>
+                        <reference_type>spectral_characteristics_to_document</reference_type>
+                        <comment>
+                            This document provides both a diagram and specific physical 
+                            measurements of the lollipop-shaped slit.
+                        </comment>
+                    </Internal_Reference>
+                </sp:Field_of_View>
+                
+                <sp:Bin_Description>
+                    <sp:bin_profile_description>
+                        Bin widths indicated in the table are those listed in the manufacturer's 
+                        specifications.
+                    </sp:bin_profile_description>
+                    <sp:Spectral_Lookup>
+                        <sp:Bin_Center_Lookup>
+                            <sp:bin_center_field_name>Center Wavelength</sp:bin_center_field_name>
+                        </sp:Bin_Center_Lookup>
+                        <sp:Bin_Width_Lookup>
+                            <sp:bin_width_field_name>FWHM</sp:bin_width_field_name>
+                        </sp:Bin_Width_Lookup>
+                    </sp:Spectral_Lookup>
+                </sp:Bin_Description>
+            </sp:Spectral_Characteristics>
+            
+            <!-- Bin Definitions using Axis_Bin_Set -->
+            
+            <sp:Spectral_Characteristics>
+                <Local_Internal_Reference>
+                    <local_identifier_reference>RGBSpec</local_identifier_reference>
+                    <local_reference_type>spectral_characteristics_to_array_object</local_reference_type>
+                </Local_Internal_Reference>
+                <sp:description>
+                    The spectrum in this case is a shallow cube - only three bands corresponding 
+                    to Red, Green, and Blue.
+                </sp:description>
+                <sp:spectrum_format>3D</sp:spectrum_format>
+                <sp:spectral_bin_type>wavenumber</sp:spectral_bin_type>
+                
+                <sp:Observation_Parameters>
+                    <sp:number_of_exposures>1</sp:number_of_exposures>
+                    <sp:net_integration_time unit="s">1</sp:net_integration_time>
+                    <sp:resolution_limit_wavenumber unit="1/nm">100</sp:resolution_limit_wavenumber>
+                </sp:Observation_Parameters>
+                
+                <sp:Field_of_View>
+                    <sp:description>
+                        This FOV is square aligned with the image.
+                    </sp:description>
+                    <sp:Rectangular_FOV>
+                        <sp:width_angle unit="arcsec">20</sp:width_angle>
+                        <sp:length_angle unit="arcsec">20</sp:length_angle>
+                        <sp:body_positive_pole_position_angle unit="deg">0</sp:body_positive_pole_position_angle>
+                    </sp:Rectangular_FOV>
+                </sp:Field_of_View>
+                
+                <sp:Bin_Description>
+                    <sp:bin_profile_description>
+                        Bin profiles were determined during ground-testing with known sources.
+                    </sp:bin_profile_description>
+                    <sp:Axis_Bin_Set_Wavenumber>
+                        <sp:axis_name>Band</sp:axis_name>
+                        <sp:Bin_Wavenumber>
+                            <sp:bin_sequence_number>1</sp:bin_sequence_number>
+                            <sp:center_wavenumber unit="1/cm">0.1</sp:center_wavenumber>
+                            <sp:bin_width_wavenumber unit="1/cm">0.035</sp:bin_width_wavenumber>
+                        </sp:Bin_Wavenumber>
+                        <sp:Bin_Wavenumber>
+                            <sp:bin_sequence_number>2</sp:bin_sequence_number>
+                            <sp:center_wavenumber unit="1/cm">0.15</sp:center_wavenumber>
+                            <sp:bin_width_wavenumber unit="1/cm">0.2</sp:bin_width_wavenumber>
+                        </sp:Bin_Wavenumber>
+                        <sp:Bin_Wavenumber>
+                            <sp:bin_sequence_number>3</sp:bin_sequence_number>
+                            <sp:center_wavenumber unit="1/cm">0.35</sp:center_wavenumber>
+                            <sp:bin_width_wavenumber unit="1/cm">0.3</sp:bin_width_wavenumber>
+                        </sp:Bin_Wavenumber>
+                    </sp:Axis_Bin_Set_Wavenumber>
+                </sp:Bin_Description>
+            </sp:Spectral_Characteristics>
+            
+            <!-- Telescope Spectrum, uniformly sampled bins -->
+            
+            <sp:Spectral_Characteristics>
+                <Local_Internal_Reference>
+                    <local_identifier_reference>TableChar1D</local_identifier_reference>
+                    <local_reference_type>spectral_characteristics_to_table_object</local_reference_type>
+                </Local_Internal_Reference>
+                <sp:description>
+                    This is a linear spectrum - presented as a table where each point in the spectrum
+                    (usually along with associated information) is contained in a single row of the table.
+                    In this case it is necessary to specify the name of the field that contains the actual
+                    measured datum.
+                </sp:description>
+                <sp:spectrum_format>1D</sp:spectrum_format>
+                <sp:value_field_name>Intensity</sp:value_field_name>
+                <sp:spectral_bin_type>wavelength</sp:spectral_bin_type>
+                                
+                <sp:Observation_Parameters>
+                    <sp:number_of_exposures>1</sp:number_of_exposures>
+                    <sp:net_integration_time unit="s">10</sp:net_integration_time>
+                    <sp:resolution_limit_wavelength unit="micrometer">10</sp:resolution_limit_wavelength>
+                    <sp:solar_analog_star_name>Billy</sp:solar_analog_star_name>
+                </sp:Observation_Parameters>
+                
+                <sp:Field_of_View>
+                    <sp:description>
+                        Tbe FOV is a simple slit.
+                    </sp:description>
+                    <sp:Rectangular_FOV>
+                        <sp:width_angle unit="deg">0.01</sp:width_angle>
+                        <sp:length_angle unit="deg">0.06</sp:length_angle>
+                        <sp:celestial_north_position_angle unit="deg">23</sp:celestial_north_position_angle>
+                    </sp:Rectangular_FOV>
+                </sp:Field_of_View>
+                
+                <sp:Bin_Description>
+                    <sp:bin_profile_description>
+                        Bin centers and bandpasses included in the table were copied from the
+                        instrument manual.
+                    </sp:bin_profile_description>
+                    <sp:Uniformly_Sampled_Wavelength>
+                        <sp:sampling_interval_wavelength unit="nm">100</sp:sampling_interval_wavelength>
+                        <sp:sampling_scale>Linear</sp:sampling_scale>
+                        <sp:bin_width_wavelength unit="nm">10</sp:bin_width_wavelength>
+                        <sp:first_center_wavelength unit="nm">350</sp:first_center_wavelength>
+                        <sp:last_center_wavelength unit="nm">480</sp:last_center_wavelength>
+                    </sp:Uniformly_Sampled_Wavelength>
+                </sp:Bin_Description>
+            </sp:Spectral_Characteristics>
+            
+        </Discipline_Area>
+    </Observation_Area>
+    
+    <File_Area_Observational>
+        <File>
+            <file_name>No.Data</file_name>
+        </File>
+        
+        <!-- 2D Spectrum -->
+        
+        <Array_2D_Spectrum>
+            <local_identifier>Spectrum2D</local_identifier>
+            <offset unit="byte">0</offset>
+            <axes>2</axes>
+            <axis_index_order>Last Index Fastest</axis_index_order>
+            <Element_Array>
+                <data_type>SignedMSB4</data_type>
+            </Element_Array>
+            <Axis_Array>
+                <axis_name>Line</axis_name>
+                <elements>255</elements>
+                <sequence_number>1</sequence_number>
+            </Axis_Array>
+            <Axis_Array>
+                <axis_name>Sample</axis_name>
+                <elements>24</elements>
+                <sequence_number>2</sequence_number>
+            </Axis_Array>
+        </Array_2D_Spectrum>
+        
+        <!-- Spectral Cube -->
+        
+        <Array_3D_Spectrum>
+            <local_identifier>Cube</local_identifier>
+            <offset unit="byte">1000</offset>
+            <axes>3</axes>
+            <axis_index_order>Last Index Fastest</axis_index_order>
+            <Element_Array>
+                <data_type>SignedLSB2</data_type>
+            </Element_Array>
+            <Axis_Array>
+                <axis_name>Spatial</axis_name>
+                <elements>100</elements>
+                <sequence_number>1</sequence_number>
+            </Axis_Array>
+            <Axis_Array>
+                <axis_name>Frequency</axis_name>
+                <elements>200</elements>
+                <sequence_number>2</sequence_number>
+            </Axis_Array>
+            <Axis_Array>
+                <axis_name>Time</axis_name>
+                <elements>255</elements>
+                <sequence_number>3</sequence_number>
+            </Axis_Array>
+        </Array_3D_Spectrum>
+        
+        <!-- Bin centers Map for spectral cube -->
+        
+        <Array_2D_Map>
+            <local_identifier>BinCenterMap</local_identifier>
+            <offset unit="byte">1</offset>
+            <axes>2</axes>
+            <axis_index_order>Last Index Fastest</axis_index_order>
+            <Element_Array>
+                <data_type>IEEE754LSBSingle</data_type>
+            </Element_Array>
+            <Axis_Array>
+                <axis_name>Spatial</axis_name>
+                <elements>100</elements>
+                <sequence_number>1</sequence_number>
+            </Axis_Array>
+            <Axis_Array>
+                <axis_name>Frequency</axis_name>
+                <elements>200</elements>
+                <sequence_number>2</sequence_number>
+            </Axis_Array>
+        </Array_2D_Map>
+        
+        <!-- Bin width map for specral cube -->
+        
+        <Array_2D_Map>
+            <local_identifier>BinWidthMap</local_identifier>
+            <offset unit="byte">1</offset>
+            <axes>2</axes>
+            <axis_index_order>Last Index Fastest</axis_index_order>
+            <Element_Array>
+                <data_type>IEEE754LSBSingle</data_type>
+            </Element_Array>
+            <Axis_Array>
+                <axis_name>Spatial</axis_name>
+                <elements>100</elements>
+                <sequence_number>1</sequence_number>
+            </Axis_Array>
+            <Axis_Array>
+                <axis_name>Frequency</axis_name>
+                <elements>200</elements>
+                <sequence_number>2</sequence_number>
+            </Axis_Array>
+        </Array_2D_Map>
+        
+        <!-- Shallow spectral cube with separately defined bins ("planes") -->
+        
+        <Array_3D_Spectrum>
+            <local_identifier>RGBSpec</local_identifier>
+            <offset unit="byte">3</offset>
+            <axes>3</axes>
+            <axis_index_order>Last Index Fastest</axis_index_order>
+            <Element_Array>
+                <data_type>IEEE754LSBSingle</data_type>
+            </Element_Array>
+            <Axis_Array>
+                <axis_name>Right Ascension</axis_name>
+                <elements>1000</elements>
+                <sequence_number>3</sequence_number>
+            </Axis_Array>
+            <Axis_Array>
+                <axis_name>Declination</axis_name>
+                <elements>1020</elements>
+                <sequence_number>2</sequence_number>
+            </Axis_Array>
+            <Axis_Array>
+                <axis_name>Band</axis_name>
+                <elements>3</elements>
+                <sequence_number>1</sequence_number>
+            </Axis_Array>
+        </Array_3D_Spectrum>
+        
+        <!-- 1D Spectral Table  -->
+        
+        <Table_Character>
+            <local_identifier>TableChar1D</local_identifier>
+            <offset unit="byte">4</offset>
+            <records>100</records>
+            <description>
+                This is just one of many possible structures for a set of 
+                spectra in tabulated format.
+            </description>
+            <record_delimiter>Carriage-Return Line-Feed</record_delimiter>
+            <Record_Character>
+                <fields>4</fields>
+                <groups>0</groups>
+                <record_length unit="byte">50</record_length>
+                
+                <Field_Character>
+                    <name>Intensity</name>
+                    <field_location unit="byte">1</field_location>
+                    <data_type>ASCII_Real</data_type>
+                    <field_length unit="byte">5</field_length>
+                </Field_Character>
+                
+                <Field_Character>
+                    <name>Error</name>
+                    <field_location unit="byte">6</field_location>
+                    <data_type>ASCII_Real</data_type>
+                    <field_length unit="byte">4</field_length>
+                </Field_Character>
+                
+                <Field_Character>
+                    <name>Center Wavelength</name>
+                    <field_location unit="byte">12</field_location>
+                    <data_type>ASCII_Integer</data_type>
+                    <field_length unit="byte">4</field_length>
+                    <unit>nanometer</unit>
+                </Field_Character>
+                
+                <Field_Character>
+                    <name>FWHM</name>
+                    <field_location unit="byte">20</field_location>
+                    <data_type>ASCII_Real</data_type>
+                    <field_length unit="byte">6</field_length>
+                    <unit>angstrom</unit>
+                </Field_Character>
+            </Record_Character>
+        </Table_Character>
+        
+    </File_Area_Observational>
+</Product_Observational>
