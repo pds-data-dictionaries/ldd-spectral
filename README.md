@@ -54,4 +54,4 @@ Spectral Dictionary Version | v1.0.0.0 | v1.1.0.0
 
 ## Source
 
-The source files for each IM version build are provided in the corresponding [src/](src) directories.
+The source files for each IM build are provided in the corresponding [src/](src) directories for each Spectral Dictionary version.
