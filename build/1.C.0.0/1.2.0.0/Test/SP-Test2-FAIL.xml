@@ -92,6 +92,7 @@
                  Invalid <value_field_number_list> syntax: 1
                  <value_field_number_list> user with Tab.-Group type spectra: 1
                  Invalid <value_field_name>: 1
+                 Multiple bin specification methods used for a single object: 1
     
             -->
             
@@ -221,6 +222,14 @@
                     <sp:bin_profile_description>
                         HOW the bin parameters were determined/defined/derived
                     </sp:bin_profile_description>
+                    <sp:Axis_Bin_Set_Wavelength>
+                        <sp:axis_name>Field</sp:axis_name>
+                        <sp:Bin_Wavelength>
+                            <sp:bin_sequence_number>1</sp:bin_sequence_number>
+                            <sp:center_wavelength unit="nm">450</sp:center_wavelength>
+                            <sp:bin_width_wavelength unit="nm">25</sp:bin_width_wavelength>
+                        </sp:Bin_Wavelength>
+                    </sp:Axis_Bin_Set_Wavelength>
                     <sp:Spectral_Lookup>
                         <sp:Bin_Center_Lookup>
                             <sp:bin_center_field_name>Band Center</sp:bin_center_field_name>

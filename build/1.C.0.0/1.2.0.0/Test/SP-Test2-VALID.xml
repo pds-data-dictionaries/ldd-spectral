@@ -3,7 +3,7 @@
 <?xml-model href="https://pds.nasa.gov/pds4/sp/v1/PDS4_SP_1C00_1200.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
 <!-- 
-    This test label demonstrates:
+    This test label exercises:
     
       o Tabulated-Flat spectra in a Table_Character 
       o Tabulated-Parameter Group spectra in Table_Binary

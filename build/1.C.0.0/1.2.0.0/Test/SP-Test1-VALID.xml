@@ -2,6 +2,22 @@
 <?xml-model href="https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1C00.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-model href="https://pds.nasa.gov/pds4/sp/v1/PDS4_SP_1C00_1200.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
+<!-- 
+    This test label exercises:
+    
+      o Uniformly_Sampled bins for an array spectrum
+      o Spectral_Lookup referencing a data object within the same product
+      o Spectral_Lookup referencing a Field within a spectral Table object
+      o Axis_Bin_Set being used to define bins for a 3D spectral image stack
+      o Uniformly_Sampled rows in a spectral Table object ("Telescope spectrum")
+      o Axis_Bin_Set fields in tabulated spectra, with unknown bin widths
+      o Unknown bin widths in a Spectral_Lookup referencing an external product
+
+    Note that these examples are neither exhaustive nor exclusive.  Any Table-type object,
+    for example, can hold a 1D spectrum of any spectral_bin_type; other bin-definition
+    methods (Uniformly_Sampled, etc.) may be used to define bins for tabulated spectra.
+-->
+
 <Product_Observational xmlns="http://pds.nasa.gov/pds4/pds/v1"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:sp="http://pds.nasa.gov/pds4/sp/v1"
@@ -303,6 +319,91 @@
                     </sp:Uniformly_Sampled_Wavelength>
                 </sp:Bin_Description>
             </sp:Spectral_Characteristics>
+
+            <!-- Axis_Bin_Set for fields in tabulated spectra, with unknown bin widths -->
+            
+            <sp:Spectral_Characteristics>
+                <Local_Internal_Reference>
+                    <local_identifier_reference>TabFlat</local_identifier_reference>
+                    <local_reference_type>spectral_characteristics_to_table_object</local_reference_type>
+                </Local_Internal_Reference>
+                <sp:spectrum_format>Tabulated-Flat</sp:spectrum_format>
+                <sp:value_field_number_list>(2,3,4,5)</sp:value_field_number_list>
+                <sp:spectral_bin_type>wavenumber</sp:spectral_bin_type>
+                <sp:Field_of_View>
+                    <sp:description>Simple circular aperture</sp:description>
+                    <sp:Circular_FOV>
+                        <sp:diameter_angle unit="arcsec">10</sp:diameter_angle>
+                    </sp:Circular_FOV>
+                </sp:Field_of_View>
+                <sp:Bin_Description>
+                    <sp:bin_profile_description>
+                        Bin centers are taken from the label on the filter holders; bin widths are not known.
+                    </sp:bin_profile_description>
+                    <sp:Axis_Bin_Set_Wavenumber>
+                        <sp:axis_name>Field</sp:axis_name>
+                        <sp:Bin_Wavenumber>
+                            <sp:bin_sequence_number>1</sp:bin_sequence_number>
+                            <sp:center_wavenumber unit="1/nm">0.00333</sp:center_wavenumber>
+                            <sp:bin_width_wavenumber unit="1/nm" xsi:nil="true" nilReason="unknown"/>
+                        </sp:Bin_Wavenumber>
+                        <sp:Bin_Wavenumber>
+                            <sp:bin_sequence_number>2</sp:bin_sequence_number>
+                            <sp:center_wavenumber unit="1/nm">0.00400</sp:center_wavenumber>
+                            <sp:bin_width_wavenumber unit="1/nm" xsi:nil="true" nilReason="unknown"/>
+                        </sp:Bin_Wavenumber>
+                        <sp:Bin_Wavenumber>
+                            <sp:bin_sequence_number>3</sp:bin_sequence_number>
+                            <sp:center_wavenumber unit="1/nm">0.00500</sp:center_wavenumber>
+                            <sp:bin_width_wavenumber unit="1/nm" xsi:nil="true" nilReason="unknown"/>
+                        </sp:Bin_Wavenumber>
+                        <sp:Bin_Wavenumber>
+                            <sp:bin_sequence_number>4</sp:bin_sequence_number>
+                            <sp:center_wavenumber unit="1/nm">0.00667</sp:center_wavenumber>
+                            <sp:bin_width_wavenumber unit="1/nm" xsi:nil="true" nilReason="unknown"/>
+                        </sp:Bin_Wavenumber>
+                    </sp:Axis_Bin_Set_Wavenumber>
+                </sp:Bin_Description>
+            </sp:Spectral_Characteristics>
+            
+            <!-- Unknown bin widths in a Spectral_Lookup referencing an external product-->
+            
+            <sp:Spectral_Characteristics>
+                <Local_Internal_Reference>
+                    <local_identifier_reference>TabFlat</local_identifier_reference>
+                    <local_reference_type>spectral_characteristics_to_table_object</local_reference_type>
+                </Local_Internal_Reference>
+                <sp:spectrum_format>Tabulated-Flat</sp:spectrum_format>
+                <sp:value_field_number_list>(2,3,4,5)</sp:value_field_number_list>
+                <sp:spectral_bin_type>frequency</sp:spectral_bin_type>
+                <sp:Field_of_View>
+                    <sp:description>Simple square field of view</sp:description>
+                    <sp:Rectangular_FOV>
+                        <sp:width_angle unit="arcsec">5</sp:width_angle>
+                        <sp:length_angle unit="arcsec">5</sp:length_angle>
+                    </sp:Rectangular_FOV>
+                </sp:Field_of_View>
+                <sp:Bin_Description>
+                    <sp:bin_profile_description>
+                        Bin centers were determined during initial calibration and reported
+                        in the referenced document.
+                        
+                        Bin widths are as yet unknown, but are expected to be provided as part
+                        final calibration.
+                    </sp:bin_profile_description>
+                    <sp:Spectral_Lookup>
+                        <sp:Bin_Center_Lookup>
+                            <Internal_Reference>
+                                <lidvid_reference>urn:nasa:pds:bundle:collection:bincenters::1.0</lidvid_reference>
+                                <reference_type>spectral_characteristics_to_bin_center_values</reference_type>
+                            </Internal_Reference>
+                        </sp:Bin_Center_Lookup>
+                        <sp:Bin_Width_Constant>
+                            <sp:bin_width_frequency unit="Hz" xsi:nil="true" nilReason="unknown"/>
+                        </sp:Bin_Width_Constant>
+                    </sp:Spectral_Lookup>
+                </sp:Bin_Description>
+            </sp:Spectral_Characteristics>
             
         </Discipline_Area>
     </Observation_Area>
@@ -476,6 +577,75 @@
                     <data_type>ASCII_Real</data_type>
                     <field_length unit="byte">6</field_length>
                     <unit>angstrom</unit>
+                </Field_Character>
+            </Record_Character>
+        </Table_Character>
+        
+        <!-- Tabulated-Flat Spectra -->
+        
+        <Table_Character>
+            <name>Flat Spectra Table</name>
+            <local_identifier>TabFlat</local_identifier>
+            <offset unit="byte">0</offset>
+            <records>1000</records>
+            <description>
+                In this format, each row of the table contains a single spectrum, and the fields (columns) are defined without
+                the use of "Group_Field" classes.  This spectrum has only 4 points, and the bin parameters will be specified
+                as part of the Spectral Characteristics.
+            </description>
+            <record_delimiter>Carriage-Return Line-Feed</record_delimiter>
+            <Record_Character>
+                <fields>5</fields>
+                <groups>0</groups>
+                <record_length unit="byte">82</record_length>
+                
+                <Field_Character>
+                    <name>Target Name</name>
+                    <field_number>1</field_number>
+                    <field_location unit="byte">1</field_location>
+                    <data_type>ASCII_String</data_type>
+                    <field_length unit="byte">19</field_length>
+                    <field_format>%-19s</field_format>
+                </Field_Character>
+                
+                <Field_Character>
+                    <name>Point 1 Value</name>
+                    <field_number>2</field_number>
+                    <field_location unit="byte">20</field_location>
+                    <data_type>ASCII_Integer</data_type>
+                    <field_length unit="byte">4</field_length>
+                    <field_format>%4d</field_format>
+                    <unit>DN</unit>
+                </Field_Character>
+                
+                <Field_Character>
+                    <name>Point 2 Value</name>
+                    <field_number>3</field_number>
+                    <field_location unit="byte">35</field_location>
+                    <data_type>ASCII_Integer</data_type>
+                    <field_length unit="byte">4</field_length>
+                    <field_format>%4d</field_format>
+                    <unit>DN</unit>
+                </Field_Character>
+                
+                <Field_Character>
+                    <name>Point 3 Value</name>
+                    <field_number>4</field_number>
+                    <field_location unit="byte">50</field_location>
+                    <data_type>ASCII_Integer</data_type>
+                    <field_length unit="byte">4</field_length>
+                    <field_format>%4d</field_format>
+                    <unit>DN</unit>
+                </Field_Character>
+                
+                <Field_Character>
+                    <name>Point 4 Value</name>
+                    <field_number>5</field_number>
+                    <field_location unit="byte">65</field_location>
+                    <data_type>ASCII_Integer</data_type>
+                    <field_length unit="byte">4</field_length>
+                    <field_format>%4d</field_format>
+                    <unit>DN</unit>
                 </Field_Character>
             </Record_Character>
         </Table_Character>

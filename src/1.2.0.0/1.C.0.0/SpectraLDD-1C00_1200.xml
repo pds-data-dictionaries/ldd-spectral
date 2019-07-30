@@ -31,7 +31,7 @@
                                              Moved Bin_Width_Constant class (unusable as designed) into Spectral_Lookup;
                                              Made bin-width nillable for cases where it is unknown;
                                              Removed references to "original bin number" (mission-specific);
-                                             Added Bin_Set class for tabular (row and field) spectra 
+                                             Expanded Axis_Bin_Set class for tabular (row and field) spectra 
     </comment>
     <last_modification_date_time>2019-03-15</last_modification_date_time>
     <!--
