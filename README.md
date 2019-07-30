@@ -32,6 +32,7 @@ http://sbndev.astro.umd.edu/wiki/Filling_Out_the_Spectral_Dictionary_Classes
 
 - [1.0.0.0](src/1.0.0.0): A complete re-design of the prototype dictionary
 - [1.1.0.0](src/1.1.0.0): Upgrades as suggested by early adopters
+- [1.2.0.0](src/1.2.0.0): Minor upgrades to make for more uniform use of features across arrays and tables
 
 ## Builds
 
@@ -41,15 +42,15 @@ The build process insures compatiblity of the LDD with the core information mode
 The table below shows the versions of the IM for which each version of the Spectral Dictionary is supported. The first
 column links to the specific [build/](build) directory in this repository.
 
-Spectral Dictionary Version | v1.0.0.0 | v1.1.0.0
---------------------------- | -------- | ---------
-[IM 1700 (1.7.0.0)](build/1.7.0.0) | :heavy_check_mark: | :heavy_check_mark:
-[IM 1800 (1.8.0.0)](build/1.8.0.0) | :heavy_check_mark: | :heavy_check_mark:
-[IM 1900 (1.9.0.0)](build/1.9.0.0) | :heavy_check_mark: | :heavy_check_mark:
-[IM 1A00 (1.10.0.0)](build/1.A.0.0) | :heavy_check_mark: | :heavy_check_mark:
-[IM 1A10 (1.10.1.0)](build/1.A.1.0) | :heavy_check_mark: | :heavy_check_mark:
-[IM 1B00 (1.11.0.0)](build/1.B.0.0) | :x: | :heavy_check_mark:
-[IM 1C00 (1.12.0.0)](build/1.C.0.0) | :x: | :heavy_check_mark:
+Spectral Dictionary Version | v1.0.0.0 | v1.1.0.0 | v1.2.0.0  
+--------------------------- | -------- | -------- | --------
+[IM 1700 (1.7.0.0)](build/1.7.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x:
+[IM 1800 (1.8.0.0)](build/1.8.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x:
+[IM 1900 (1.9.0.0)](build/1.9.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x:
+[IM 1A00 (1.10.0.0)](build/1.A.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x:
+[IM 1A10 (1.10.1.0)](build/1.A.1.0) | :heavy_check_mark: | :heavy_check_mark: | :x:
+[IM 1B00 (1.11.0.0)](build/1.B.0.0) | :x: | :heavy_check_mark: | :x:
+[IM 1C00 (1.12.0.0)](build/1.C.0.0) | :x: | :heavy_check_mark: | :heavy_check_mark:
 
 
 ## Source
