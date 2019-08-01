@@ -22,6 +22,8 @@ file in the ```../src/``` tree with this command line:
 Only the *\*.sch* and *\*.xsd* files are needed on your local system to use the Spectral Dictionary in
 designing, creating, and validating product labels.
 
+## ```Test/``` Subdirectory
+
 The ```Test/``` directory contains files used to perform regression testing of the Spectral Dictionary:
               
 > **NOTE:** The "valid" test labels do not attempt to show anything like a real-world use of the 
