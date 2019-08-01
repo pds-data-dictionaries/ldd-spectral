@@ -49,7 +49,7 @@ Spectral Dictionary Version | v1.0.0.0 | v1.1.0.0 | v1.2.0.0
 [IM 1900 (1.9.0.0)](build/1.9.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x:
 [IM 1A00 (1.10.0.0)](build/1.A.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x:
 [IM 1A10 (1.10.1.0)](build/1.A.1.0) | :heavy_check_mark: | :heavy_check_mark: | :x:
-[IM 1B00 (1.11.0.0)](build/1.B.0.0) | :x: | :heavy_check_mark: | :x:
+[IM 1B00 (1.11.0.0)](build/1.B.0.0) | :x: | :heavy_check_mark: | :heavy_check_mark:
 [IM 1C00 (1.12.0.0)](build/1.C.0.0) | :x: | :heavy_check_mark: | :heavy_check_mark:
 
 
