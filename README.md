@@ -37,7 +37,8 @@ http://sbndev.astro.umd.edu/wiki/Filling_Out_the_Spectral_Dictionary_Classes
 ## Builds
 
 The Spectral Dictionary (LDD) is built for each version of the [PDS4 Information Model](https://pds.nasa.gov/pds4/doc/im/).
-The build process insures compatiblity of the LDD with the core information model.
+The build process insures compatiblity of the LDD with the core information model. This is the directory tree where you will
+find the XSD Schema and Schematron files needed to use the Spectral Dictionary classes in labels.
 
 The table below shows the versions of the IM for which each version of the Spectral Dictionary is supported. The first
 column links to the specific [build/](build) directory in this repository.
@@ -52,7 +53,11 @@ Spectral Dictionary Version | v1.0.0.0 | v1.1.0.0 | v1.2.0.0
 [IM 1B00 (1.11.0.0)](build/1.B.0.0) | :x: | :heavy_check_mark: | :heavy_check_mark:
 [IM 1C00 (1.12.0.0)](build/1.C.0.0) | :x: | :heavy_check_mark: | :heavy_check_mark:
 
+The build directories for each version also contain ```Test/``` subdirectories that contain test labels, *Validate* tool 
+configuration files, and the validation report for the test labels.  These are used for regression testing of the schema 
+files.  The ```Test/``` files are not needed to use the Spectral Dictionary for developing labels.
+
 
 ## Source
 
-The source files for each IM build are provided in the corresponding [src/](src) directories for each Spectral Dictionary version.
+The source file for each IM build is provided in the corresponding [src/](src) directories for each Spectral Dictionary version. The source file, also known as the "Ingest_LDD" file for the document structure used, for the Spectral Dictionary is heavily annotated so it can be used as a set of working examples for other dictionary writers.
