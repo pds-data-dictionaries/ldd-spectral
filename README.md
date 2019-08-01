@@ -67,4 +67,4 @@ files.  The ```Test/``` files are not needed to use the Spectral Dictionary for 
 
 ## Source
 
-The source file for each IM build is provided in the corresponding [src/](src) directories for each Spectral Dictionary version. The source file, also known as the "Ingest_LDD" file for the document structure used, for the Spectral Dictionary is heavily annotated so it can be used as a set of working examples for other dictionary writers.
+The source file for each IM build is provided in the corresponding [src/](src) directories for each Spectral Dictionary version. The source file for the Spectral Dictionary, also known as the "Ingest_LDD" file for the root document structure used, is heavily annotated so it can be used as a set of working examples for other dictionary writers.
