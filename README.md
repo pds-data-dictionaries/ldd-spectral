@@ -32,7 +32,7 @@ http://sbndev.astro.umd.edu/wiki/Filling_Out_the_Spectral_Dictionary_Classes
 
 - [1.0.0.0](src/1.0.0.0): A complete re-design of the prototype dictionary
 - [1.1.0.0](src/1.1.0.0): Upgrades as suggested by early adopters
-- [1.2.0.0](src/1.2.0.0): Minor upgrades to make for more uniform use of features across arrays and tables
+- [1.2.0.0](src/1.2.0.0): Minor upgrades to make for more uniform use of features across arrays and tables ([Change Log](src/1.2.0.0/README.md))
 
 ## Builds
 
