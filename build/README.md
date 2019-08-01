@@ -38,7 +38,7 @@ The ```Test/``` directory contains files used to perform regression testing of t
 * *validate.rpt* - The report produced by *Validate* showing the expected validation success and failure
               messages.
               
-The command used to produce the validation report (with all referenced files in the working directory) was:
+The command used to produce the validation report (running inside the ```Test/``` directory) was:
 
       % validate -config val.config
       
