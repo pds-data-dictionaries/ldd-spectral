@@ -9,15 +9,18 @@ These will be referred to as the "*IM/SP*" directories collectively and generall
 
 In each *IM/SP* directory, you will find:
 
-* The Schematron file (*PDS4_SP_\*.sch*)
-* The XSD Schema file (*PDS4_SP_\*.xsd*)
-* The XML label for the above two files (*PDS4_SP_\*.xsd*)
+* The Schematron file (*PDS4_SP_\*.sch*), needed for using Spectral Dictionary classes in PDS4 labels 
+* The XSD Schema file (*PDS4_SP_\*.xsd*), needed for using Spectral Dictionary classes in PDS4 labels
+* The XML label for the above two files (*PDS4_SP_\*.xml*)
 * The ```Test/``` subdirectory
 
 The files were produced by running the specific IM-build version of LDDTool on the corresponding source
 file in the ```../src/``` tree with this command line:
 
     % lddtool -lps <SpectraLDD_*>
+    
+Only the *\*.sch* and *\*.xsd* files are needed on your local system to use the Spectral Dictionary in
+designing, creating, and validating product labels.
 
 The ```Test/``` directory contains files used to perform regression testing of the Spectral Dictionary:
               
