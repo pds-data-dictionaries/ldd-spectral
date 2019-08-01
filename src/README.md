@@ -9,3 +9,6 @@ version of the IM.
 
 The only difference between files of the same SP version but different IM version are the references to the IM source
 files in the processing instruction on line 2, and the ```xsi:schemaLocation``` hint on line 5.
+
+> The Spectral Dictionary source file is not required to be on your local system to use the Spectral Dictionary classes in
+> creating and validating PDS4 product labels.  The schema files needed for that are in the ```build/``` directory tree.
