@@ -62,7 +62,7 @@ The build directories for each version also contain ```Test/``` subdirectories t
 configuration files, and the validation report for the test labels.  These are used for regression testing of the schema 
 files.  The ```Test/``` files are not needed to use the Spectral Dictionary for developing labels.
 
-> If you need a back-port of a specific version of the Spectral Dictionary to an earlier IM that is not currently support,
+> If you need a back-port of a specific version of the Spectral Dictionary to an earlier IM that is not currently supported,
 > please contact the dictionary steward, @acraugh, or raise an Issue.
 
 ## Source
