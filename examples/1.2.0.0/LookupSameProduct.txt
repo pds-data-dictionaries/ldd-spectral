@@ -1,0 +1,149 @@
+Spectral Dictionary Code Sample: Lookup in Another Object in the Same Product
+
+This file shows example sections of a (fake) label to illustrate how to use 
+the "Lookup" option to identify bin parameters that are in another data 
+object described by the same product label. This method can be used with
+any type of spectrum, though it is most frequently used in conjunction
+with array-type spectra. Note that standard validation cannot ensure that
+the dimensions of the referenced objects match the dimensions of the 
+spectral object, so data preparers and reviewers should take special note.
+
+The example below is for a 3D spectral array where the spectral dimension
+is in frequency, but may be used with any valid spectral_bin_type.  In this
+case, separate objects within the same product are used to provide maps
+of bin center and width values. This technique is most often used when the 
+bin parameters vary from observation to observation. When the parameters 
+are constant throughout a collection, then using the Lookup option with 
+an Internal_Reference to another product(s) with the (constant) map is an
+alternate approach.
+        
+============================================================================        
+
+The Spectral_Characteristics class appears in the <Discipline_Area> of the  
+label.  Classes within the Spectral_Characteristics that are required to be 
+present but not relevant to specifying bin parameters are elided. 
+           
+     <sp:Spectral_Characteristics>
+        <Local_Internal_Reference>
+            <!--
+                Note the correspondence between the identifier below, the
+                specific local_reference_type, and the array definition
+                following.
+            -->
+            <local_identifier_reference>Cube</local_identifier_reference>
+            <local_reference_type>spectral_characteristics_to_array_object</local_reference_type>
+        </Local_Internal_Reference>
+        <sp:spectrum_format>3D</sp:spectrum_format>
+        <sp:spectral_bin_type>frequency</sp:spectral_bin_type>
+                
+        <sp:Observation_Parameters>
+            ...
+        </sp:Observation_Parameters>
+                
+        <sp:Field_of_View>
+            .... 
+        </sp:Field_of_View>
+                
+        <sp:Bin_Description>
+            <sp:bin_profile_description>
+                <!-- 
+                    Provide a description of HOW the bin widths were determined/defined here. Something like:
+                    "The bin width map was developed during ground calibration."
+                -->
+            </sp:bin_profile_description>
+            <sp:Spectral_Lookup>
+                <sp:Bin_Center_Lookup>
+                    <!--
+                        Note the identifiers and reference type values below and how they correspond
+                        to additional data objects in the label.
+                    -->
+                    <Local_Internal_Reference>
+                        <local_identifier_reference>BinCenterMap</local_identifier_reference>
+                        <local_reference_type>spectral_characteristics_to_bin_center_values</local_reference_type>
+                    </Local_Internal_Reference>
+                </sp:Bin_Center_Lookup>
+                <sp:Bin_Width_Lookup>
+                    <Local_Internal_Reference>
+                        <local_identifier_reference>BinWidthMap</local_identifier_reference>
+                        <local_reference_type>spectral_characteristics_to_bin_width_values</local_reference_type>
+                    </Local_Internal_Reference>
+                </sp:Bin_Width_Lookup>
+            </sp:Spectral_Lookup>
+        </sp:Bin_Description>
+    </sp:Spectral_Characteristics>
+            
+Here is a mock-up of the corresponding Array_3D_Spectrum and Array_2D classes.
+Note that there is no requirement that these all be in the same file; only that
+there are part of the same Product_Observational. It would also generally be
+desirable to have <Display_Direction> classes defined for all three of these
+objects, to ensure that the bin centers and widths are properly mapped to the
+correct plane and orientation from the spectral cube.
+        
+    <Array_3D_Spectrum>
+        <local_identifier>Cube</local_identifier>
+        <offset unit="byte">1000</offset>
+        <axes>3</axes>
+        <axis_index_order>Last Index Fastest</axis_index_order>
+        <Element_Array>
+            <data_type>SignedLSB2</data_type>
+        </Element_Array>
+        <Axis_Array>
+            <axis_name>Spatial</axis_name>
+            <elements>100</elements>
+            <sequence_number>1</sequence_number>
+        </Axis_Array>
+        <Axis_Array>
+            <axis_name>Frequency</axis_name>
+            <elements>200</elements>
+            <sequence_number>2</sequence_number>
+        </Axis_Array>
+        <Axis_Array>
+            <axis_name>Time</axis_name>
+            <elements>255</elements>
+            <sequence_number>3</sequence_number>
+        </Axis_Array>
+    </Array_3D_Spectrum>
+        
+    <!-- Bin centers map for spectral cube -->
+        
+    <Array_2D>
+        <local_identifier>BinCenterMap</local_identifier>
+        <offset unit="byte">1</offset>
+        <axes>2</axes>
+        <axis_index_order>Last Index Fastest</axis_index_order>
+        <Element_Array>
+            <data_type>IEEE754LSBSingle</data_type>
+        </Element_Array>
+        <Axis_Array>
+            <axis_name>Spatial</axis_name>
+            <elements>100</elements>
+            <sequence_number>1</sequence_number>
+        </Axis_Array>
+        <Axis_Array>
+            <axis_name>Frequency</axis_name>
+            <elements>200</elements>
+            <sequence_number>2</sequence_number>
+        </Axis_Array>
+    </Array_2D>
+        
+    <!-- Bin width map for specral cube -->
+        
+    <Array_2D>
+        <local_identifier>BinWidthMap</local_identifier>
+        <offset unit="byte">1</offset>
+        <axes>2</axes>
+        <axis_index_order>Last Index Fastest</axis_index_order>
+        <Element_Array>
+            <data_type>IEEE754LSBSingle</data_type>
+        </Element_Array>
+        <Axis_Array>
+            <axis_name>Spatial</axis_name>
+            <elements>100</elements>
+            <sequence_number>1</sequence_number>
+        </Axis_Array>
+        <Axis_Array>
+            <axis_name>Frequency</axis_name>
+            <elements>200</elements>
+            <sequence_number>2</sequence_number>
+        </Axis_Array>
+    </Array_2D>
