@@ -38,14 +38,24 @@ present but not relevant to specifying bin parameters are elided.
         -->
         <sp:value_field_number_list>(2,3,4,5)</sp:value_field_number_list>
         <sp:spectral_bin_type>wavenumber</sp:spectral_bin_type>
+
+        <sp:Observation_Parameters>
+            ...
+            <!-- 
+                If there are any universally relevant observational parameters, they
+                go here.  Otherwise, this class can be omitted.
+            -->
+        </sp:Observation_Parameters>
+
         <sp:Field_of_View>
             ....
         </sp:Field_of_View>
+        
         <sp:Bin_Description>
             <sp:bin_profile_description>
                 <!-- 
-                    Provide a description of HOW the bin widths were determined/defined here. In this
-                    example we should how to define your bin width as "unknown", so the description
+                    Provide a description of HOW the bin widths were determined/defined here. This
+                    example shows how to define your bin width as "unknown", so the description
                     here would be along the lines of "Bin width was not reported for this data and
                     could not be recovered during archive preparation."
                 -->
@@ -93,9 +103,10 @@ more description than this does.
         <offset unit="byte">0</offset>
         <records>1000</records>
         <description>
-                In this format, each row of the table contains a single spectrum, and the fields (columns) are defined without
-                the use of "Group_Field" classes.  This spectrum has only 4 points, and the bin parameters will be specified
-                as part of the Spectral Characteristics.
+            <!-- 
+                Provide a description of the table purpose and content here, please.
+                Each field should, in general, also have its own description. 
+            -->
         </description>
         <record_delimiter>Carriage-Return Line-Feed</record_delimiter>
         <Record_Character>

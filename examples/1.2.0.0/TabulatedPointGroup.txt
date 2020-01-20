@@ -1,0 +1,178 @@
+Spectral Dictionary Code Sample: Tabulated-Parameter Groups Spectra Table
+
+This file shows a mock-up of a (fake) table of spectra in the format 
+corresponding to "Tabulated-Point Group" style, along with one possible 
+way of providing the Spectral_Characteristics to go with it. "Tabulated-
+Point Group" tables can be binary or character.  Their defining 
+characteristics are that each row contains a single, complete spectrum and 
+within the Record, all the parameters for a single point (intensity, error,
+bin center, bin width, etc.) are all defined as Fields within a single
+Group_Field. When reading the record, then, the values of a field like the
+spectral point value will NOT be contiguous in memory.
+
+The bin paramaters can be provided via Fields in the table record, defined 
+using the <Axis_Bin_Set> method, or referenced in this or another object or 
+data product (the "Lookup" method).  The example below uses the last of these 
+to find the bin parameters in another Field in the Group_Filed.
+
+The example below is for a flat table of spectra where the spectral dimension 
+is wavelength, but the same method is applicable to wavenumber and frequency
+spectra. The table object could be of any type - character, binary, or 
+delimited.
+        
+============================================================================        
+
+The Spectral_Characteristics class appears in the <Discipline_Area> of the  
+label.  Classes within the Spectral_Characteristics that are required to be 
+present but not relevant to specifying bin parameters are elided.
+
+    <sp:Spectral_Characteristics>
+        <Local_Internal_Reference>
+            <!--
+                Note the correspondence between the identifier below, the
+                specific local_reference_type, and the array definition
+                following.
+            -->
+            <local_identifier_reference>TabPointGroups</local_identifier_reference>
+            <local_reference_type>spectral_characteristics_to_table_object</local_reference_type>
+        </Local_Internal_Reference>
+        <sp:spectrum_format>Tabulated-Point Group</sp:spectrum_format>
+        <sp:value_field_name>Counts</sp:value_field_name>
+        <sp:spectral_bin_type>wavelength</sp:spectral_bin_type>
+
+        <sp:Observation_Parameters>
+            ...
+            <!-- 
+                If there are any universally relevant (i.e., they are the same for
+                all spectra in the table) observational parameters, they go here.
+                Otherwise, this class can be omitted.
+            -->
+        </sp:Observation_Parameters>
+
+        <sp:Field_of_View>
+            <!-- 
+                 This class is required to be present, but might be problematic for some
+                 tabulated spectra products, depending on their origin.  If "field of view"
+                 can be defined as usual, then do so. If field of view varies from spectrum 
+                 to spectrum (for data collected from many observers, e.g.) ideally it 
+                 should be its own field in the table. In that case, or if it is just not
+                 known, that should be stated explicitly.  Use the <description> field to 
+                 explain the situation to the user, and then use the <Circular_FOV> 
+                 class to declare the overarching FOV concept to be "nil" - either because it
+                 is not applicable or not known.
+                 
+                 If the FOV is not known, it would look something like this:
+            -->
+            <sp:description>
+                The field of view was not reported with the data and could not be determined
+                prior to archiving.
+            </sp:description>
+            <sp:Circular_FOV>
+                <sp:diameter_angle unit="deg" xsi:nil="true" nilReason="unknown"/>
+                <!-- Yes, the "unit=" part is required - that's a quirk of the schema definition system. -->
+            </sp:Circular_FOV>
+        </sp:Field_of_View>
+
+        <sp:Bin_Description>
+            <sp:bin_profile_description>
+                <!-- 
+                    Provide a description of HOW the bin widths were determined/defined here. For
+                    example, it might be something like "Bin widths (and centers) are as reported
+                    by the individual observer contributing the spectrum measurement."
+                -->
+            </sp:bin_profile_description>
+            <!-- 
+                Because the bin parameters are also fields in this table, we use the "Lookup" method
+                to identify them.  As with the spectral measurements, we need to identify them by
+                the <name> values of the Fields within the Group_Field:
+            -->
+            <sp:Spectral_Lookup>
+                <sp:Bin_Center_Lookup>
+                    <sp:bin_center_field_name>Band Center</sp:bin_center_field_name>
+                </sp:Bin_Center_Lookup>
+                <sp:Bin_Width_Lookup>
+                    <sp:bin_width_field_name>Bandpass</sp:bin_width_field_name>
+                </sp:Bin_Width_Lookup>
+            </sp:Spectral_Lookup>
+        </sp:Bin_Description>
+    </sp:Spectral_Characteristics>
+
+                
+Here is a mock-up of the corresponding Table_Character containing a series of spectra. The
+Group_Field_Binary classes are being used to create vectors to hold each of the spectral
+parameters for all points in the spectrum.
+        
+    <Table_Character>
+        <name>Point Groups Spectra Table</name>
+        <local_identifier>TabPointGroups</local_identifier>
+        <offset unit="byte">3500</offset>
+        <records>100</records>
+        <description>
+                This table contains one spectrum per row, but in this case all the parameters associated with each point are 
+                grouped together, and that group repeats for each point in the spectrum - so the observed counts, error, 
+                bin center, and bin width for the first spectral point are listed; then the (counts, error, center, width)
+                for the second point, and so on.
+                
+                In this case all the spectral parameters should be contained in the same group, but there may be other parameters
+                included in that same group if desired.
+        </description>
+        <record_delimiter>Carriage-Return Line-Feed</record_delimiter>
+            
+        <Record_Character>
+            <fields>2</fields>
+            <groups>1</groups>
+            <record_length unit="byte">1200</record_length>
+                
+            <Field_Character>
+                <name>Target</name>
+                <field_location unit="byte">1</field_location>
+                <data_type>ASCII_String</data_type>
+                <field_length unit="byte">24</field_length>
+                <field_format>%-24s</field_format>
+            </Field_Character>
+                
+            <Field_Character>
+                <name>Date Observed</name>
+                <field_location unit="byte">25</field_location>
+                <data_type>ASCII_Date_YMD</data_type>
+                <field_length unit="byte">10</field_length>
+                <field_format>%10s</field_format>
+            </Field_Character>
+                
+            <Group_Field_Character>
+                <name>Spectral Point</name>
+                <repetitions>25</repetitions>
+                <fields>3</fields>
+                <groups>0</groups>
+                <group_location unit="byte">40</group_location>
+                <group_length unit="byte">20</group_length>
+                    
+                <Field_Character>
+                    <name>Counts</name>
+                    <field_location unit="byte">1</field_location>
+                    <data_type>ASCII_Integer</data_type>
+                    <field_length unit="byte">6</field_length>
+                    <field_format>%6d</field_format>
+                    <unit>DN</unit>
+                </Field_Character>
+                    
+                <Field_Character>
+                    <name>Band Center</name>
+                    <field_location unit="byte">8</field_location>
+                    <data_type>ASCII_Real</data_type>
+                    <field_length unit="byte">6</field_length>
+                    <field_format>%6.1f</field_format>
+                    <unit>nm</unit>
+                </Field_Character>
+                    
+                <Field_Character>
+                    <name>Bandpass</name>
+                    <field_location unit="byte">15</field_location>
+                    <data_type>ASCII_Integer</data_type>
+                    <field_length unit="byte">5</field_length>
+                    <field_format>%5d</field_format>
+                    <unit>nm</unit>
+                </Field_Character>
+            </Group_Field_Character>
+        </Record_Character>
+    </Table_Character>
