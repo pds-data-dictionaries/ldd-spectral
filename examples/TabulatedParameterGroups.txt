@@ -12,7 +12,7 @@ class for the bin centers, and so on. Defining a Group_Field with just a
 single Field within it allows you to write a single field definition and 
 ensures that all corresponding alues will be stored contiguously in the file. 
 
-The bin paramaters can be in a Field_Group in the table record, defined using
+The bin paramaters can be in a Group_Field in the table record, defined using
 the <Axis_Bin_Set> method, or referenced in this or another object or data 
 product (the "Lookup" method).  The example below uses the last of these to
 find the bin parameters elsewhere in the table record.

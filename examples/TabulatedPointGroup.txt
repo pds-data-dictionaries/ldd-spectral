@@ -1,4 +1,4 @@
-Spectral Dictionary Code Sample: Tabulated-Parameter Groups Spectra Table
+Spectral Dictionary Code Sample: Tabulated-Point Group Spectra Table
 
 This file shows a mock-up of a (fake) table of spectra in the format 
 corresponding to "Tabulated-Point Group" style, along with one possible 
