@@ -33,6 +33,10 @@ User documentation for the Spectral Discipline Dictionary is maintained on the S
 
 http://sbndev.astro.umd.edu/wiki/Filling_Out_the_Spectral_Dictionary_Classes
 
+## Examples
+
+Code samples demonstrating how to use various features of the Spectral Discipline dictionary are in the [examples](examples) directory.
+
 ## Versions
 
 - [1.0.0.0](src/1.0.0.0): A complete re-design of the prototype dictionary
