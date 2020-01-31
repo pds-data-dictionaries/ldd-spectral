@@ -17,12 +17,12 @@ The following files are provided:
 
 File | Shows
 ---- | -----
-[AxisBinSet.txt](1.2.0.0/AxisBinSet.txt) | Using the &lt;Axis_Bin_Set&gt; class to define the parameters of each individual spectral bin
-[LookupDifferentProduct.txt](1.2.0.0/LookupDifferentProduct.txt) | Using the "Lookup" option to find bin parameters in another PDS4 product     
-[LookupSameProduct.txt](1.2.0.0/LookupSameProduct.txt) | Using the "Lookup" option to find bin parameters in another data object within the same PDS4 product label       
-[LookupTableFields.txt](1.2.0.0/LookupTableFields.txt) | Using the "Lookup" option to identify bin parameters in named fields within a Table-type data object    
-[TabulatedFlatSpectra.txt](1.2.0.0/TabulatedFlatSpectra.txt) | A spectral table in the "Tabulated-Flat" format
-[TabulatedParameterGroups.txt](1.2.0.0/TabulatedParameterGroups.txt) | A spectral table in the "Tabulated-Parameters Groups" format
-[TabulatedPointGroup.txt](1.2.0.0/TabulatedPointGroup.txt) | A spectral table in the "Tabulated-Point Group" format   
-[UniformlySampledBins.txt](1.2.0.0/UniformlySampledBins.txt) | Using the &lt;Uniformly_Sampled&gt; class to define bin parameters   
+[AxisBinSet.txt](AxisBinSet.txt) | Using the &lt;Axis_Bin_Set&gt; class to define the parameters of each individual spectral bin
+[LookupDifferentProduct.txt](LookupDifferentProduct.txt) | Using the "Lookup" option to find bin parameters in another PDS4 product     
+[LookupSameProduct.txt](LookupSameProduct.txt) | Using the "Lookup" option to find bin parameters in another data object within the same PDS4 product label       
+[LookupTableFields.txt](LookupTableFields.txt) | Using the "Lookup" option to identify bin parameters in named fields within a Table-type data object    
+[TabulatedFlatSpectra.txt](TabulatedFlatSpectra.txt) | A spectral table in the "Tabulated-Flat" format
+[TabulatedParameterGroups.txt](TabulatedParameterGroups.txt) | A spectral table in the "Tabulated-Parameters Groups" format
+[TabulatedPointGroup.txt](TabulatedPointGroup.txt) | A spectral table in the "Tabulated-Point Group" format   
+[UniformlySampledBins.txt](UniformlySampledBins.txt) | Using the &lt;Uniformly_Sampled&gt; class to define bin parameters   
 
