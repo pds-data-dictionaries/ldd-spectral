@@ -9,7 +9,7 @@ required for archival data.
 
 Code samples are provided for the most recent version of the dictionary, 1.2.0.0. Samples are
 presented as text files with commentary introducing the samples.  Comments within the samples are 
-indicated by using the XML comment markers, "<!-- -->".
+indicated by using the XML comment markers, "&lt;!-- --&gt;".
 
 ## Example Files
 
