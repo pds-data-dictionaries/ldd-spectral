@@ -1,8 +1,8 @@
 # Spectral Discipline Dictionary - Code Samples
 
 This directory provides some coded examples of how to use various techniques available in the Spectral Dictionary. 
-These codes samples are not intended to represent any real or even plausible data.
-The code examples are not intended to present recommendations or best practices for labelling 
+These code samples are not intended to represent any real or even plausible data.
+The code samples are not intended to present recommendations or best practices for labelling 
 data outside of the <Spectral_Characteristics> class and its attributes. In fact, the object 
 descriptions provided for context do not, in general, meet even the minimal levels of detail 
 required for archival data.
