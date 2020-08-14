@@ -1,0 +1,68 @@
+Modifications needed for X-ray (energy) spectra:
+
+<spectral_bin_type> of "energy"
+
+<Uniformly_Sampled_Energy>
+  <sampling_interval_energy>
+  <bin_width_energy>
+  <first_center_energy>
+  <last_center_energy>
+
+<Axis_Bin_Set_Energy>
+  <Bin_Energy>
+    <center_energy>
+    <bin_width_energy>
+    
+<Bin_Width_Constant>
+  <bin_width_energy>
+
+
+Rules:
+
+"us_energy" analogous to "us_freq" for Uniformly_Sampled_Energy checking
+
+"abs_energy_check" analogous to "abs_frequency_check" for Axis_Bin_Set
+
+"bin_energy_seq" analogous to "bin_fr_seq" for Bin_(Unit) classes
+
+Add energy option to "bwc_type" Bin_Width_Constant check
+
+Add energy option to "obsparm_sr" check on Observation_Parameters
+
+===============================================================
+
+Nillable check.  
+
+Attributes that are nillable:
+
+  body_positive_pole_position_angle - optional
+  celestial_north_position_angle    - optional
+  diameter_angle                    - required
+  length_angle                      - required in one class
+  width_angle                       - required in one class
+  bin_width_energy                  - required in one class
+  bin_width_frequency               - required in one class
+  bin_width_wavelength              - required in one class
+  bin_width_wavenumber              - required in one class
+  
+===============================================================
+*****
+This change is on hold, as the related IM updates failed testing
+and have not been officially implemented.
+*****
+Setting reference type values:
+
+reference_type
+   Bin_Center_Lookup      spectral_characteristics_to_bin_center_values
+   Bin_Width_Lookup       spectral_characteristcis_to_bin_width_values
+   Field_of_View          spectral_characteristics_to_document
+   
+local_reference_type
+   Spectral_Characteristics            spectral_characteristics_to_array_object
+     (but still need cross-checks!)    spectral_characteristics_to_table_object
+   Bin_Center_Lookup                   spectral_characteristics_to_bin_center_values
+   Bin_Width_Lookup                    spectral_characteristics_to_bin_width_values
+   
+                              
+
+

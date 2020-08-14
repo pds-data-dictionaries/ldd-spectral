@@ -1,3 +1,32 @@
+## Changes from v1.2.0.0 to 1.3.0.0
+
+### Added support for energy spectra
+
+Spectral bin type can now be described as "energy" for spectra having bins defined in eV. 
+All spectral-type attributes (like the <bin_width_\*>) now have an "energy" alternative,
+(e.g., <bin_width_energy>).  Regression test files were updated with a class to exercise the new
+bin type.
+
+Note that energy spectral units require the presence of the *Units_of_Energy* unit class,
+which was only introduced in IM build 1.13.0.0 (1D00 schemas). Therefore, this version of the
+**Spectral Discipline Dictionary** cannot be back-ported to IM versions earlier than 1.13.0.0.
+
+### Change Log move
+
+This change log was moved out of the *src/* tree up to the root of the repo, and renamed from 
+"README.md" to "ChangeLog.md".
+
+### Fixed internal compliance issue with optional and nillable attributes
+
+In keeping with PDS LDD design best practices, attribute that were defined as "nillable" but
+no longer *required* to be present in any class had the nillable option removed from their 
+definitions. This should be transparent to users.
+
+### Added license info
+
+The Apache 2.0 license has been added to the repo
+
+---
 ## Changes from v1.1.0.0 to v1.2.0.0
 
 ### <Uniformly_Sampled> Table Support

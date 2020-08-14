@@ -1,0 +1,30 @@
+Modifications needed for X-ray (energy) spectra:
+
+<spectral_bin_type> of "energy"
+
+<Uniformly_Sampled_Energy>
+  <sampling_interval_energy>
+  <bin_width_energy>
+  <first_center_energy>
+  <last_center_energy>
+
+<Axis_Bin_Set_Energy>
+  <Bin_Energy>
+    <center_energy>
+    <bin_width_energy>
+    
+<Bin_Width_Constant>
+  <bin_width_energy>
+
+
+Rules:
+
+"us_energy" analogous to "us_freq" for Uniformly_Sampled_Energy checking
+
+"abs_energy_check" analogous to "abs_frequency_check" for Axis_Bin_Set
+
+"bin_energy_seq" analogous to "bin_fr_seq" for Bin_(Unit) classes
+
+Add energy option to "bwc_type" Bin_Width_Constant check
+
+Add energy option to "obsparm_sr" check on Observation_Parameters
