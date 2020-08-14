@@ -9,7 +9,7 @@ bin type.
 
 Note that energy spectral units require the presence of the *Units_of_Energy* unit class,
 which was only introduced in IM build 1.13.0.0 (1D00 schemas). Therefore, this version of the
-**Spectral Discipline Dictionar** cannot be back-ported to IM versions earlier than 1.13.0.0.
+**Spectral Discipline Dictionary** cannot be back-ported to IM versions earlier than 1.13.0.0.
 
 ### Change Log move
 
