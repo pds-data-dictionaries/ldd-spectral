@@ -3,8 +3,8 @@
 ### Added support for energy spectra
 
 Spectral bin type can now be described as "energy" for spectra having bins defined in eV. 
-All spectral-type attributes (like the <bin_width_\*>) nor have an "energy" alternative,
-<bin_width_energy>.  Regression test files were updated with a class to exercise the new
+All spectral-type attributes (like the <bin_width_\*>) now have an "energy" alternative,
+(e.g., <bin_width_energy>).  Regression test files were updated with a class to exercise the new
 bin type.
 
 Note that energy spectral units require the presence of the *Units_of_Energy* unit class,
