@@ -56,7 +56,7 @@ The table below shows the versions of the IM for which each version of the Spect
 column links to the specific [build/](build) directory in this repository.
 
 Spectral Dictionary Version | v1.0.0.0 | v1.1.0.0 | v1.2.0.0  | v1.3.0.0
---------------------------- | -------- | -------- | --------
+--------------------------- | -------- | -------- | --------  | --------
 [IM 1700 (1.7.0.0)](build/1.7.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x:
 [IM 1800 (1.8.0.0)](build/1.8.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x:
 [IM 1900 (1.9.0.0)](build/1.9.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x:
