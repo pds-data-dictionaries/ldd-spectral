@@ -39,9 +39,12 @@ Code samples demonstrating how to use various features of the Spectral Disciplin
 
 ## Versions
 
+The ([Change Log](ChangeLog.md)) begins with version 1.2.0.0.
+
 - [1.0.0.0](src/1.0.0.0): A complete re-design of the prototype dictionary
 - [1.1.0.0](src/1.1.0.0): Upgrades as suggested by early adopters
-- [1.2.0.0](src/1.2.0.0): Minor upgrades to make for more uniform use of features across arrays and tables ([Change Log](src/1.2.0.0/README.md))
+- [1.2.0.0](src/1.2.0.0): Minor upgrades to make for more uniform use of features across arrays and tables
+- [1.3.0.0](src/1.3.0.0): Added support for energy (X-ray) spectra; cleanup of some internal details
 
 ## Builds
 
@@ -52,16 +55,17 @@ find the XSD Schema and Schematron files needed to use the Spectral Dictionary c
 The table below shows the versions of the IM for which each version of the Spectral Dictionary is supported. The first
 column links to the specific [build/](build) directory in this repository.
 
-Spectral Dictionary Version | v1.0.0.0 | v1.1.0.0 | v1.2.0.0  
+Spectral Dictionary Version | v1.0.0.0 | v1.1.0.0 | v1.2.0.0  | v1.3.0.0
 --------------------------- | -------- | -------- | --------
-[IM 1700 (1.7.0.0)](build/1.7.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x:
-[IM 1800 (1.8.0.0)](build/1.8.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x:
-[IM 1900 (1.9.0.0)](build/1.9.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x:
-[IM 1A00 (1.10.0.0)](build/1.A.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x:
-[IM 1A10 (1.10.1.0)](build/1.A.1.0) | :heavy_check_mark: | :heavy_check_mark: | :x:
-[IM 1B00 (1.11.0.0)](build/1.B.0.0) | :x: | :heavy_check_mark: | :heavy_check_mark:
-[IM 1C00 (1.12.0.0)](build/1.C.0.0) | :x: | :heavy_check_mark: | :heavy_check_mark:
-[IM 1D00 (1.13.0.0)](build/1.D.0.0) | :x: | :x: | :heavy_check_mark:
+[IM 1700 (1.7.0.0)](build/1.7.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x:
+[IM 1800 (1.8.0.0)](build/1.8.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x:
+[IM 1900 (1.9.0.0)](build/1.9.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x:
+[IM 1A00 (1.10.0.0)](build/1.A.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x:
+[IM 1A10 (1.10.1.0)](build/1.A.1.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x:
+[IM 1B00 (1.11.0.0)](build/1.B.0.0) | :x: | :heavy_check_mark: | :heavy_check_mark: | :x:
+[IM 1C00 (1.12.0.0)](build/1.C.0.0) | :x: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+[IM 1D00 (1.13.0.0)](build/1.D.0.0) | :x: | :x: | :heavy_check_mark: | :heavy_check_mark:
+[IM 1E00 (1.14.0.0)](build/1.E.0.0) | :x: | :x: | :heavy_check_mark: | :heavy_check_mark:
 
 The build directories for each version also contain ```Test/``` subdirectories that contain test labels, *Validate* tool 
 configuration files, and the validation report for the test labels.  These are used for regression testing of the schema 
