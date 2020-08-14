@@ -44,3 +44,25 @@ Attributes that are nillable:
   bin_width_frequency               - required in one class
   bin_width_wavelength              - required in one class
   bin_width_wavenumber              - required in one class
+  
+===============================================================
+*****
+This change is on hold, as the related IM updates failed testing
+and have not been officially implemented.
+*****
+Setting reference type values:
+
+reference_type
+   Bin_Center_Lookup      spectral_characteristics_to_bin_center_values
+   Bin_Width_Lookup       spectral_characteristcis_to_bin_width_values
+   Field_of_View          spectral_characteristics_to_document
+   
+local_reference_type
+   Spectral_Characteristics            spectral_characteristics_to_array_object
+     (but still need cross-checks!)    spectral_characteristics_to_table_object
+   Bin_Center_Lookup                   spectral_characteristics_to_bin_center_values
+   Bin_Width_Lookup                    spectral_characteristics_to_bin_width_values
+   
+                              
+
+
