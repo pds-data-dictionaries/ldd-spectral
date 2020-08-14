@@ -63,9 +63,9 @@ Spectral Dictionary Version | v1.0.0.0 | v1.1.0.0 | v1.2.0.0  | v1.3.0.0
 [IM 1A00 (1.10.0.0)](build/1.A.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x:
 [IM 1A10 (1.10.1.0)](build/1.A.1.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x:
 [IM 1B00 (1.11.0.0)](build/1.B.0.0) | :x: | :heavy_check_mark: | :heavy_check_mark: | :x:
-[IM 1C00 (1.12.0.0)](build/1.C.0.0) | :x: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+[IM 1C00 (1.12.0.0)](build/1.C.0.0) | :x: | :heavy_check_mark: | :heavy_check_mark: | :x:
 [IM 1D00 (1.13.0.0)](build/1.D.0.0) | :x: | :x: | :heavy_check_mark: | :heavy_check_mark:
-[IM 1E00 (1.14.0.0)](build/1.E.0.0) | :x: | :x: | :heavy_check_mark: | :heavy_check_mark:
+[IM 1E00 (1.14.0.0)](build/1.E.0.0) | :x: | :x: | :x: | :heavy_check_mark:
 
 The build directories for each version also contain ```Test/``` subdirectories that contain test labels, *Validate* tool 
 configuration files, and the validation report for the test labels.  These are used for regression testing of the schema 
