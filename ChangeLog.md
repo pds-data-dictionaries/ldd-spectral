@@ -22,13 +22,6 @@ In keeping with PDS LDD design best practices, attribute that were defined as "n
 no longer *required* to be present in any class had the nillable option removed from their 
 definitions. This should be transparent to users.
 
-### Use of DD_Associate_External
-
-Where before a notational kludge was used to reference the <Internal_Reference> and 
-<Local_Internal_Reference> classes in the *pds:* namespace, now the new <DD_Associate_External>
-class is used in the souce *Ingest_LDD* file to make that association to an external namespace.
-This should be transparent to users.
-
 ### Added license info
 
 The Apache 2.0 license has been added to the repo
