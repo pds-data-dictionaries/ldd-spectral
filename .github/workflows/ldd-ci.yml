@@ -49,7 +49,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git config --local github.token ${{ secrets.GITHUB_TOKEN }}
-          git add ${{ env.DEPLOY_DIR }}
+          git add -A $(dirname ${{ env.DEPLOY_DIR }})
           git commit -m "Auto-generated dictionaries from Github Actions"
           git config --global push.default current
           git push
