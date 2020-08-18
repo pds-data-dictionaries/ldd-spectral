@@ -23,7 +23,7 @@
         <logical_identifier>urn:nasa:pds:bundle:collection:product</logical_identifier>
         <version_id>1.0</version_id>
         <title>Test Label 2 for Spectral Dictionary - Invalid Label</title>
-        <information_model_version>1.14.0.0</information_model_version>
+        <information_model_version>[IM_VERSION]</information_model_version>
         <product_class>Product_Observational</product_class>
     </Identification_Area>
     
