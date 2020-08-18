@@ -1,0 +1,56 @@
+# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
+# For more information see: https://github.com/actions/setup-java#apache-maven-with-a-settings-path
+
+---
+
+name: Generate LDDs
+
+on:
+   push:
+     branches:
+       - '*'
+       # - '!master'
+     paths:
+       - 'src/*.xml'
+       - '.github/workflows/*.yml'
+
+env:
+  IM_VERSION: '1.14.0.0'
+  IM_VERSION_SHORT: '1E00'
+  # Historical IM Version Variables Here
+  PDS_SCHEMA_URL: 'https://pds.nasa.gov/pds4/pds/v1/'
+  REGRESSION_TEST_DIR: ${{ format('{0}/{1}/', github.workspace, 'test') }}
+  # TODO - Have to hard-code this for now since Actions don't yet allow the use of env here.
+  DEPLOY_DIR: ${{ format('{0}/{1}/{2}', github.workspace, 'build/development', github.sha) }}
+
+jobs:
+  build:
+    name: 'LDD Build'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Generate v${{env.IM_VERSION}} LDDs
+        uses: jordanpadams/gh-action-pds4-ldd@master
+        with:
+          datapath: ${{ format('{0}/{1}', env.DEPLOY_DIR, env.IM_VERSION) }}
+          pds4_im_version: ${{ env.IM_VERSION }}
+          pds4_im_short_version: ${{ env.IM_VERSION_SHORT }}
+          schemas: ${{ format('{0}/{1}/{2}', env.DEPLOY_DIR, env.IM_VERSION, '*.xsd') }}
+          schematrons: ${{ format('{0}/{1}/{2}', env.DEPLOY_DIR, env.IM_VERSION, '*.sch') }}
+          pds_schema_url: ${{ env.PDS_SCHEMA_URL }}
+          test_dir: ${{ env.REGRESSION_TEST_DIR }}
+
+      # Historical IM Version LDD Generation Here
+
+      - name: Push LDDs to Github
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git config --local github.token ${{ secrets.GITHUB_TOKEN }}
+          git add ${{ env.DEPLOY_DIR }}
+          git commit -m "Auto-generated dictionaries from Github Actions"
+          git config --global push.default current
+          git push
+
