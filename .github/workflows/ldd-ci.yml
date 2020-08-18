@@ -3,13 +3,13 @@
 
 ---
 
-name: Generate LDDs
+name: Generate LDD
 
 on:
    push:
      branches:
        - '*'
-       # - '!master'
+       - '!master'
      paths:
        - 'src/*.xml'
        - '.github/workflows/*.yml'
@@ -32,7 +32,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Generate v${{env.IM_VERSION}} LDDs
-        uses: jordanpadams/gh-action-pds4-ldd@master
+        uses: NASA-PDS/gh-action-pds4-ldd@master
         with:
           datapath: ${{ format('{0}/{1}', env.DEPLOY_DIR, env.IM_VERSION) }}
           pds4_im_version: ${{ env.IM_VERSION }}
@@ -53,4 +53,5 @@ jobs:
           git commit -m "Auto-generated dictionaries from Github Actions"
           git config --global push.default current
           git push
+
 
