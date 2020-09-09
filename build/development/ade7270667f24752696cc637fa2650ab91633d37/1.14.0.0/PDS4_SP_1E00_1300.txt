@@ -1,13 +1,13 @@
 PDS4 Local Data Dictionary Processing Report
 
 Configuration:
-   LDDTool Version        11.3.2
+   LDDTool Version        0.0.0
    LDD Version Id:        1.3.0.0
    LDD Label Version Id:  1.0
    LDD Discipline (T/F):  true
    LDD Namespace URL:     http://pds.nasa.gov/pds4/
    LDD URN Prefix:        urn:nasa:pds:
-   Time                   Fri Aug 28 15:04:18 UTC 2020
+   Time                   Wed Sep 09 05:43:40 UTC 2020
    Common Schema          [PDS4_PDS_1E00.xsd]
    Common Schematron      [PDS4_PDS_1E00.sch]
    IM Version Id:         1.14.0.0
@@ -33,66 +33,10 @@ Summary:
    Attributes             52
    Associations           127
    Error messages         0
-   Warning messages       2
-   Information messages   54
+   Warning messages       0
+   Information messages   0
 
 Detailed validation messages
-   WARNING  Header:  - New steward has been specified:sbn
-   WARNING  Header:  - New namespace id has been specified:sp
-   INFO     Attribute: <axis_name> - This local attribute has a duplicate in the PDS4 data dictionary.
-   INFO     Attribute: <body_positive_pole_position_angle> - The default minimum value provided by the attribute's data type is being overridden with 0.0
-   INFO     Attribute: <body_positive_pole_position_angle> - The default maximum value provided by the attribute's data type is being overridden with 180.0
-   INFO     Attribute: <celestial_north_position_angle> - The default minimum value provided by the attribute's data type is being overridden with 0.0
-   INFO     Attribute: <celestial_north_position_angle> - The default maximum value provided by the attribute's data type is being overridden with 180.0
-   INFO     Attribute: <comment> - This local attribute has a duplicate in the PDS4 data dictionary.
-   INFO     Attribute: <comment> - This local attribute has a duplicate in the PDS4 data dictionary.
-   INFO     Attribute: <comment> - This local attribute has a duplicate in the PDS4 data dictionary.
-   INFO     Attribute: <comment> - This local attribute has a duplicate in the PDS4 data dictionary.
-   INFO     Attribute: <comment> - This local attribute has a duplicate in the PDS4 data dictionary.
-   INFO     Attribute: <comment> - This local attribute has a duplicate in the PDS4 data dictionary.
-   INFO     Attribute: <comment> - This local attribute has a duplicate in the PDS4 data dictionary.
-   INFO     Attribute: <description> - This local attribute has a duplicate in the PDS4 data dictionary.
-   INFO     Attribute: <description> - This local attribute has a duplicate in the PDS4 data dictionary.
-   INFO     Attribute: <description> - This local attribute has a duplicate in the PDS4 data dictionary.
-   INFO     Attribute: <description> - This local attribute has a duplicate in the PDS4 data dictionary.
-   INFO     Attribute: <description> - This local attribute has a duplicate in the PDS4 data dictionary.
-   INFO     Attribute: <description> - This local attribute has a duplicate in the PDS4 data dictionary.
-   INFO     Attribute: <description> - This local attribute has a duplicate in the PDS4 data dictionary.
-   INFO     Attribute: <diameter_angle> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <detector_number> - The default minimum value provided by the attribute's data type is being overridden with 1
-   INFO     Attribute: <detector_number> - This local attribute has a duplicate in the PDS4 data dictionary.
-   INFO     Attribute: <filter_number> - This local attribute has a duplicate in the PDS4 data dictionary.
-   INFO     Attribute: <grating_position> - This local attribute has a duplicate in the PDS4 data dictionary.
-   INFO     Attribute: <length_angle> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <net_integration_time> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <number_of_exposures> - The default minimum value provided by the attribute's data type is being overridden with 1
-   INFO     Attribute: <sampling_base> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <width_angle> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <bin_width_energy> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <bin_width_frequency> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <bin_width_wavelength> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <bin_width_wavenumber> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <center_energy> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <center_frequency> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <center_wavelength> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <center_wavelength> - This local attribute has a duplicate in the PDS4 data dictionary.
-   INFO     Attribute: <center_wavenumber> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <first_center_energy> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <first_center_frequency> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <first_center_wavelength> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <first_center_wavenumber> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <last_center_energy> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <last_center_frequency> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <last_center_wavelength> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <last_center_wavenumber> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <sampling_interval_energy> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <sampling_interval_frequency> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <sampling_interval_wavelength> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <sampling_interval_wavenumber> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <resolution_limit_energy> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <resolution_limit_frequency> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <resolution_limit_wavelength> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
-   INFO     Attribute: <resolution_limit_wavenumber> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
 
 Parsed Input - Header:
    LDD Name               Spectral Discipline Dictionary

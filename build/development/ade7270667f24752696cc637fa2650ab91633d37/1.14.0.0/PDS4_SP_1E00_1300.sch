@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <!-- PDS4 Schematron for Name Space Id:sp  Version:1.3.0.0 - Fri Aug 28 15:04:18 UTC 2020 -->
+  <!-- PDS4 Schematron for Name Space Id:sp  Version:1.3.0.0 - Wed Sep 09 05:43:40 UTC 2020 -->
   <!-- Generated from the PDS4 Information Model Version 1.14.0.0 - System Build 10b -->
   <!-- *** This PDS4 schematron file is an operational deliverable. *** -->
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
@@ -314,8 +314,12 @@
   </sch:pattern>
   <sch:pattern>
     <sch:rule context="sp:Bin_Wavenumber/sp:bin_width_wavenumber" role="warning">
-      <sch:assert test="false()">
-        pds:Units_of_Wavenumber is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'cm**-1'">
+        The unit value cm**-1 is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'm**-1'">
+        The unit value m**-1 is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'nm**-1'">
+        The unit value nm**-1 is deprecated and should not be used.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -326,8 +330,12 @@
   </sch:pattern>
   <sch:pattern>
     <sch:rule context="sp:Bin_Wavenumber/sp:center_wavenumber" role="warning">
-      <sch:assert test="false()">
-        pds:Units_of_Wavenumber is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'cm**-1'">
+        The unit value cm**-1 is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'm**-1'">
+        The unit value m**-1 is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'nm**-1'">
+        The unit value nm**-1 is deprecated and should not be used.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -356,8 +364,12 @@
   </sch:pattern>
   <sch:pattern>
     <sch:rule context="sp:Bin_Width_Constant/sp:bin_width_wavenumber" role="warning">
-      <sch:assert test="false()">
-        pds:Units_of_Wavenumber is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'cm**-1'">
+        The unit value cm**-1 is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'm**-1'">
+        The unit value m**-1 is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'nm**-1'">
+        The unit value nm**-1 is deprecated and should not be used.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -422,8 +434,12 @@
   </sch:pattern>
   <sch:pattern>
     <sch:rule context="sp:Observation_Parameters/sp:resolution_limit_wavenumber" role="warning">
-      <sch:assert test="false()">
-        pds:Units_of_Wavenumber is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'cm**-1'">
+        The unit value cm**-1 is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'm**-1'">
+        The unit value m**-1 is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'nm**-1'">
+        The unit value nm**-1 is deprecated and should not be used.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -560,8 +576,12 @@
   </sch:pattern>
   <sch:pattern>
     <sch:rule context="sp:Uniformly_Sampled_Wavenumber/sp:bin_width_wavenumber" role="warning">
-      <sch:assert test="false()">
-        pds:Units_of_Wavenumber is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'cm**-1'">
+        The unit value cm**-1 is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'm**-1'">
+        The unit value m**-1 is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'nm**-1'">
+        The unit value nm**-1 is deprecated and should not be used.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -572,8 +592,12 @@
   </sch:pattern>
   <sch:pattern>
     <sch:rule context="sp:Uniformly_Sampled_Wavenumber/sp:first_center_wavenumber" role="warning">
-      <sch:assert test="false()">
-        pds:Units_of_Wavenumber is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'cm**-1'">
+        The unit value cm**-1 is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'm**-1'">
+        The unit value m**-1 is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'nm**-1'">
+        The unit value nm**-1 is deprecated and should not be used.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -584,8 +608,12 @@
   </sch:pattern>
   <sch:pattern>
     <sch:rule context="sp:Uniformly_Sampled_Wavenumber/sp:last_center_wavenumber" role="warning">
-      <sch:assert test="false()">
-        pds:Units_of_Wavenumber is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'cm**-1'">
+        The unit value cm**-1 is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'm**-1'">
+        The unit value m**-1 is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'nm**-1'">
+        The unit value nm**-1 is deprecated and should not be used.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -596,8 +624,12 @@
   </sch:pattern>
   <sch:pattern>
     <sch:rule context="sp:Uniformly_Sampled_Wavenumber/sp:sampling_interval_wavenumber" role="warning">
-      <sch:assert test="false()">
-        pds:Units_of_Wavenumber is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'cm**-1'">
+        The unit value cm**-1 is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'm**-1'">
+        The unit value m**-1 is deprecated and should not be used.</sch:assert>
+      <sch:assert test="@unit != 'nm**-1'">
+        The unit value nm**-1 is deprecated and should not be used.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
