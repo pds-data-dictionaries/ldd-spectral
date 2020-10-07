@@ -1,0 +1,120 @@
+# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
+# For more information see: https://github.com/actions/setup-java#apache-maven-with-a-settings-path
+
+---
+
+name: LDD Automation with PDSEN CI Bot
+
+on:
+   push:
+     branches:
+       - '*'
+       - '!master'
+     paths:
+      - 'src/*.xml'
+      - '.github/workflows/*.yml'
+
+env:
+  REGRESSION_TEST_PATH: ${{ format('{0}/{1}/', github.workspace, 'test') }}
+  # TODO - Have to hard-code this for now since Actions don't yet allow the use of env here.
+  DEPLOY_PATH: ${{ format('{0}/{1}/{2}', github.workspace, 'build/development', github.sha) }}
+  LOGS_PATH: ${{ format('{0}/{1}', github.workspace, 'logs') }}
+
+jobs:
+  build: # job 1
+    name: 'LDD Build'
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        pds4_version: [ '1.14.0.0', '1.15.0.0' ]
+        # Example of how to specify multiple versions
+        # pds4_version: [ '1.13.0.0', '1.14.0.0' ]
+
+        include:
+          # Example of including older version with LDDTool dev version
+          - pds4_version: '1.14.0.0'
+            lddtool_development_release: True
+
+          # Example of include for development release of IM
+          - pds4_version: '1.15.0.0'
+            lddtool_development_release: True
+            pds4_development_release: True
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python 3
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.7'
+
+      - name: Update submodules for dependencies
+        run: |
+          git submodule update --init --force --remote
+
+      - name: Generate LDDs
+        id: generate
+        uses: NASA-PDS/gh-action-pds4-ldd@master
+        with:
+          data_path: ${{ format('{0}/{1}', env.DEPLOY_PATH, matrix.pds4_version) }}
+          pds4_im_version: ${{ matrix.pds4_version }}
+          pds4_development_release: ${{ matrix.pds4_development_release }}
+          lddtool_development_release: ${{ matrix.lddtool_development_release }}
+          test_path: ${{ env.REGRESSION_TEST_PATH }}
+          logs_path: ${{ env.LOGS_PATH }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload LDDs to Github Action Artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: v${{matrix.pds4_version}}_LDDs
+          path: ${{ env.DEPLOY_PATH }}
+        if: ${{ always() }}
+
+      - name: Upload Logs to Github Action Artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: v${{matrix.pds4_version}}_execution_logs
+          path: ${{ env.LOGS_PATH }}
+        if: ${{ always() }}
+
+  upload: # job 2
+    name: 'Upload LDDs to Github'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/download-artifact@v2
+        with:
+          path: /tmp/artifacts
+
+      - name: Display structure of downloaded files
+        run: ls -R /tmp/artifacts
+
+      - name: Clean out old LDDs
+        run: |
+          path=$(dirname ${{ env.DEPLOY_PATH }})
+          rm -fr $path/*
+
+      - name: Move the LDDs to their new home
+        run: |
+          mkdir -p ${{ env.DEPLOY_PATH }}
+          mv /tmp/artifacts/*LDDs/* ${{ env.DEPLOY_PATH }}
+
+      - name: Display structure of downloaded files
+        run: ls -R ${{ env.DEPLOY_PATH }}
+
+      - name: Push LDDs to Github
+        run: |
+          git config --local user.email "pdsen-ci@jpl.nasa.gov"
+          git config --local user.name "PDSEN CI Bot"
+          git config --local github.token ${{ secrets.GITHUB_TOKEN }}
+          git add -A $(dirname ${{ env.DEPLOY_PATH }})
+          git commit -m "Auto-generated LDD by PDSEN CI Bot"
+          git config --global push.default current
+          git push
+
+    needs: build
+
