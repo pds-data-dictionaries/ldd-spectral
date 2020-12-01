@@ -25,7 +25,7 @@ jobs:
 
     strategy:
       matrix:
-        pds4_version: [ '1.14.0.0', '1.15.0.0' ]
+        pds4_version: [ '1.13.0.0', '1.14.0.0', '1.15.0.0' ]
 
         # include:
           # Example of including older version with LDDTool dev version
