@@ -3,8 +3,8 @@
 ### Bugfix for issue #154
 
 A user reported (PDS4-LDD-Issue-Repo issue #154) that the Schematron validation was 
-reporting an error from the <reference_type> when the table pointed to was a 
-Table_Delimited object. This was an oversight - support for Table_Delimited as 
+reporting an error from the <pds:local_reference_type> when the table pointed to was
+a Table_Delimited object. This was an oversight - support for Table_Delimited was 
 included in the rewrite. The bug is now fixed and one of the test cases in the
 second test label has been converted to a Table_Delimited to exercise this option.
 
