@@ -5,7 +5,7 @@
     
       o Tabulated-Flat spectra in a Table_Character 
       o Tabulated-Parameter Group spectra in Table_Binary
-      o Tabulated-Point Group spectra in a Table_Character
+      o Tabulated-Point Group spectra in a Table_Delimited
       o Spectral_Lookup for referencing bin centers and widths as lists of field numbers 
         in the Tabulated-Flat table
       o Spectral_Lookup for referencing a single field in the Tabulated-Parameter Group
@@ -498,11 +498,11 @@
         
         <!-- Tabulated-Point Group -->
         
-        <Table_Character>
+        <Table_Delimited>
             <name>Point Groups Spectra Table</name>
             <local_identifier>TabPointGroups</local_identifier>
             <offset unit="byte">3500</offset>
-            <records>100</records>
+            <parsing_standard_id>PDS DSV 1</parsing_standard_id>
             <description>
                 This table contains one spectrum per row, but in this case all the parameters associated with each point are 
                 grouped together, and that group repeats for each point in the spectrum - so the observed counts, error, 
@@ -512,66 +512,53 @@
                 In this case all the spectral parameters should be contained in the same group, but there may be other parameters
                 included in that same group if desired.
             </description>
+            <records>100</records>
             <record_delimiter>Carriage-Return Line-Feed</record_delimiter>
+            <field_delimiter>Comma</field_delimiter>
             
-            <Record_Character>
+            <Record_Delimited>
                 <fields>2</fields>
                 <groups>1</groups>
-                <record_length unit="byte">1200</record_length>
                 
-                <Field_Character>
+                <Field_Delimited>
                     <name>Target</name>
-                    <field_location unit="byte">1</field_location>
                     <data_type>ASCII_String</data_type>
-                    <field_length unit="byte">24</field_length>
-                    <field_format>%-24s</field_format>
-                </Field_Character>
+                </Field_Delimited>
                 
-                <Field_Character>
+                <Field_Delimited>
                     <name>Date Observed</name>
-                    <field_location unit="byte">25</field_location>
                     <data_type>ASCII_Date_YMD</data_type>
-                    <field_length unit="byte">10</field_length>
-                    <field_format>%10s</field_format>
-                </Field_Character>
+                </Field_Delimited>
                 
-                <Group_Field_Character>
+                <Group_Field_Delimited>
                     <name>Spectral Point</name>
                     <repetitions>25</repetitions>
                     <fields>3</fields>
                     <groups>0</groups>
-                    <group_location unit="byte">40</group_location>
-                    <group_length unit="byte">20</group_length>
                     
-                    <Field_Character>
+                    <Field_Delimited>
                         <name>Counts</name>
-                        <field_location unit="byte">1</field_location>
                         <data_type>ASCII_Integer</data_type>
-                        <field_length unit="byte">6</field_length>
-                        <field_format>%6d</field_format>
                         <unit>DN</unit>
-                    </Field_Character>
+                    </Field_Delimited>
                     
-                    <Field_Character>
+                    <Field_Delimited>
                         <name>Band Center</name>
-                        <field_location unit="byte">8</field_location>
                         <data_type>ASCII_Real</data_type>
-                        <field_length unit="byte">6</field_length>
-                        <field_format>%6.1f</field_format>
                         <unit>nm</unit>
-                    </Field_Character>
+                    </Field_Delimited>
                     
-                    <Field_Character>
+                    <Field_Delimited>
                         <name>Bandpass</name>
                         <field_location unit="byte">15</field_location>
                         <data_type>ASCII_Integer</data_type>
                         <field_length unit="byte">5</field_length>
                         <field_format>%5d</field_format>
                         <unit>nm</unit>
-                    </Field_Character>
-                </Group_Field_Character>
-            </Record_Character>
-        </Table_Character>
+                    </Field_Delimited>
+                </Group_Field_Delimited>
+            </Record_Delimited>
+        </Table_Delimited>
         
     </File_Area_Observational>
 </Product_Observational>

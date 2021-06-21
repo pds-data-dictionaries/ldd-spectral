@@ -4,7 +4,7 @@
 <Ingest_LDD xmlns="http://pds.nasa.gov/pds4/pds/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xsi:schemaLocation="http://pds.nasa.gov/pds4/pds/v1 http://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1E00.xsd">
     <name>Spectral Discipline Dictionary</name>
-    <ldd_version_id>1.3.0.0</ldd_version_id>
+    <ldd_version_id>1.3.1.0</ldd_version_id>
     <dictionary_type>Discipline</dictionary_type>
     <full_name>Anne Raugh</full_name>
     <steward_id>sbn</steward_id>
@@ -35,8 +35,10 @@
                                              Expanded Axis_Bin_Set class for tabular (row and field) spectra 
            2020-08-05  ACR  Version 1.3.0.0  Added support for X-ray spectra with energy bins; minor changes to 
                                              Ingest_LDD.
+           2021-06-21  ACR  Version 1.3.1.0  Bug fix for a Schematron error. "Table_Delimited" was not included
+                                             in the acceptable object types for Spectral_Characteristics.
     </comment>
-    <last_modification_date_time>2020-08-10</last_modification_date_time>
+    <last_modification_date_time>2021-06-21</last_modification_date_time>
     <!--
         This file also contains extensive comments to illustrate various techniques available to those
         creating input IngestLDD files for local dicitionaries.  
@@ -2975,8 +2977,8 @@
                 this table-check rule don't need to worry about random values falling through the
                 "if" tests.
             -->
-            <rule_test>if (pds:local_reference_type = ('spectral_characteristics_to_table_object')) then ($objtype = ('Table_Character', 'Table_Binary')) else true()</rule_test>
-            <rule_message>In sp:Spectral_Characteristics must reference either a Table_Character or Table_Binary object when pds:local_reference_type is 'spectral_characteristics_to_table_object'.</rule_message>
+            <rule_test>if (pds:local_reference_type = ('spectral_characteristics_to_table_object')) then ($objtype = ('Table_Character', 'Table_Binary', 'Table_Delimited')) else true()</rule_test>
+            <rule_message>In sp:Spectral_Characteristics must reference either a Table_Character, Table_Binary, or Table_Delimited object when pds:local_reference_type is 'spectral_characteristics_to_table_object'.</rule_message>
             <rule_description> Ties the local_reference_type to a specific data object </rule_description>
         </DD_Rule_Statement>
 

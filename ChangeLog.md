@@ -1,3 +1,13 @@
+## Changes from v1.3.0.0 to 1.3.1.0
+
+### Bugfix for issue #154
+
+A user reported (PDS4-LDD-Issue-Repo issue #154) that the Schematron validation was 
+reporting an error from the <reference_type> when the table pointed to was a 
+Table_Delimited object. This was an oversight - support for Table_Delimited as 
+included in the rewrite. The bug is now fixed and one of the test cases in the
+second test label has been converted to a Table_Delimited to exercise this option.
+
 ## Changes from v1.2.0.0 to 1.3.0.0
 
 ### Added support for energy spectra
