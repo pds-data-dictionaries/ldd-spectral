@@ -97,7 +97,7 @@
             <sp:Spectral_Characteristics>
                 <Local_Internal_Reference>
                     <local_identifier_reference>TabFlat</local_identifier_reference>
-                    <!-- The following value is not valid for table-type spectra -->
+                    <!-- The following value is not valid for table-type spectra (flagged on <Local_Internal_Reference>) -->
                     <local_reference_type>spectral_characteristics_to_array_object</local_reference_type>
                 </Local_Internal_Reference>
                 <sp:spectrum_format>Tabulated-Flat</sp:spectrum_format>
@@ -147,7 +147,8 @@
                 </Local_Internal_Reference>
                 <sp:spectrum_format>Tabulated-Parameter Groups</sp:spectrum_format>
                 <sp:value_field_name>Counts</sp:value_field_name>
-                <!-- Cannot use value_field_number_list in non "Flat" tables -->
+                <!-- Cannot use value_field_number_list in non "Flat" tables (flagged on <sp:spectrum_format>) -->
+                <!-- Two errors on the line below: "Counts" is not a valid value for <sp:value_field_number_list> and <sp:value_field_number_list> cannot be used with Tabulated_Parameters Groups tables -->
                 <sp:value_field_number_list>Counts</sp:value_field_number_list>
                 <sp:spectral_bin_type>frequency</sp:spectral_bin_type>
                 <sp:Field_of_View>
@@ -226,6 +227,7 @@
                             <sp:bin_width_wavelength unit="nm">25</sp:bin_width_wavelength>
                         </sp:Bin_Wavelength>
                     </sp:Axis_Bin_Set_Wavelength>
+                    <!-- The following class is tagged as "invalid content" because only one bin specification method should be used. -->
                     <sp:Spectral_Lookup>
                         <sp:Bin_Center_Lookup>
                             <sp:bin_center_field_name>Band Center</sp:bin_center_field_name>
@@ -550,10 +552,7 @@
                     
                     <Field_Delimited>
                         <name>Bandpass</name>
-                        <field_location unit="byte">15</field_location>
                         <data_type>ASCII_Integer</data_type>
-                        <field_length unit="byte">5</field_length>
-                        <field_format>%5d</field_format>
                         <unit>nm</unit>
                     </Field_Delimited>
                 </Group_Field_Delimited>
