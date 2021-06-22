@@ -16,6 +16,13 @@ The namespace for the Spectral Discipline Dictionary is:
     
 and the reserved abbreviation is "**sp:**".
 
+## Schemas
+
+The schemas needed for creating, validating, and working with the Spectral Dictionary classes are in the [build/release](build/release) directory.
+Unless you are familiar with GitHub, though, it's probably easier to download the file set you want from 
+the [PDS Data Dictionaries](https://pds.nasa.gov/datastandards/dictionaries) page. Look for the "Spectral Discipline Dictionary". Other spectral/spectrum
+dictionaries are _not_ the same thing.
+
 ## Entry Points
 
 There is a single wrapper class defined for the Spectral Dictionary. All other classes are contained within it.  
