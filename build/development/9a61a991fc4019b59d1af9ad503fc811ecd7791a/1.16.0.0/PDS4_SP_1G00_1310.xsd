@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <!-- PDS4 XML/Schema for Name Space Id:sp  Version:1.3.0.0 - Tue May 04 05:13:38 UTC 2021 -->
-  <!-- Generated from the PDS4 Information Model Version 1.15.0.0 - System Build 11a -->
+  <!-- PDS4 XML/Schema for Name Space Id:sp  Version:1.3.1.0 - Tue Jun 22 16:48:45 UTC 2021 -->
+  <!-- Generated from the PDS4 Information Model Version 1.16.0.0 - System Build 11.1 -->
   <!-- *** This PDS4 product schema is an operational deliverable. *** -->
   <!--                                                                           -->
   <!--               Dictionary Stack                                            -->
-  <!-- 1.15.0.0 - pds: - Common Dictionary                                       -->
-  <!-- 1.3.0.0 - sp: - Spectral Discipline Dictionary                            -->
+  <!-- 1.16.0.0 - pds: - Common Dictionary                                       -->
+  <!-- 1.3.1.0 - sp: - Spectral Discipline Dictionary                            -->
   <!--   file:/home/runner/work/ldd-spectral/ldd-spectral/src/PDS4_SPECTRAL_Inge -->
   <!--                                                                           -->
   <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -14,9 +14,9 @@
     xmlns:pds="http://pds.nasa.gov/pds4/pds/v1"
     elementFormDefault="qualified"
     attributeFormDefault="unqualified"
-    version="1.3.0.0">
+    version="1.3.1.0">
  
-    <xs:import namespace="http://pds.nasa.gov/pds4/pds/v1" schemaLocation="https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1F00.xsd"/>
+    <xs:import namespace="http://pds.nasa.gov/pds4/pds/v1" schemaLocation="https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1G00.xsd"/>
  
   <xs:annotation>
     <xs:documentation>
@@ -46,6 +46,8 @@
                                              Expanded Axis_Bin_Set class for tabular (row and field) spectra 
            2020-08-05  ACR  Version 1.3.0.0  Added support for X-ray spectra with energy bins; minor changes to 
                                              Ingest_LDD.
+           2021-06-21  ACR  Version 1.3.1.0  Bug fix for a Schematron error. "Table_Delimited" was not included
+                                             in the acceptable object types for Spectral_Characteristics.
     
     </xs:documentation>
   </xs:annotation>

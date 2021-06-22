@@ -1,3 +1,20 @@
+## Changes from v1.3.0.0 to 1.3.1.0
+
+### Bugfix for issue #154
+
+A user reported (PDS4-LDD-Issue-Repo issue #154) that the Schematron validation was 
+reporting an error from the <pds:local_reference_type> when the table pointed to was
+a Table_Delimited object. This was an oversight - support for Table_Delimited _was_ 
+included in the rewrite. The bug is now fixed and one of the test cases in the
+second test label has been converted to a Table_Delimited to exercise this option.
+
+### General Clean-up
+
+* Unneeded files were deleted from the _test/_ directory
+* Updated error documentation in _test/SP-Test2-FAIL.xml_ 
+* Updated main _README_ for new repo configuration
+* Updated directory _READMEs_ as needed
+
 ## Changes from v1.2.0.0 to 1.3.0.0
 
 ### Added support for energy spectra

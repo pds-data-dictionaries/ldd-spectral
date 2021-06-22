@@ -16,6 +16,13 @@ The namespace for the Spectral Discipline Dictionary is:
     
 and the reserved abbreviation is "**sp:**".
 
+## Schemas
+
+The schemas needed for creating, validating, and working with the Spectral Dictionary classes are in the [build/release](build/release) directory.
+Unless you are familiar with GitHub, though, it's probably easier to download the file set you want from 
+the [PDS Data Dictionaries](https://pds.nasa.gov/datastandards/dictionaries) page. Look for the "Spectral Discipline Dictionary". Other spectral/spectrum
+dictionaries are _not_ the same thing.
+
 ## Entry Points
 
 There is a single wrapper class defined for the Spectral Dictionary. All other classes are contained within it.  
@@ -45,6 +52,7 @@ The ([Change Log](ChangeLog.md)) begins with version 1.1.0.0 and provides more d
 - [1.1.0.0](src/archive/1.1.0.0): Upgrades as suggested by early adopters
 - [1.2.0.0](src/archive/1.2.0.0): Minor upgrades to make for more uniform use of features across arrays and tables
 - [1.3.0.0](src/archive/1.3.0.0): Added support for energy (X-ray) spectra; cleanup of some internal details
+- [1.3.1.0](src/archive/1.3.1.0): Bugfix to remove spurious error message in the case of Table_Delimited data
 
 ## Builds
 
@@ -56,19 +64,19 @@ directory for each release of the PDS IM.
 The table below shows the versions of the IM for which each version of the Spectral Dictionary is supported. The first
 column links to the specific [build/](build) directory in this repository.
 
-Spectral Dictionary Version | v1.0.0.0 | v1.1.0.0 | v1.2.0.0  | v1.3.0.0
---------------------------- | -------- | -------- | --------  | --------
-[IM 1700 (1.7.0.0)](build/release/1.7.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x:
-[IM 1800 (1.8.0.0)](build/release/1.8.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x:
-[IM 1900 (1.9.0.0)](build/release/1.9.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x:
-[IM 1A00 (1.10.0.0)](build/release/1.A.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x:
-[IM 1A10 (1.10.1.0)](build/release/1.A.1.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x:
-[IM 1B00 (1.11.0.0)](build/release/1.B.0.0) | :x: | :heavy_check_mark: | :heavy_check_mark: | :x:
-[IM 1C00 (1.12.0.0)](build/release/1.C.0.0) | :x: | :heavy_check_mark: | :heavy_check_mark: | :x:
-[IM 1D00 (1.13.0.0)](build/release/1.D.0.0) | :x: | :x: | :heavy_check_mark: | :heavy_check_mark:
-[IM 1E00 (1.14.0.0)](build/release/1.14.0.0) | :x: | :x: | :x: | :heavy_check_mark:
-[IM 1F00 (1.15.0.0)](build/release/1.15.0.0) | :x: | :x: | :x: | :heavy_check_mark:
-[IM 1G00 (1.16.0.0)](build/release/1.16.0.0) | :x: | :x: | :x: | :heavy_check_mark:
+Spectral Dictionary Version | v1.0.0.0 | v1.1.0.0 | v1.2.0.0  | v1.3.0.0 | v1.3.1.0
+--------------------------- | -------- | -------- | --------  | -------- | --------
+[IM 1700 (1.7.0.0)](build/release/1.7.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | :x:
+[IM 1800 (1.8.0.0)](build/release/1.8.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | :x:
+[IM 1900 (1.9.0.0)](build/release/1.9.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | :x:
+[IM 1A00 (1.10.0.0)](build/release/1.A.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | :x:
+[IM 1A10 (1.10.1.0)](build/release/1.A.1.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | :x:
+[IM 1B00 (1.11.0.0)](build/release/1.B.0.0) | :x: | :heavy_check_mark: | :heavy_check_mark: | :x: | :x:
+[IM 1C00 (1.12.0.0)](build/release/1.C.0.0) | :x: | :heavy_check_mark: | :heavy_check_mark: | :x: | :x:
+[IM 1D00 (1.13.0.0)](build/release/1.D.0.0) | :x: | :x: | :heavy_check_mark: | :heavy_check_mark: | :x:
+[IM 1E00 (1.14.0.0)](build/release/1.14.0.0) | :x: | :x: | :x: | :heavy_check_mark: | :heavy_check_mark:
+[IM 1F00 (1.15.0.0)](build/release/1.15.0.0) | :x: | :x: | :x: | :heavy_check_mark: | :heavy_check_mark:
+[IM 1G00 (1.16.0.0)](build/release/1.16.0.0) | :x: | :x: | :x: | :heavy_check_mark: | :heavy_check_mark:
 
 The [test/](test/) subdirectory contains test labels, a *Validate* tool 
 configuration file, and the validation report for the test labels.  These are used for regression testing of the schema 
