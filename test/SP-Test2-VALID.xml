@@ -521,10 +521,7 @@
                     
                     <Field_Delimited>
                         <name>Bandpass</name>
-                        <field_location unit="byte">15</field_location>
                         <data_type>ASCII_Integer</data_type>
-                        <field_length unit="byte">5</field_length>
-                        <field_format>%5d</field_format>
                         <unit>nm</unit>
                     </Field_Delimited>
                 </Group_Field_Delimited>
