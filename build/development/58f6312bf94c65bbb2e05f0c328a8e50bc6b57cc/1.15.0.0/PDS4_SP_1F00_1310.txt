@@ -1,0 +1,1242 @@
+PDS4 Local Data Dictionary Processing Report
+
+Configuration:
+   LDDTool Version        13.0.2
+   LDD Version Id:        1.3.1.0
+   LDD Label Version Id:  1.0
+   LDD Discipline (T/F):  true
+   LDD Namespace URL:     http://pds.nasa.gov/pds4/
+   LDD URN Prefix:        urn:nasa:pds:
+   Time                   Tue Jun 22 19:26:44 UTC 2021
+   Common Schema          [PDS4_PDS_1F00.xsd]
+   Common Schematron      [PDS4_PDS_1F00.sch]
+   IM Version Id:         1.15.0.0
+   IM Namespace Id:       pds
+   IM Label Version Id:   1.0
+   IM Object Model        [UpperModel.pont]
+   IM Data Dictionary     [dd11179.pins]
+   IM Configuration File  [MDPTNConfigClassDisp.xml]
+   IM Glossary            [Glossary.pins]
+   IM Document Spec       [DMDocument.pins]
+
+Parameters:
+   Input File             [/home/runner/work/ldd-spectral/ldd-spectral/src/PDS4_SPECTRAL_IngestLDD.xml]
+   PDS Processing         true
+   LDD Processing         true
+   Discipline LDD         true
+   Mission LDD            false
+   Write Attr Elements    false
+   Merge with Master      false
+
+Summary:
+   Classes                24
+   Attributes             52
+   Associations           127
+   Error messages         0
+   Warning messages       0
+   Information messages   0
+
+Detailed validation messages
+
+Parsed Input - Header:
+   LDD Name               Spectral Discipline Dictionary
+   LDD Version            1.3.1.0
+   Full Name              Anne Raugh
+   Steward                sbn
+   Namespace Id           sp
+   Comment                
+        This is a complete re-write of the Spectral Dictionary version 1.1.0.0  (i.e., PDS4_SP_1100, 
+        released with core IM 1.4.0.0) to bring it into compliance with requirements and best practices 
+        established since the original version was created.  
+        
+        Existing attribute definitions have been reviewed and in some cases updated.  This should be 
+        reflected in the version_id value of the attribute.
+        
+        The "submitter_name" of "ACR" indicates Anne (C.) Raugh.
+        
+        Modification History:
+        
+           2018-05-25  ACR  Version 1.0.0.0  First release
+           
+           2018-11-02  ACR  Version 1.1.0.0  Added support for tabulated spectra
+           2019-03-08  ACR  Version 1.1.0.0  Replaced "data()" with equivalent "data(.)" to work around
+                                             a Validate Tool issue
+           2019-03-15  ACR  Version 1.1.0.0  Fixed bug in range checking for Uniformly Sampled data by
+                                             adding "number()" function
+           2019-07-29  ACR  Version 1.2.0.0  Added table support for rows and fields in Uniformly_Sampled;
+                                             Moved Bin_Width_Constant class (unusable as designed) into Spectral_Lookup;
+                                             Made bin-width nillable for cases where it is unknown;
+                                             Removed references to "original bin number" (mission-specific);
+                                             Expanded Axis_Bin_Set class for tabular (row and field) spectra 
+           2020-08-05  ACR  Version 1.3.0.0  Added support for X-ray spectra with energy bins; minor changes to 
+                                             Ingest_LDD.
+           2021-06-21  ACR  Version 1.3.1.0  Bug fix for a Schematron error. "Table_Delimited" was not included
+                                             in the acceptable object types for Spectral_Characteristics.
+    
+   Last Modification Time 2021-06-21
+   PDS4 Merge Flag        false
+
+Parsed Input - Attributes:
+
+   name                   absolute_calibration_star_name
+   version                1.15
+   value data type        UTF8_Short_String_Collapsed
+   description             The absolute_calibration_star_name attribute provides a name in a standard format (i.e., one that is recognized by the SIMBAD system) for the star used to reduce the raw spectral data to the units presented in this spectrum. This is the analog to solar_calibration_star_name for non-reflectance spectra. 
+
+   name                   axis_name
+   version                1.15
+   value data type        ASCII_Short_String_Collapsed
+   description             The axis_name attribute contains a string that matches the axis_name attribute in the associated array-type spectrum object; or the special values "Field" and "Row" for tabular and tabulated spectra. 
+
+   name                   bin_center_field_name
+   version                1.15
+   value data type        ASCII_Short_String_Collapsed
+   description             The bin_center_field_name must contain the value of a 'name' attribute of a Field defined in the referenced Table object. This named Field contains the bin center information for each row in a 1D spectrum presented in tabular form. It will have units (and possibly offset and scaling factor) as indicated in the Field definition. This will usually be accompanied by a bin_width_field_name. 
+
+   name                   bin_center_field_number_list
+   version                1.15
+   value data type        ASCII_Short_String_Collapsed
+   description             The bin_center_field_number_list attribute is used only in the case of spectra in the format "Tabulated-Flat", where each row of a table contains a spectrum and the spectral points are defined as individual Fields - one Field defined for each point. The format is a parenthesized, ordered list of the field_number values from the Field definitions that correspond to the bin center values. 
+
+   name                   bin_sequence_number
+   version                1.15
+   value data type        ASCII_NonNegative_Integer
+   description             The bin_sequence_number provides the sequential numbering of bins along an axis in an Array object. 
+
+   name                   bin_profile_description
+   version                1.15
+   value data type        UTF8_Text_Preserved
+   description             The bin_profile_description attributes provides a text description of the method used to determine or otherwise define the bin widths following. The description should include information on the shape (e.g. gaussian, square wave, etc.) and what the bin_width value means (i.e., standard deviation of a gaussian function or full-width at half max (FWHM)). 
+
+   name                   bin_width_field_name
+   version                1.15
+   value data type        ASCII_Short_String_Collapsed
+   description             The bin_width_field_name must contain the value of a 'name' attribute of a Field defined in the referenced Table object. This named Field contains the bin width information for each row in a 1D spectrum presented in tabular form. It will have units (and possibly offset and scaling factor) as indicated in the Field definition. This attribute must be accompanied by a bin_center_field_name. If bin widths are constant or unknown, use the Bin_Width_Constant class to specify this. 
+
+   name                   bin_width_field_number_list
+   version                1.15
+   value data type        ASCII_Short_String_Collapsed
+   description             The bin_width_field_number_list attribute is used only in the case of spectra in the format "Tabulated-Flat", where each row of a table contains a spectrum and the spectral points are defined as individual Fields - one Field defined for each point. The format is a parenthesized, ordered list of the field_number values from the Field definitions that correspond to the bin width values. If bin widths are constant or unknown, use the Bin_Width_Constant class to specify this. 
+
+   name                   body_positive_pole_position_angle
+   version                1.15
+   value data type        ASCII_Real
+   description             The body_positive_pole_position_angle attribute provides the angle the long axis of the slit makes with respect to the positive (or "north") pole of the target body, measured clockwise from the pole in the range 0-180 degrees. 
+   minimum value          0.0
+   maximum value          180.0
+   unit of measure type   Units_of_Angle
+
+   name                   celestial_north_position_angle
+   version                1.15
+   value data type        ASCII_Real
+   description             The celestial_north_position_angle attribute provides the angle the long axis of the slit makes with respect to celestial north, measured eastward of celestial north in the range 0-180 degrees. 
+   minimum value          0.0
+   maximum value          180.0
+   unit of measure type   Units_of_Angle
+
+   name                   comment
+   version                1.15
+   value data type        UTF8_Text_Preserved
+   description             The comment attribute is an unlimited length, format-preserved, UTF-8 text field for comments relevant to the context in which it appears. 
+
+   name                   description
+   version                1.15
+   value data type        UTF8_Text_Preserved
+   description             The description attribute is an unlimited length, format-preserved, UTF-8 text field used specifically for description of circumstances related to the data product of which a user should be aware and might logically expect to find in the label. 
+
+   name                   diameter_angle
+   version                1.15
+   value data type        ASCII_Real
+   description             The diameter_angle attribute provides the angle subtended on the sky by the diameter of a circular aperture. 
+   nillable               true
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Angle
+
+   name                   detector_number
+   version                1.15
+   value data type        ASCII_NonNegative_Integer
+   description             The detector_number attribute provides the spectrometer detector number corresponding to a band of a spectral qube. Detector numbers are usually assigned consecutively from 1, in order of increasing wavelength. 
+   minimum value          1
+
+   name                   filter_name
+   version                1.15
+   value data type        ASCII_Short_String_Collapsed
+   description             The filter_name attribute provides the commonly-used name of the instrument filter through which an image or measurement was acquired or which is associated with a given instrument mode. 
+
+   name                   filter_number
+   version                1.15
+   value data type        ASCII_NonNegative_Integer
+   description             The filter_number attribute provides the numeric identifier of an instrument filter through which an image or measurement was acquired or which is associated with a given instrument mode. Within the bin class of a spectral data object, it identifies the filter through which data in the given band were acquired. 
+
+   name                   grating_position
+   version                1.15
+   value data type        ASCII_NonNegative_Integer
+   description             The grating_position attribute of a spectral cube describes the grating position which corresponds to the band. Grating positions are usually assigned consecutively from 0, and increasing position causes increasing wavelength for each detector. 
+
+   name                   length_angle
+   version                1.15
+   value data type        ASCII_Real
+   description             The length_angle attribute provides the angle subtended on the sky by the long dimension of a simple slit. 
+   nillable               true
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Angle
+
+   name                   net_integration_time
+   version                1.15
+   value data type        ASCII_Real
+   description             The net_integration_time for a spectrum is the total integration time per pixel. For many detectors (CCDs, for example), all pixels are exposed simultaneously, so this value will correspond to the observation interval. In some cases, however, an instrument will sweep across pixels, rows, or planes, so that the observation period may be substantially longer than the actual integration time contributing to the individual pixels. 
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Time
+
+   name                   number_of_exposures
+   version                1.15
+   value data type        ASCII_Integer
+   description             The number_of_exposures attribute indicates how many individual exposures or distinct integrations were combined to produce the spectrum. 
+   minimum value          1
+
+   name                   sampling_base
+   version                1.15
+   value data type        ASCII_Real
+   description             The sampling_base attribute indicates the numeric base of the associated logarithmic sampling interval. 
+   minimum value          5.0e-324
+
+   name                   sampling_scale
+   version                1.15
+   value data type        ASCII_Short_String_Collapsed
+   description             The sampling_scale attribute indicates the type of scale that applies to the sample interval increments. It must have a value of either Linear or Logarithmic. 
+
+   name                   solar_analog_star_name
+   version                1.15
+   value data type        UTF8_Short_String_Collapsed
+   description             The solar_analog_star_name attribute provides a name in a standard format (i.e., one that is recognized by the SIMBAD system) for the solar analog star used to reduce the raw spectral data to the reflectance units presented in this spectrum. 
+
+   name                   spectral_bin_type
+   version                1.15
+   value data type        ASCII_Short_String_Collapsed
+   description             The spectral_bin_type attribute contains one of a defined set of values that indicates the binned sampling parameter type (frequency, wavelength, or wavenumber) of the spectrum. 
+
+   name                   spectrum_format
+   version                1.15
+   value data type        ASCII_Short_String_Collapsed
+   description             The spectrum_format attribute is required to define the specific dimensionality of the structure or substructure that contains the intensity values. 
+
+   name                   value_field_name
+   version                1.15
+   value data type        ASCII_Short_String_Collapsed
+   description             The value_field_name attribute is required for 1D (linear) spectra. 1D spectra are presented as a table, where each row presents one point in the spectrum. This field must contain a string corresponding to the 'name' attribute of the table field that contains the spectral value. 
+
+   name                   value_field_number_list
+   version                1.15
+   value data type        ASCII_Short_String_Collapsed
+   description             The value_field_number_list attribute is used only in the case spectra in the format "Tabulated-Flat", where each row of a table contains a spectrum and the spectral points are defined as individual Fields - one Field defined for each point. The format is a parenthesized, ordered list of the field_number values from the Field definitions that correspond to the spectral values. 
+
+   name                   width_angle
+   version                1.15
+   value data type        ASCII_Real
+   description             The width_angle is the angle subtended on the sky by the short dimension of a simple slit. 
+   nillable               true
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Angle
+
+   name                   bin_width_energy
+   version                1.15
+   value data type        ASCII_Real
+   description             The bin_width_energy attribute provides the width of a bin along a spectral axis in a spectral object, in energy units. The method used to calculate the width must be specified using the bin_profile_description attribute. This attribute can be set to 'nil' if bin widths are unknown. 
+   nillable               true
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Energy
+
+   name                   bin_width_frequency
+   version                1.15
+   value data type        ASCII_Real
+   description             The bin_width_frequency attribute provides the width of a bin along a spectral axis in a spectral object, in frequency units. The method used to calculate the width must be specified using the bin_profile_description attribute. This attribute can be set to 'nil' if bin widths are unknown. 
+   nillable               true
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Frequency
+
+   name                   bin_width_wavelength
+   version                1.15
+   value data type        ASCII_Real
+   description             The bin_width_wavelength attribute provides the width of a bin along a spectral axis in a spectral object, in wavelength units. The method used to calculate the width must be specified using the bin_profile_description attribute. This attribute can be set to 'nil' if bin widths are unknown. 
+   nillable               true
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Length
+
+   name                   bin_width_wavenumber
+   version                1.15
+   value data type        ASCII_Real
+   description             The bin_width_wavenumber attribute provides the width of a bin along a spectral axis in a spectral object, in wavenumber units. The method used to calculate the width must be specified using the bin_profile_description attribute. This attribute can be set to 'nil' if bin widths are unknown. 
+   nillable               true
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Wavenumber
+
+   name                   center_energy
+   version                1.15
+   value data type        ASCII_Real
+   description             The center_energy attribute provides the value at the center of a bin along the band axis of a spectral data object. When describing data from a spectrometer, the value corresponds to the peak of the response function for a particular detector and/or grating. 
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Energy
+
+   name                   center_frequency
+   version                1.15
+   value data type        ASCII_Real
+   description             The center_frequency attribute provides the value at the center of a bin along the band axis of a spectral data object. When describing data from a spectrometer, the value corresponds to the peak of the response function for a particular detector and/or grating. 
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Frequency
+
+   name                   center_wavelength
+   version                1.15
+   value data type        ASCII_Real
+   description             The center_wavelength attribute provides the value at the center of a bin along the band axis of a spectral data object. When describing data from a spectrometer, the value corresponds to the peak of the response function for a particular detector and/or grating. 
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Length
+
+   name                   center_wavenumber
+   version                1.15
+   value data type        ASCII_Real
+   description             The center_wavenumber attribute provides the value at the center of a bin along the band axis of a spectral data object. When describing data from a spectrometer, the value corresponds to the peak of the response function for a particular detector and/or grating. 
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Wavenumber
+
+   name                   first_center_energy
+   version                1.15
+   value data type        ASCII_Real
+   description             The first_center_energy attribute provides the value at the center of the first bin along the spectral axis of a spectral data object in energy units. 
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Energy
+
+   name                   first_center_frequency
+   version                1.15
+   value data type        ASCII_Real
+   description             The first_center_frequency attribute provides the value at the center of the first bin along the spectral axis of a spectral data object in frequency units. 
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Frequency
+
+   name                   first_center_wavelength
+   version                1.15
+   value data type        ASCII_Real
+   description             The first_center_wavelength attribute provides the value at the center of the first bin along the spectral axis of a spectral data object in wavelength units. 
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Length
+
+   name                   first_center_wavenumber
+   version                1.15
+   value data type        ASCII_Real
+   description             The first_center_wavenumber attribute provides the value at the center of the first bin along the spectral axis of a spectral data object in wavenumber units. 
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Wavenumber
+
+   name                   last_center_energy
+   version                1.15
+   value data type        ASCII_Real
+   description             The last_center_energy attribute provides the value at the center of the last bin along the spectral axis of a spectral data object in energy units. 
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Energy
+
+   name                   last_center_frequency
+   version                1.15
+   value data type        ASCII_Real
+   description             The last_center_frequency attribute provides the value at the center of the last bin along the spectral axis of a spectral data object in frequency units. 
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Frequency
+
+   name                   last_center_wavelength
+   version                1.15
+   value data type        ASCII_Real
+   description             The last_center_wavelength attribute provides the value at the center of the last bin along the spectral axis of a spectral data object in wavelength units. 
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Length
+
+   name                   last_center_wavenumber
+   version                1.15
+   value data type        ASCII_Real
+   description             The last_center_wavenumber attribute provides the value at the center of the last bin along the spectral axis of a spectral data object in wavenumber units. 
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Wavenumber
+
+   name                   sampling_interval_energy
+   version                1.15
+   value data type        ASCII_Real
+   description             The sampling_interval_energy attribute provides the spacing of points, in energy units, at which data are sampled and at which a value for an instrument or data parameter is available. This sampling interval can be either the original (raw) sampling or the result of some resampling process. 
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Energy
+
+   name                   sampling_interval_frequency
+   version                1.15
+   value data type        ASCII_Real
+   description             The sampling_interval_frequency attribute provides the spacing of points, in frequency units, at which data are sampled and at which a value for an instrument or data parameter is available. This sampling interval can be either the original (raw) sampling or the result of some resampling process. 
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Frequency
+
+   name                   sampling_interval_wavelength
+   version                1.15
+   value data type        ASCII_Real
+   description             The sampling_interval_wavelength attribute provides the spacing of points, in wavelength units, at which data are sampled and at which a value for an instrument or data parameter is available. This sampling interval can be either the original (raw) sampling or the result of some resampling process. 
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Length
+
+   name                   sampling_interval_wavenumber
+   version                1.15
+   value data type        ASCII_Real
+   description             The sampling_interval_wavelength attribute provides the spacing of points, in wavenumber units, at which data are sampled and at which a value for an instrument or data parameter is available. This sampling interval can be either the original (raw) sampling or the result of some resampling process. 
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Wavenumber
+
+   name                   resolution_limit_energy
+   version                1.15
+   value data type        ASCII_Real
+   description             The resolution_limit_energy is the smallest possible distinguishable interval in energy for the instrument. 
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Energy
+
+   name                   resolution_limit_frequency
+   version                1.15
+   value data type        ASCII_Real
+   description             The resolution_limit_frequency is the smallest possible distinguishable interval in frequency for the instrument. 
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Frequency
+
+   name                   resolution_limit_wavelength
+   version                1.15
+   value data type        ASCII_Real
+   description             The resolution_limit_wavelength is the smallest possible distinguishable interval in wavelengths for the instrument. 
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Length
+
+   name                   resolution_limit_wavenumber
+   version                1.15
+   value data type        ASCII_Real
+   description             The resolution_limit_wavenumber is the smallest possible distinguishable interval in wavenumber for the instrument. 
+   minimum value          5.0e-324
+   unit of measure type   Units_of_Wavenumber
+
+Parsed Input - Classes:
+
+   name                   Filter
+   description             The Filter class identifies the filter associated with a specific band or bin along a spectral axis in an Array object. The filter may be identified by either name, identifier, or number or some combination of these. 
+   is abstract            false
+   is choice              false
+   subclass of            USER
+
+   Associations
+
+      local identifier      filter_name
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      filter_number
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      comment
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+   name                   Circular_FOV
+   description             The Circular_FOV class contains attributes to describe a circular aperture/field of view. 
+   is abstract            false
+   is choice              false
+   subclass of            USER
+
+   Associations
+
+      local identifier      diameter_angle
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+   name                   Rectangular_FOV
+   description             This class is used to describe a rectangular (i.e., slit) aperture. 
+   is abstract            false
+   is choice              false
+   subclass of            USER
+
+   Associations
+
+      local identifier      width_angle
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      length_angle
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      celestial_north_position_angle
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      body_positive_pole_position_angle
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+   name                   Complex_FOV
+   description             The Complex_FOV class is used for apertures (slits) that are not either circular or a simple rectangular shape. 
+   is abstract            false
+   is choice              false
+   subclass of            USER
+
+   Associations
+
+      local identifier      width_angle
+      minimum occurrences   0
+      maximum occurrences   *
+      reference type        attribute_of
+
+      local identifier      length_angle
+      minimum occurrences   0
+      maximum occurrences   *
+      reference type        attribute_of
+
+      local identifier      celestial_north_position_angle
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      body_positive_pole_position_angle
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+   name                   Bin_Center_Lookup
+   description             The Bin_Center_Lookup class provides a link to a map or list of bin center values - either to a field in a spectral table, or to a distinct data object that is part of the same product, or to a separate PDS product containing the information. 
+   is abstract            false
+   is choice              false
+   subclass of            USER
+
+   Associations
+
+      local identifier      bin_center_field_name
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      bin_center_field_number_list
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      pds.Local_Internal_Reference
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        component_of
+
+      local identifier      pds.Internal_Reference
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        component_of
+
+   name                   Bin_Width_Constant
+   description             The Bin_Width_Constant class is used inside a Bin_Width_Lookup class for those cases where the bin width is either not well known or unknown. It provides a way to specify a nominal constant width or indicate that there is no available information about the bin width. If the bin width is completely unknown, use the appropriate bin_width attribute for the spectral type (frequency, wavelength, wavenumber, or energy), and indicate that it is nil, with a reason of "unknown". When this class is used, a full explanation of the situation should be provided by the bin_width_desc attribute of the parent class. 
+   is abstract            false
+   is choice              false
+   subclass of            USER
+
+   Associations
+
+      local identifier      bin_width_energy
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      bin_width_frequency
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      bin_width_wavelength
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      bin_width_wavenumber
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+   name                   Bin_Width_Lookup
+   description             The Bin_Width_Lookup class provides a link to a map or list of bin width values - either to a field in a spectral table, or to a distinct data object that is part of the same product, or to a separate PDS product containing the information. 
+   is abstract            false
+   is choice              false
+   subclass of            USER
+
+   Associations
+
+      local identifier      bin_width_field_name
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      bin_width_field_number_list
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      pds.Local_Internal_Reference
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        component_of
+
+      local identifier      pds.Internal_Reference
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        component_of
+
+   name                   Spectral_Lookup
+   description             The Spectral_Lookup class references either specific Fields included in a spectral table (for 1D and tabulated spectra), or a 2-dimensional lookup map providing spectral characteristics for a corresponding spectral Array object. In the latter case, the referenced lookup map may either be to the referencing product, or an external stand-alone product. 
+   is abstract            false
+   is choice              true
+   subclass of            USER
+
+   Associations
+
+      local identifier      comment
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      Bin_Center_Lookup
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        component_of
+
+      local identifier      Bin_Width_Lookup
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        component_of
+
+      local identifier      Bin_Width_Constant
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        component_of
+
+   name                   Axis_Bin_Set_Energy
+   description             The Axis_Bin_Set_* classes describe the spectral characteristics of each band along the spectral dimension of the data object. This will be a literal "axis" in the case of 2D and 3D spectral arrays, or the "Row" axis of a spectral table (each row is a spectral bin), or the "Field" axis of table containing one spectrum per row. These classes are used in cases where the spectral information is not uniform along the spectral dimension. 
+   is abstract            false
+   is choice              false
+   subclass of            USER
+
+   Associations
+
+      local identifier      axis_name
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      Bin_Energy
+      minimum occurrences   1
+      maximum occurrences   unbounded
+      reference type        component_of
+
+   name                   Axis_Bin_Set_Frequency
+   description             The Axis_Bin_Set_* classes describe the spectral characteristics of each band along the spectral dimension of the data object. This will be a literal "axis" in the case of 2D and 3D spectral arrays, or the "Row" axis of a spectral table (each row is a spectral bin), or the "Field" axis of table containing one spectrum per row. These classes are used in cases where the spectral information is not uniform along the spectral dimension. 
+   is abstract            false
+   is choice              false
+   subclass of            USER
+
+   Associations
+
+      local identifier      axis_name
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      Bin_Frequency
+      minimum occurrences   1
+      maximum occurrences   unbounded
+      reference type        component_of
+
+   name                   Axis_Bin_Set_Wavelength
+   description             The Axis_Bin_Set_* classes describe the spectral characteristics of each band along the spectral dimension of the data object. This will be a literal "axis" in the case of 2D and 3D spectral arrays, or the "Row" axis of a spectral table (each row is a spectral bin), or the "Field" axis of table containing one spectrum per row. These classes are used in cases where the spectral information is not uniform along the spectral dimension. 
+   is abstract            false
+   is choice              false
+   subclass of            USER
+
+   Associations
+
+      local identifier      axis_name
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      Bin_Wavelength
+      minimum occurrences   1
+      maximum occurrences   unbounded
+      reference type        component_of
+
+   name                   Axis_Bin_Set_Wavenumber
+   description             The Axis_Bin_Set_* classes describe the spectral characteristics of each band along the spectral dimension of the data object. This will be a literal "axis" in the case of 2D and 3D spectral arrays, or the "Row" axis of a spectral table (each row is a spectral bin), or the "Field" axis of table containing one spectrum per row. These classes are used in cases where the spectral information is not uniform along the spectral dimension. 
+   is abstract            false
+   is choice              false
+   subclass of            USER
+
+   Associations
+
+      local identifier      axis_name
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      Bin_Wavenumber
+      minimum occurrences   1
+      maximum occurrences   unbounded
+      reference type        component_of
+
+   name                   Uniformly_Sampled_Energy
+   description             The Uniformly_Sampled_Energy class provides attributes describing the spectral characteristics of a named axis of an Array object or the rows or fields of a Table object, in cases where the spectral sampling interval is regular and the sampling parameters are in energy units. 
+   is abstract            false
+   is choice              false
+   subclass of            USER
+
+   Associations
+
+      local identifier      axis_name
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      sampling_interval_energy
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      sampling_scale
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      sampling_base
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      bin_width_energy
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      first_center_energy
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      last_center_energy
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      comment
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+   name                   Uniformly_Sampled_Frequency
+   description             The Uniformly_Sampled_Frequency class provides attributes describing the spectral characteristics of a named axis of an Array object or the rows or fields of a Table object, in cases where the spectral sampling interval is regular and the sampling parameters are in frequency units. 
+   is abstract            false
+   is choice              false
+   subclass of            USER
+
+   Associations
+
+      local identifier      axis_name
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      sampling_interval_frequency
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      sampling_scale
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      sampling_base
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      bin_width_frequency
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      first_center_frequency
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      last_center_frequency
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      comment
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+   name                   Uniformly_Sampled_Wavelength
+   description             The Uniformly_Sampled_Wavelength class provides attributes describing the spectral characteristics of a named axis of an Array object or the rows or fields of a Table object, in cases where the spectral sampling interval is regular and the sampling parameters are in wavelength units. 
+   is abstract            false
+   is choice              false
+   subclass of            USER
+
+   Associations
+
+      local identifier      axis_name
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      sampling_interval_wavelength
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      sampling_scale
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      sampling_base
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      bin_width_wavelength
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      first_center_wavelength
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      last_center_wavelength
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      comment
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+   name                   Uniformly_Sampled_Wavenumber
+   description             The Uniformly_Sampled_Wavenumber class provides attributes describing the spectral characteristics of a named axis of an Array object or the rows or fields of a Table object, in cases where the spectral sampling interval is regular and the sampling parameters are in wavenumber units. 
+   is abstract            false
+   is choice              false
+   subclass of            USER
+
+   Associations
+
+      local identifier      axis_name
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      sampling_interval_wavenumber
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      sampling_scale
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      sampling_base
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      bin_width_wavenumber
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      first_center_wavenumber
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      last_center_wavenumber
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      comment
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+   name                   Bin_Energy
+   description             The Bin_Energy class specifies the characteristics of an individual bin along a spectral or other binned axis in an Array object, in units of energy. 
+   is abstract            false
+   is choice              false
+   subclass of            USER
+
+   Associations
+
+      local identifier      bin_sequence_number
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      center_energy
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      bin_width_energy
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      detector_number
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      grating_position
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      comment
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      Filter
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        component_of
+
+   name                   Bin_Frequency
+   description             The Bin_Frequency class specifies the characteristics of an individual bin along a spectral or other binned axis in an Array object, in units of frequency. 
+   is abstract            false
+   is choice              false
+   subclass of            USER
+
+   Associations
+
+      local identifier      bin_sequence_number
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      center_frequency
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      bin_width_frequency
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      detector_number
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      grating_position
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      comment
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      Filter
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        component_of
+
+   name                   Bin_Wavelength
+   description             The Bin_Wavelength class specifies the characteristics of an individual bin along a spectral or other binned axis in an Array object, in units of wavelength. 
+   is abstract            false
+   is choice              false
+   subclass of            USER
+
+   Associations
+
+      local identifier      bin_sequence_number
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      center_wavelength
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      bin_width_wavelength
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      detector_number
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      grating_position
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      comment
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      Filter
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        component_of
+
+   name                   Bin_Wavenumber
+   description             The Bin_Wavenumber class specifies the characteristics of an individual bin along a spectral or other binned axis in an Array object, in units of wavenumber. 
+   is abstract            false
+   is choice              false
+   subclass of            USER
+
+   Associations
+
+      local identifier      bin_sequence_number
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      center_wavenumber
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      bin_width_wavenumber
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      detector_number
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      grating_position
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      comment
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      Filter
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        component_of
+
+   name                   Bin_Description
+   description             This class groups the various bin description options, allowing a user to choose one. 
+   is abstract            false
+   is choice              true
+   subclass of            USER
+
+   Associations
+
+      local identifier      bin_profile_description
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      Uniformly_Sampled_Frequency
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        component_of
+
+      local identifier      Uniformly_Sampled_Wavelength
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        component_of
+
+      local identifier      Uniformly_Sampled_Wavenumber
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        component_of
+
+      local identifier      Axis_Bin_Set_Frequency
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        component_of
+
+      local identifier      Axis_Bin_Set_Wavelength
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        component_of
+
+      local identifier      Axis_Bin_Set_Wavenumber
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        component_of
+
+      local identifier      Spectral_Lookup
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        component_of
+
+   name                   Observation_Parameters
+   description             The Observation_Parameters class collects various values related to the observational circumstances. In general, this class should be present, and all parameters applicable to the situation should be included, even though optional. In some complex cases or for high-level derived products this class may not be applicable, in which case it may be omitted. Use the 'comment' attribute to describe any special circumstances users should be aware of. 
+   is abstract            false
+   is choice              false
+   subclass of            USER
+
+   Associations
+
+      local identifier      number_of_exposures
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      net_integration_time
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      resolution_limit_energy
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      resolution_limit_frequency
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      resolution_limit_wavelength
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      resolution_limit_wavenumber
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      solar_analog_star_name
+      minimum occurrences   0
+      maximum occurrences   *
+      reference type        attribute_of
+
+      local identifier      absolute_calibration_star_name
+      minimum occurrences   0
+      maximum occurrences   *
+      reference type        attribute_of
+
+      local identifier      comment
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+   name                   Field_of_View
+   description             The Field_of_View class is used to describe the field of view corresponding to the spectral data object. This class should describe the aperture or slit used in making the spectral observation, when applicable, as opposed to the theoretical full field of view of a telescope or boresight (which should be defined in a Geometry Dictionary class). 
+   is abstract            false
+   is choice              false
+   subclass of            USER
+
+   Associations
+
+      local identifier      description
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      Circular_FOV
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        component_of
+
+      local identifier      Rectangular_FOV
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        component_of
+
+      local identifier      Complex_FOV
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        component_of
+
+      local identifier      pds.Internal_Reference
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        component_of
+
+   name                   Spectral_Characteristics
+   description             The Spectral_Characteristics class provides information about the spectral characteristics of a 1D, 2D, or 3D spectral data object. It is note used for tabulated spectra - tables in which each row 
+   is abstract            false
+   is choice              false
+   subclass of            USER
+
+   Associations
+
+      local identifier      description
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      spectrum_format
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      value_field_name
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      value_field_number_list
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      spectral_bin_type
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        attribute_of
+
+      local identifier      pds.Local_Internal_Reference
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        component_of
+
+      local identifier      Observation_Parameters
+      minimum occurrences   0
+      maximum occurrences   1
+      reference type        component_of
+
+      local identifier      Field_of_View
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        component_of
+
+      local identifier      Bin_Description
+      minimum occurrences   1
+      maximum occurrences   1
+      reference type        component_of
+
+End of Report
