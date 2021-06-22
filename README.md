@@ -74,8 +74,8 @@ Spectral Dictionary Version | v1.0.0.0 | v1.1.0.0 | v1.2.0.0  | v1.3.0.0 | v1.3.
 [IM 1B00 (1.11.0.0)](build/release/1.B.0.0) | :x: | :heavy_check_mark: | :heavy_check_mark: | :x: | :x:
 [IM 1C00 (1.12.0.0)](build/release/1.C.0.0) | :x: | :heavy_check_mark: | :heavy_check_mark: | :x: | :x:
 [IM 1D00 (1.13.0.0)](build/release/1.D.0.0) | :x: | :x: | :heavy_check_mark: | :heavy_check_mark: | :x:
-[IM 1E00 (1.14.0.0)](build/release/1.14.0.0) | :x: | :x: | :x: | :heavy_check_mark: | :x:
-[IM 1F00 (1.15.0.0)](build/release/1.15.0.0) | :x: | :x: | :x: | :heavy_check_mark: | :x:
+[IM 1E00 (1.14.0.0)](build/release/1.14.0.0) | :x: | :x: | :x: | :heavy_check_mark: | :heavy_check_mark:
+[IM 1F00 (1.15.0.0)](build/release/1.15.0.0) | :x: | :x: | :x: | :heavy_check_mark: | :heavy_check_mark:
 [IM 1G00 (1.16.0.0)](build/release/1.16.0.0) | :x: | :x: | :x: | :heavy_check_mark: | :heavy_check_mark:
 
 The [test/](test/) subdirectory contains test labels, a *Validate* tool 
