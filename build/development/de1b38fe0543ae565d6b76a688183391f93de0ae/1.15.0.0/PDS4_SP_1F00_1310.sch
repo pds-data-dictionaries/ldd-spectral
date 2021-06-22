@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <!-- PDS4 Schematron for Name Space Id:sp  Version:1.3.0.0 - Mon Jun 21 23:06:02 UTC 2021 -->
-  <!-- Generated from the PDS4 Information Model Version 1.16.0.0 - System Build 11.1 -->
+  <!-- PDS4 Schematron for Name Space Id:sp  Version:1.3.1.0 - Tue Jun 22 01:01:56 UTC 2021 -->
+  <!-- Generated from the PDS4 Information Model Version 1.15.0.0 - System Build 11a -->
   <!-- *** This PDS4 schematron file is an operational deliverable. *** -->
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
 
@@ -325,9 +325,9 @@
       <sch:assert test="if (pds:local_reference_type = ('spectral_characteristics_to_array_object')) then ($objtype = ('Array_2D_Spectrum', 'Array_3D_Spectrum')) else true()">
         <title>sc_lir/Rule</title>
         The Array-type object referenced by sp:Spectral_Characteristics must be either an Array_2D_Spectrum or an Array_3D_Spectrum.</sch:assert>
-      <sch:assert test="if (pds:local_reference_type = ('spectral_characteristics_to_table_object')) then ($objtype = ('Table_Character', 'Table_Binary')) else true()">
+      <sch:assert test="if (pds:local_reference_type = ('spectral_characteristics_to_table_object')) then ($objtype = ('Table_Character', 'Table_Binary', 'Table_Delimited')) else true()">
         <title>sc_lir/Rule</title>
-        In sp:Spectral_Characteristics must reference either a Table_Character or Table_Binary object when pds:local_reference_type is 'spectral_characteristics_to_table_object'.</sch:assert>
+        In sp:Spectral_Characteristics must reference either a Table_Character, Table_Binary, or Table_Delimited object when pds:local_reference_type is 'spectral_characteristics_to_table_object'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -490,9 +490,9 @@
   </sch:pattern>
   <sch:pattern>
     <sch:rule context="sp:Observation_Parameters/sp:net_integration_time">
-      <sch:assert test="@unit = ('day', 'hr', 'julian day', 'microseconds', 'min', 'ms', 'ns', 's', 'yr')">
+      <sch:assert test="@unit = ('day', 'hr', 'julian day', 'microseconds', 'min', 'ms', 's', 'yr')">
         <title>sp:Observation_Parameters/sp:net_integration_time/sp:net_integration_time</title>
-        The attribute @unit must be equal to one of the following values 'day', 'hr', 'julian day', 'microseconds', 'min', 'ms', 'ns', 's', 'yr'.</sch:assert>
+        The attribute @unit must be equal to one of the following values 'day', 'hr', 'julian day', 'microseconds', 'min', 'ms', 's', 'yr'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>

@@ -2,12 +2,12 @@ PDS4 Local Data Dictionary Processing Report
 
 Configuration:
    LDDTool Version        13.0.2
-   LDD Version Id:        1.3.0.0
+   LDD Version Id:        1.3.1.0
    LDD Label Version Id:  1.0
    LDD Discipline (T/F):  true
    LDD Namespace URL:     http://pds.nasa.gov/pds4/
    LDD URN Prefix:        urn:nasa:pds:
-   Time                   Mon Jun 21 23:06:01 UTC 2021
+   Time                   Tue Jun 22 01:02:04 UTC 2021
    Common Schema          [PDS4_PDS_1E00.xsd]
    Common Schematron      [PDS4_PDS_1E00.sch]
    IM Version Id:         1.14.0.0
@@ -40,7 +40,7 @@ Detailed validation messages
 
 Parsed Input - Header:
    LDD Name               Spectral Discipline Dictionary
-   LDD Version            1.3.0.0
+   LDD Version            1.3.1.0
    Full Name              Anne Raugh
    Steward                sbn
    Namespace Id           sp
@@ -70,8 +70,10 @@ Parsed Input - Header:
                                              Expanded Axis_Bin_Set class for tabular (row and field) spectra 
            2020-08-05  ACR  Version 1.3.0.0  Added support for X-ray spectra with energy bins; minor changes to 
                                              Ingest_LDD.
+           2021-06-21  ACR  Version 1.3.1.0  Bug fix for a Schematron error. "Table_Delimited" was not included
+                                             in the acceptable object types for Spectral_Characteristics.
     
-   Last Modification Time 2020-08-10
+   Last Modification Time 2021-06-21
    PDS4 Merge Flag        false
 
 Parsed Input - Attributes:
