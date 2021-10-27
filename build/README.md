@@ -1,6 +1,6 @@
 # LDD Build Directory
 
-This directory contains the dictionary files built for each release of the PDS4 Information model (IM).
+This directory contains the schema files built for each release of the PDS4 Information model (IM).
 
 ## release/ Directory
 

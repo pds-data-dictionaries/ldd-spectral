@@ -1652,7 +1652,7 @@
 
     <DD_Class>
         <name>Bin_Center_Lookup</name>
-        <version_id>1.0</version_id>
+        <version_id>1.1</version_id>
         <local_identifier>Bin_Center_Lookup</local_identifier>
         <submitter_name>ACR</submitter_name>
         <definition>
@@ -1787,7 +1787,7 @@
 
     <DD_Class>
         <name>Bin_Width_Lookup</name>
-        <version_id>1.0</version_id>
+        <version_id>1.1</version_id>
         <local_identifier>Bin_Width_Lookup</local_identifier>
         <submitter_name>ACR</submitter_name>
         <definition>
@@ -2673,7 +2673,7 @@
 
     <DD_Class>
         <name>Field_of_View</name>
-        <version_id>1.0</version_id>
+        <version_id>1.1</version_id>
         <local_identifier>Field_of_View</local_identifier>
         <submitter_name>ACR</submitter_name>
         <definition>
@@ -2736,7 +2736,7 @@
 
     <DD_Class>
         <name>Spectral_Characteristics</name>
-        <version_id>2.1</version_id>
+        <version_id>2.2</version_id>
         <local_identifier>Spectral_Characteristics</local_identifier>
         <submitter_name>ACR</submitter_name>
         <definition>

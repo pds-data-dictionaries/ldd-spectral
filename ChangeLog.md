@@ -8,7 +8,7 @@ classes.
 ### Recoding for issue #52
 
 Replaced the "pds." syntax-kludge notation for referencing the _pds:_ namespace with
-the _DD_Associate_External_Class_ class, which provide a mechanism for defining 
+the _DD_Associate_External_Class_ class, which providef a mechanism for defining 
 reference type values as the external reference is made.  These superseded both the
 corresponding _DD_Associate_ classes and the _DD_Rule_ Schematron rule classes 
 needed to define the permissible values in each context.
