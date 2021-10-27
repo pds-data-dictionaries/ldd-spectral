@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <!-- PDS4 Schematron for Name Space Id:sp  Version:1.3.1.0 - Tue Jun 22 19:26:44 UTC 2021 -->
+  <!-- PDS4 Schematron for Name Space Id:sp  Version:1.3.1.0 - Wed Oct 27 15:05:20 UTC 2021 -->
   <!-- Generated from the PDS4 Information Model Version 1.15.0.0 - System Build 11a -->
   <!-- *** This PDS4 schematron file is an operational deliverable. *** -->
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
@@ -568,14 +568,14 @@
     <sch:rule context="sp:Spectral_Characteristics/sp:spectral_bin_type">
       <sch:assert test=". = ('energy', 'frequency', 'wavelength', 'wavenumber')">
         <title>sp:Spectral_Characteristics/sp:spectral_bin_type/sp:spectral_bin_type</title>
-        The attribute sp:spectral_bin_type must be equal to one of the following values 'energy', 'frequency', 'wavelength', 'wavenumber'.</sch:assert>
+        The attribute sp:Spectral_Characteristics/sp:spectral_bin_type must be equal to one of the following values 'energy', 'frequency', 'wavelength', 'wavenumber'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:rule context="sp:Spectral_Characteristics/sp:spectrum_format">
       <sch:assert test=". = ('1D', '2D', '3D', 'Tabulated-Flat', 'Tabulated-Parameter Groups', 'Tabulated-Point Group')">
         <title>sp:Spectral_Characteristics/sp:spectrum_format/sp:spectrum_format</title>
-        The attribute sp:spectrum_format must be equal to one of the following values '1D', '2D', '3D', 'Tabulated-Flat', 'Tabulated-Parameter Groups', 'Tabulated-Point Group'.</sch:assert>
+        The attribute sp:Spectral_Characteristics/sp:spectrum_format must be equal to one of the following values '1D', '2D', '3D', 'Tabulated-Flat', 'Tabulated-Parameter Groups', 'Tabulated-Point Group'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -610,7 +610,7 @@
     <sch:rule context="sp:Uniformly_Sampled_Energy/sp:sampling_scale">
       <sch:assert test=". = ('Linear', 'Logarithmic')">
         <title>sp:Uniformly_Sampled_Energy/sp:sampling_scale/sp:sampling_scale</title>
-        The attribute sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
+        The attribute sp:Uniformly_Sampled_Energy/sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -645,7 +645,7 @@
     <sch:rule context="sp:Uniformly_Sampled_Frequency/sp:sampling_scale">
       <sch:assert test=". = ('Linear', 'Logarithmic')">
         <title>sp:Uniformly_Sampled_Frequency/sp:sampling_scale/sp:sampling_scale</title>
-        The attribute sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
+        The attribute sp:Uniformly_Sampled_Frequency/sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -680,7 +680,7 @@
     <sch:rule context="sp:Uniformly_Sampled_Wavelength/sp:sampling_scale">
       <sch:assert test=". = ('Linear', 'Logarithmic')">
         <title>sp:Uniformly_Sampled_Wavelength/sp:sampling_scale/sp:sampling_scale</title>
-        The attribute sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
+        The attribute sp:Uniformly_Sampled_Wavelength/sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -767,7 +767,7 @@
     <sch:rule context="sp:Uniformly_Sampled_Wavenumber/sp:sampling_scale">
       <sch:assert test=". = ('Linear', 'Logarithmic')">
         <title>sp:Uniformly_Sampled_Wavenumber/sp:sampling_scale/sp:sampling_scale</title>
-        The attribute sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
+        The attribute sp:Uniformly_Sampled_Wavenumber/sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>

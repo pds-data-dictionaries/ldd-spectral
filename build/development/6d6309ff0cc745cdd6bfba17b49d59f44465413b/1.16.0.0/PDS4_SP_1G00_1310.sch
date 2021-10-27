@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <!-- PDS4 Schematron for Name Space Id:sp  Version:1.3.1.0 - Tue Jun 22 19:26:46 UTC 2021 -->
-  <!-- Generated from the PDS4 Information Model Version 1.14.0.0 - System Build 10b -->
+  <!-- PDS4 Schematron for Name Space Id:sp  Version:1.3.1.0 - Wed Oct 27 15:05:11 UTC 2021 -->
+  <!-- Generated from the PDS4 Information Model Version 1.16.0.0 - System Build 11.1 -->
   <!-- *** This PDS4 schematron file is an operational deliverable. *** -->
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
 
@@ -346,16 +346,16 @@
   </sch:pattern>
   <sch:pattern>
     <sch:rule context="sp:Bin_Frequency/sp:bin_width_frequency">
-      <sch:assert test="@unit = ('Hz')">
+      <sch:assert test="@unit = ('GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz')">
         <title>sp:Bin_Frequency/sp:bin_width_frequency/sp:bin_width_frequency</title>
-        The attribute @unit must be equal to one of the following values 'Hz'.</sch:assert>
+        The attribute @unit must be equal to one of the following values 'GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:rule context="sp:Bin_Frequency/sp:center_frequency">
-      <sch:assert test="@unit = ('Hz')">
+      <sch:assert test="@unit = ('GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz')">
         <title>sp:Bin_Frequency/sp:center_frequency/sp:center_frequency</title>
-        The attribute @unit must be equal to one of the following values 'Hz'.</sch:assert>
+        The attribute @unit must be equal to one of the following values 'GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -421,9 +421,9 @@
   </sch:pattern>
   <sch:pattern>
     <sch:rule context="sp:Bin_Width_Constant/sp:bin_width_frequency">
-      <sch:assert test="@unit = ('Hz')">
+      <sch:assert test="@unit = ('GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz')">
         <title>sp:Bin_Width_Constant/sp:bin_width_frequency/sp:bin_width_frequency</title>
-        The attribute @unit must be equal to one of the following values 'Hz'.</sch:assert>
+        The attribute @unit must be equal to one of the following values 'GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -490,9 +490,9 @@
   </sch:pattern>
   <sch:pattern>
     <sch:rule context="sp:Observation_Parameters/sp:net_integration_time">
-      <sch:assert test="@unit = ('day', 'hr', 'julian day', 'microseconds', 'min', 'ms', 's', 'yr')">
+      <sch:assert test="@unit = ('day', 'hr', 'julian day', 'microseconds', 'min', 'ms', 'ns', 's', 'yr')">
         <title>sp:Observation_Parameters/sp:net_integration_time/sp:net_integration_time</title>
-        The attribute @unit must be equal to one of the following values 'day', 'hr', 'julian day', 'microseconds', 'min', 'ms', 's', 'yr'.</sch:assert>
+        The attribute @unit must be equal to one of the following values 'day', 'hr', 'julian day', 'microseconds', 'min', 'ms', 'ns', 's', 'yr'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -504,9 +504,9 @@
   </sch:pattern>
   <sch:pattern>
     <sch:rule context="sp:Observation_Parameters/sp:resolution_limit_frequency">
-      <sch:assert test="@unit = ('Hz')">
+      <sch:assert test="@unit = ('GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz')">
         <title>sp:Observation_Parameters/sp:resolution_limit_frequency/sp:resolution_limit_frequency</title>
-        The attribute @unit must be equal to one of the following values 'Hz'.</sch:assert>
+        The attribute @unit must be equal to one of the following values 'GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -568,14 +568,14 @@
     <sch:rule context="sp:Spectral_Characteristics/sp:spectral_bin_type">
       <sch:assert test=". = ('energy', 'frequency', 'wavelength', 'wavenumber')">
         <title>sp:Spectral_Characteristics/sp:spectral_bin_type/sp:spectral_bin_type</title>
-        The attribute sp:spectral_bin_type must be equal to one of the following values 'energy', 'frequency', 'wavelength', 'wavenumber'.</sch:assert>
+        The attribute sp:Spectral_Characteristics/sp:spectral_bin_type must be equal to one of the following values 'energy', 'frequency', 'wavelength', 'wavenumber'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:rule context="sp:Spectral_Characteristics/sp:spectrum_format">
       <sch:assert test=". = ('1D', '2D', '3D', 'Tabulated-Flat', 'Tabulated-Parameter Groups', 'Tabulated-Point Group')">
         <title>sp:Spectral_Characteristics/sp:spectrum_format/sp:spectrum_format</title>
-        The attribute sp:spectrum_format must be equal to one of the following values '1D', '2D', '3D', 'Tabulated-Flat', 'Tabulated-Parameter Groups', 'Tabulated-Point Group'.</sch:assert>
+        The attribute sp:Spectral_Characteristics/sp:spectrum_format must be equal to one of the following values '1D', '2D', '3D', 'Tabulated-Flat', 'Tabulated-Parameter Groups', 'Tabulated-Point Group'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -610,42 +610,42 @@
     <sch:rule context="sp:Uniformly_Sampled_Energy/sp:sampling_scale">
       <sch:assert test=". = ('Linear', 'Logarithmic')">
         <title>sp:Uniformly_Sampled_Energy/sp:sampling_scale/sp:sampling_scale</title>
-        The attribute sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
+        The attribute sp:Uniformly_Sampled_Energy/sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:rule context="sp:Uniformly_Sampled_Frequency/sp:bin_width_frequency">
-      <sch:assert test="@unit = ('Hz')">
+      <sch:assert test="@unit = ('GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz')">
         <title>sp:Uniformly_Sampled_Frequency/sp:bin_width_frequency/sp:bin_width_frequency</title>
-        The attribute @unit must be equal to one of the following values 'Hz'.</sch:assert>
+        The attribute @unit must be equal to one of the following values 'GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:rule context="sp:Uniformly_Sampled_Frequency/sp:first_center_frequency">
-      <sch:assert test="@unit = ('Hz')">
+      <sch:assert test="@unit = ('GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz')">
         <title>sp:Uniformly_Sampled_Frequency/sp:first_center_frequency/sp:first_center_frequency</title>
-        The attribute @unit must be equal to one of the following values 'Hz'.</sch:assert>
+        The attribute @unit must be equal to one of the following values 'GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:rule context="sp:Uniformly_Sampled_Frequency/sp:last_center_frequency">
-      <sch:assert test="@unit = ('Hz')">
+      <sch:assert test="@unit = ('GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz')">
         <title>sp:Uniformly_Sampled_Frequency/sp:last_center_frequency/sp:last_center_frequency</title>
-        The attribute @unit must be equal to one of the following values 'Hz'.</sch:assert>
+        The attribute @unit must be equal to one of the following values 'GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:rule context="sp:Uniformly_Sampled_Frequency/sp:sampling_interval_frequency">
-      <sch:assert test="@unit = ('Hz')">
+      <sch:assert test="@unit = ('GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz')">
         <title>sp:Uniformly_Sampled_Frequency/sp:sampling_interval_frequency/sp:sampling_interval_frequency</title>
-        The attribute @unit must be equal to one of the following values 'Hz'.</sch:assert>
+        The attribute @unit must be equal to one of the following values 'GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:rule context="sp:Uniformly_Sampled_Frequency/sp:sampling_scale">
       <sch:assert test=". = ('Linear', 'Logarithmic')">
         <title>sp:Uniformly_Sampled_Frequency/sp:sampling_scale/sp:sampling_scale</title>
-        The attribute sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
+        The attribute sp:Uniformly_Sampled_Frequency/sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -680,7 +680,7 @@
     <sch:rule context="sp:Uniformly_Sampled_Wavelength/sp:sampling_scale">
       <sch:assert test=". = ('Linear', 'Logarithmic')">
         <title>sp:Uniformly_Sampled_Wavelength/sp:sampling_scale/sp:sampling_scale</title>
-        The attribute sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
+        The attribute sp:Uniformly_Sampled_Wavelength/sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -767,7 +767,7 @@
     <sch:rule context="sp:Uniformly_Sampled_Wavenumber/sp:sampling_scale">
       <sch:assert test=". = ('Linear', 'Logarithmic')">
         <title>sp:Uniformly_Sampled_Wavenumber/sp:sampling_scale/sp:sampling_scale</title>
-        The attribute sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
+        The attribute sp:Uniformly_Sampled_Wavenumber/sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
