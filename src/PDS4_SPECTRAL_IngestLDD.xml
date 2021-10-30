@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1E00.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="http://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1H00.sch" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
 <Ingest_LDD xmlns="http://pds.nasa.gov/pds4/pds/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xsi:schemaLocation="http://pds.nasa.gov/pds4/pds/v1 http://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1E00.xsd">
+    xsi:schemaLocation="http://pds.nasa.gov/pds4/pds/v1 http://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1H00.xsd">
     <name>Spectral Discipline Dictionary</name>
-    <ldd_version_id>1.3.1.0</ldd_version_id>
+    <ldd_version_id>1.3.1.1</ldd_version_id>
     <dictionary_type>Discipline</dictionary_type>
     <full_name>Anne Raugh</full_name>
     <steward_id>sbn</steward_id>
@@ -37,8 +37,11 @@
                                              Ingest_LDD.
            2021-06-21  ACR  Version 1.3.1.0  Bug fix for a Schematron error. "Table_Delimited" was not included
                                              in the acceptable object types for Spectral_Characteristics.
+           2021-10-27  ACR  Version 1.3.1.1  Replace "pds.Local_Internal_Reference" syntax and related
+                                             Schematron rule to define reference_type with new 
+                                             DD_Associate_External_Class.
     </comment>
-    <last_modification_date_time>2021-06-21</last_modification_date_time>
+    <last_modification_date_time>2021-10-27</last_modification_date_time>
     <!--
         This file also contains extensive comments to illustrate various techniques available to those
         creating input IngestLDD files for local dicitionaries.  
@@ -89,7 +92,7 @@
               http://sbndev.astro.umd.edu/wiki/Creating_the_Ingest_LDD_Dictionary_Input_File
             three are illustrated in this file:
                1. Schematron Rules (there's an entire section at the bottom - search for "DD_Rule")
-               2. Referencing another namespace (search for "pds.")
+               2. Referencing a class in another namespace (search for "DD_Associate_External_Class")
                3. Choice lists (search for "XSChoice#")
           - I've periodically included "Dictionary Preparation Hints" for things I've discovered 
             or arrived at through trial-and-error.  Hopefully these will save you some time.  
@@ -1649,7 +1652,7 @@
 
     <DD_Class>
         <name>Bin_Center_Lookup</name>
-        <version_id>1.0</version_id>
+        <version_id>1.1</version_id>
         <local_identifier>Bin_Center_Lookup</local_identifier>
         <submitter_name>ACR</submitter_name>
         <definition>
@@ -1673,20 +1676,29 @@
             <maximum_occurrences>1</maximum_occurrences>
         </DD_Association>
         
-        <!--
+        <!-- 
             This class uses the pds:Local_Internal_reference class to link to a data
             object elsewhere in the same label; and the pds:Internal_Reference class
             to link to a data product somewhere else in the PDS archive.  In both
             cases, the dictionary writer who uses the pds: classes also needs to 
             define at least one <pds:reference_type> or <pds:local_reference_type>
-            value specific to this context.  See the extended "Dictionary Preparation
-            Hint" on the subject at the top of the DD_Rule section of this file, below.
+            value specific to this context.
             
-            !!! This is a VERY easy thing to forget to do.  I recommend you IMMEDIATELY
-            !!! create the <DD_Rule> for the reference type value every time you include
-            !!! one of these pds: classes in one of your classes.  Happily, these rules
-            !!! are usually among the easiest to formulate.
-        -->
+            CHANGE IN CODING PRACTICE
+            =========================
+            
+            As of build 12.1, release 1.17.00 or 1H00, the "dot-syntax" for referencing
+            classes in external namespaces is deprecated. This is used to include
+            the Local_Internal_Reference and Internal_Reference classes, for example,
+            into a class in the this (Spectral) namespace. But that also required
+            coding a Schematron rule to define the reference_type value required in
+            each context.
+            
+            The new method uses the DD_Associate_External_Class class to both 
+            reference the external namespace and provide defined values for any
+            attributes in that class with permissible value lists.
+            
+            Here's what the old syntax looked like. The new syntax follows:
 
         <DD_Association>
             <identifier_reference>pds.Local_Internal_Reference</identifier_reference>
@@ -1701,6 +1713,42 @@
             <minimum_occurrences>0</minimum_occurrences>
             <maximum_occurrences>1</maximum_occurrences>
         </DD_Association>
+        -->
+        
+        <DD_Associate_External_Class>
+            <namespace_id>pds</namespace_id>
+            <class_name>Local_Internal_Reference</class_name>
+            <minimum_occurrences>0</minimum_occurrences>
+            <maximum_occurrences>1</maximum_occurrences>
+            <DD_Context_Value_List>
+                <attribute_name>local_reference_type</attribute_name>
+                <attribute_relative_xpath>pds:Local_Internal_Reference/pds:local_reference_type</attribute_relative_xpath>
+                <DD_Permissible_Value>
+                    <value>spectral_characteristics_to_bin_center_values</value>
+                    <value_meaning>
+                        The indicated data object contains the bin center values for the spectrum.
+                    </value_meaning>
+                </DD_Permissible_Value>
+            </DD_Context_Value_List>
+        </DD_Associate_External_Class>
+        
+        <DD_Associate_External_Class>
+            <namespace_id>pds</namespace_id>
+            <class_name>Internal_Reference</class_name>
+            <minimum_occurrences>0</minimum_occurrences>
+            <maximum_occurrences>1</maximum_occurrences>
+            <DD_Context_Value_List>
+                <attribute_name>reference_type</attribute_name>
+                <attribute_relative_xpath>pds:Internal_Reference/pds:reference_type</attribute_relative_xpath>
+                <DD_Permissible_Value>
+                    <value>spectral_characteristics_to_bin_center_values</value>
+                    <value_meaning>
+                        The indicated PDS product contains bin center values for this spectrum.
+                    </value_meaning>
+                </DD_Permissible_Value>
+            </DD_Context_Value_List>
+        </DD_Associate_External_Class>
+        
     </DD_Class>
 
     <!-- Bin_Width_Constant -->
@@ -1739,7 +1787,7 @@
 
     <DD_Class>
         <name>Bin_Width_Lookup</name>
-        <version_id>1.0</version_id>
+        <version_id>1.1</version_id>
         <local_identifier>Bin_Width_Lookup</local_identifier>
         <submitter_name>ACR</submitter_name>
         <definition>
@@ -1763,6 +1811,11 @@
             <maximum_occurrences>1</maximum_occurrences>
         </DD_Association>
         
+        <!--
+             CODING CHANGE
+             =============
+             These are superseded by the DD_Associate_External_Class instances following.
+             
         <DD_Association>
             <identifier_reference>pds.Local_Internal_Reference</identifier_reference>
             <reference_type>component_of</reference_type>
@@ -1776,6 +1829,41 @@
             <minimum_occurrences>0</minimum_occurrences>
             <maximum_occurrences>1</maximum_occurrences>
         </DD_Association>
+        -->
+        
+        <DD_Associate_External_Class>
+            <namespace_id>pds</namespace_id>
+            <class_name>Local_Internal_Reference</class_name>
+            <minimum_occurrences>0</minimum_occurrences>
+            <maximum_occurrences>1</maximum_occurrences>
+            <DD_Context_Value_List>
+                <attribute_name>local_reference_type</attribute_name>
+                <attribute_relative_xpath>pds:Local_Internal_Reference/pds:local_reference_type</attribute_relative_xpath>
+                <DD_Permissible_Value>
+                    <value>spectral_characteristics_to_bin_width_values</value>
+                    <value_meaning>
+                        The indicated data object contains bin width values for this spectrum.
+                    </value_meaning>
+                </DD_Permissible_Value>
+            </DD_Context_Value_List>
+        </DD_Associate_External_Class>
+        
+        <DD_Associate_External_Class>
+            <namespace_id>pds</namespace_id>
+            <class_name>Internal_Reference</class_name>
+            <minimum_occurrences>0</minimum_occurrences>
+            <maximum_occurrences>1</maximum_occurrences>
+            <DD_Context_Value_List>
+                <attribute_name>reference_type</attribute_name>
+                <attribute_relative_xpath>pds:Internal_Reference/pds:reference_type</attribute_relative_xpath>
+                <DD_Permissible_Value>
+                    <value>spectral_characteristics_to_bin_width_values</value>
+                    <value_meaning>
+                        The indicated PDS product contains bin width information for this spectrum.
+                    </value_meaning>
+                </DD_Permissible_Value>
+            </DD_Context_Value_List>
+        </DD_Associate_External_Class>
     </DD_Class>
 
     <!-- Spectral_Lookup -->
@@ -2585,7 +2673,7 @@
 
     <DD_Class>
         <name>Field_of_View</name>
-        <version_id>1.0</version_id>
+        <version_id>1.1</version_id>
         <local_identifier>Field_of_View</local_identifier>
         <submitter_name>ACR</submitter_name>
         <definition>
@@ -2613,19 +2701,42 @@
             <maximum_occurrences>1</maximum_occurrences>
         </DD_Association>
 
+        <!-- 
+             CODING CHANGE
+             =============
+             This class is superseded by DD_Associate_External_Class, following.
         <DD_Association>
             <identifier_reference>pds.Internal_Reference</identifier_reference>
             <reference_type>component_of</reference_type>
             <minimum_occurrences>0</minimum_occurrences>
             <maximum_occurrences>1</maximum_occurrences>
         </DD_Association>
+        -->
+        
+        <DD_Associate_External_Class>
+            <namespace_id>pds</namespace_id>
+            <class_name>Internal_Reference</class_name>
+            <minimum_occurrences>0</minimum_occurrences>
+            <maximum_occurrences>1</maximum_occurrences>
+            <DD_Context_Value_List>
+                <attribute_name>reference_type</attribute_name>
+                <attribute_relative_xpath>pds:Internal_Reference/pds:reference_type</attribute_relative_xpath>
+                <DD_Permissible_Value>
+                    <value>spectral_characteristics_to_document</value>
+                    <value_meaning>
+                        The indicated PDS product provides a detailed description of the 
+                        field of view applicable to this spectrum.
+                    </value_meaning>
+                </DD_Permissible_Value>
+            </DD_Context_Value_List>
+        </DD_Associate_External_Class>
     </DD_Class>
 
     <!-- Wrapper Class: Spectral_Characteristics -->
 
     <DD_Class>
         <name>Spectral_Characteristics</name>
-        <version_id>2.0</version_id>
+        <version_id>2.2</version_id>
         <local_identifier>Spectral_Characteristics</local_identifier>
         <submitter_name>ACR</submitter_name>
         <definition>
@@ -2651,13 +2762,42 @@
         -->
         <element_flag>true</element_flag>
 
+        <!-- CODING CHANGE
+             =============
+             
+             This is superseded by the DD_Associate_External_Class, following.
+             
         <DD_Association>
             <identifier_reference>pds.Local_Internal_Reference</identifier_reference>
             <reference_type>component_of</reference_type>
             <minimum_occurrences>1</minimum_occurrences>
             <maximum_occurrences>1</maximum_occurrences>
         </DD_Association>
-
+         -->
+        
+        <DD_Associate_External_Class>
+            <namespace_id>pds</namespace_id>
+            <class_name>Local_Internal_Reference</class_name>
+            <minimum_occurrences>1</minimum_occurrences>
+            <maximum_occurrences>1</maximum_occurrences>
+            <DD_Context_Value_List>
+                <attribute_name>local_reference_type</attribute_name>
+                <attribute_relative_xpath>pds:Local_Internal_Reference/pds:local_reference_type</attribute_relative_xpath>
+                <DD_Permissible_Value>
+                    <value>spectral_characteristics_to_array_object</value>
+                    <value_meaning>
+                        The spectral parameters apply to the indicated array-type object.
+                    </value_meaning>
+                </DD_Permissible_Value>
+                <DD_Permissible_Value>
+                    <value>spectral_characteristics_to_table_object</value>
+                    <value_meaning>
+                        The spectral parameters apply to the indicated table-type object.
+                    </value_meaning>
+                </DD_Permissible_Value>
+            </DD_Context_Value_List>
+        </DD_Associate_External_Class>
+        
         <DD_Association>
             <identifier_reference>description</identifier_reference>
             <reference_type>attribute_of</reference_type>
@@ -2906,6 +3046,15 @@
             Also, it's important to remember that ALL rules defined within a single <rule_context> set will be 
             applied when that context is matched.
         -->
+        <!--
+            CODING CHANGE
+            =============
+            The rule that used to exist here to define the permissible value list for pds:reference_type is now
+            superseded by the use of the DD_Associate_External_Class class in defining the Spectral_Characteristics
+            class. The annotations have been transferred as appropriate to the rule below, and the unneeded rule
+            completely deleted in this case in order to avoid confusion in this heavily annotated part of the
+            IngestLDD file.
+        -->
         <DD_Rule_Statement>
             <!--
                 Rule type:
@@ -2916,32 +3065,7 @@
             -->
             <rule_type>Assert</rule_type>
             <!--
-                Here is the list of all possible valid standard values.  This check ensures that random
-                text is not allowed, and closes logical holes that would otherwise be left in the next
-                two rules.  Schematron is inherently list-based, so this test is checking whether
-                the value of pds:local_reference is in the set of strings in parentheses.  Parentheses
-                around a single string would be optional, but not wrong.
-            -->
-            <rule_test>pds:local_reference_type = ('spectral_characteristics_to_array_object', 'spectral_characteristics_to_table_object')</rule_test>
-            <!--
-                Because this is an Assert-type test, this message will be printed if the test fails.  
-                Another aspect of "good citizenship" is making it easy for the user to see and correct
-                what he did wrong, so including the full list of valid values for something like this
-                is strongly recommended.
-            -->
-            <rule_message>sp:Spectral_Characteristics: The attribute pds:local_reference_type must be equal to either 'spectral_characteristics_to_array_object' or 'spectral_characteristics_to_table_object'.</rule_message>
-            <!--
-                This is an optional description field for your own use.  It is not propagated to the 
-                Schematron or Schema files created.
-            -->
-            <rule_description> Sets the standard value for pds:local_reference_type in this context </rule_description>
-        </DD_Rule_Statement>
-        <!-- Same context - second rule... -->
-        <DD_Rule_Statement>
-            <!-- Also an assertion... -->
-            <rule_type>Assert</rule_type>
-            <!--
-                This test is more complex.  For XPath (which is what this coding is), 'if' must by accompanied
+                This test is fairly complex.  For XPath (which is what this coding is), 'if' must by accompanied
                 by both a 'then' and an 'else'.
                 
                 This test checks to see if the reference type is the value appropriate for arrays.  If 
@@ -2961,7 +3085,17 @@
                 (i.e., we're not looking at an array type), no message is reported.
             -->
             <rule_test>if (pds:local_reference_type = ('spectral_characteristics_to_array_object')) then ($objtype = ('Array_2D_Spectrum', 'Array_3D_Spectrum')) else true()</rule_test>
+            <!--
+                Because this is an Assert-type test, this message will be printed if the test fails.  
+                Another aspect of "good citizenship" is making it easy for the user to see and correct
+                what he did wrong, so including the full list of valid values for something like this
+                is strongly recommended.
+            -->
             <rule_message>The Array-type object referenced by sp:Spectral_Characteristics must be either an Array_2D_Spectrum or an Array_3D_Spectrum.</rule_message>
+            <!--
+                This is an optional description field for your own use.  It is not propagated to the 
+                Schematron or Schema files created.
+            -->
             <rule_description> Ties the local_reference_type to a specific data object </rule_description>
         </DD_Rule_Statement>
         <DD_Rule_Statement>
@@ -3600,7 +3734,16 @@
     </DD_Rule>
 
     <!-- sp:Bin_Center_Lookup/pds:Local_Internal_Reference -->
-
+    
+    <!-- 
+         CODING CHANGE
+         =============
+         As of build 12.1 (version 1.17.0.0/1H00), the DD_Associate_External_Class used in defining the 
+         Bin_Center_Lookup class and the permissible value list associated with it will generate the 
+         first test below. The second test is no longer necessary because the underlying base type for
+         the local_identifier and local_identifier_reference types are the xs:ID and xs:IDREF types 
+         that enforce the second constraint as part of their definition.
+         
     <DD_Rule>
         <local_identifier>bcl_lir</local_identifier>
         <rule_context>sp:Bin_Center_Lookup/pds:Local_Internal_Reference</rule_context>
@@ -3615,6 +3758,8 @@
             <rule_message>In sp:Bin_Center_Lookup, the pds:local_identifier_reference must match the pds:local_identifier of a data object in the product label.</rule_message>
         </DD_Rule_Statement>
     </DD_Rule>
+    
+    -->
 
     <!-- sp:Bin_Width_Lookup/sp:bin_width_field_name -->
 
@@ -3694,7 +3839,11 @@
         </DD_Rule_Statement>
     </DD_Rule>
     
-    <!-- sp:Bin_Width_Lookup/pds:Local_Internal_Reference -->
+    <!-- sp:Bin_Width_Lookup/pds:Local_Internal_Reference 
+    
+         CODING CHANGE
+         =============
+         These tests are superseded by DD_Associate_External_Class and base type changes in the identifier type definitions.
 
     <DD_Rule>
         <local_identifier>bwl_lir</local_identifier>
@@ -3710,8 +3859,13 @@
             <rule_message>In sp:Bin_Width_Lookup, the pds:local_identifier_reference must match the pds:local_identifier of a data object in the product label.</rule_message>
         </DD_Rule_Statement>
     </DD_Rule>
+    -->
 
-    <!-- sp:Bin_Center_Lookup/pds:Internal_Reference -->
+    <!-- sp:Bin_Center_Lookup/pds:Internal_Reference 
+        
+         CODING CHANGE
+         =============
+         This rule is superseded by DD_Associate_External_Class
 
     <DD_Rule>
         <local_identifier>bcl_ir</local_identifier>
@@ -3723,14 +3877,14 @@
         </DD_Rule_Statement>
     </DD_Rule>
 
-    <!-- sp:Bin_Width_Lookup/pds:Internal_Reference -->
+    -->
+    <!-- sp:Bin_Width_Lookup/pds:Internal_Reference 
+
+         CODING CHANGE
+         =============
+         This rule is superseded by DD_Associate_External_Class
 
     <DD_Rule>
-        <!--
-            Here is a dead-simple example of defining a single pds:reference_type value for
-            a single context.  Note the correspondence of the reference_type value to the
-            context.
-        -->
         <local_identifier>bwl_ir</local_identifier>
         <rule_context>sp:Bin_Width_Lookup/pds:Internal_Reference</rule_context>
         <DD_Rule_Statement>
@@ -3739,6 +3893,7 @@
             <rule_message>In the sp:Bin_Width_Lookup class, the attribute pds:reference_type must be equal to 'spectral_characteristics_to_bin_width_values'.</rule_message>
         </DD_Rule_Statement>
     </DD_Rule>
+    -->
 
     <!-- sp:Bin_Center_Lookup must have one subclass -->
 
@@ -3787,7 +3942,11 @@
 
     <!-- Field_of_View content -->
 
-    <!-- Field_of_View/pds:Internal_Reference type -->
+    <!-- Field_of_View/pds:Internal_Reference type 
+        
+        CODING CHANGE
+        =============
+        This rule is superseded by DD_Associate_External_Class.
 
     <DD_Rule>
         <local_identifier>fov_ir_type</local_identifier>
@@ -3798,7 +3957,8 @@
             <rule_message>In sp:Field_of_View, the attribute pds:reference_type must have a value of "spectral_characteristics_to_document".</rule_message>
         </DD_Rule_Statement>
     </DD_Rule>
-
+    -->
+    
     <!-- Observation_Parameters: Spectral Resolution Unit must align with bin type -->
 
     <DD_Rule>

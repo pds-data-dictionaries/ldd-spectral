@@ -1,9 +1,9 @@
 # Regression Test Directory
 
-This directory contains files used to perform regression testing of the Spectral Discipline Dictionary.
+This directory contains files used to perform regression testing of the Spectral Discipline Namespace schemas.
 
 > **NOTE:** The "valid" test labels do not attempt to show anything like a real-world use of the
->           Spectral Dictionary classes.  They are "valid" only insofar as they meet the structural
+>           Spectral Discipline classes.  They are "valid" only insofar as they meet the structural
 >           requirements and content restrictions that are laid out in the Spectral Dictionary. ***Do NOT
 >           attempt to use these as templates for real data without understanding the proper application
 >           of the Spectral Dictionary metadata.*** 

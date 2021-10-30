@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <!-- PDS4 Schematron for Name Space Id:sp  Version:1.3.1.0 - Tue Jun 22 19:26:48 UTC 2021 -->
-  <!-- Generated from the PDS4 Information Model Version 1.16.0.0 - System Build 11.1 -->
+  <!-- PDS4 Schematron for Name Space Id:sp  Version:1.3.1.1 - Wed Oct 27 21:24:35 UTC 2021 -->
+  <!-- Generated from the PDS4 Information Model Version 1.17.0.0 - System Build 12.0 -->
   <!-- *** This PDS4 schematron file is an operational deliverable. *** -->
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
 
@@ -102,23 +102,6 @@
       <sch:assert test="if (($specform = ('Tabulated-Parameter Groups','Tabulated-Point Group')) and ($objtype='Table_Delimited')) then (count(//parent::node()[pds:local_identifier=$objid]/pds:Record_Delimited/pds:Group_Field_Delimited/pds:Field_Delimited/pds:name[data(.)=$cntfield]) eq 1) else true()">
         <title>bcl_field/Rule</title>
         The sp:bin_center_field_name attribute must correspond to the name of exactly one Field_Delimited inside a Group_Field_Delimited for tabulated spectra with groups.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Bin_Center_Lookup/pds:Internal_Reference">
-      <sch:assert test="pds:reference_type = ('spectral_characteristics_to_bin_center_values')">
-        <title>bcl_ir/Rule</title>
-        In the sp:Bin_Center_Lookup class, the attribute pds:reference_type must be equal to 'spectral_characteristics_to_bin_center_values'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Bin_Center_Lookup/pds:Local_Internal_Reference">
-      <sch:assert test="pds:local_reference_type = ('spectral_characteristics_to_bin_center_values')">
-        <title>bcl_lir/Rule</title>
-        In the sp:Bin_Center_Lookup class, the attribute pds:local_reference_type must be equal to 'spectral_characteristics_to_bin_center_values'.</sch:assert>
-      <sch:assert test="pds:local_identifier_reference = //pds:local_identifier">
-        <title>bcl_lir/Rule</title>
-        In sp:Bin_Center_Lookup, the pds:local_identifier_reference must match the pds:local_identifier of a data object in the product label.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -228,23 +211,6 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:rule context="sp:Bin_Width_Lookup/pds:Internal_Reference">
-      <sch:assert test="pds:reference_type = ('spectral_characteristics_to_bin_width_values')">
-        <title>bwl_ir/Rule</title>
-        In the sp:Bin_Width_Lookup class, the attribute pds:reference_type must be equal to 'spectral_characteristics_to_bin_width_values'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Bin_Width_Lookup/pds:Local_Internal_Reference">
-      <sch:assert test="pds:local_reference_type = ('spectral_characteristics_to_bin_width_values')">
-        <title>bwl_lir/Rule</title>
-        In the sp:Bin_Width_Lookup class, the attribute pds:local_reference_type must be equal to 'spectral_characteristics_to_bin_width_values'.</sch:assert>
-      <sch:assert test="pds:local_identifier_reference = //pds:local_identifier">
-        <title>bwl_lir/Rule</title>
-        In sp:Bin_Width_Lookup, the pds:local_identifier_reference must match the pds:local_identifier of a data object in the product label.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
     <sch:rule context="sp:Bin_Width_Lookup/sp:bin_width_field_number_list">
       <sch:let name="objid" value="string(ancestor::sp:Spectral_Characteristics/pds:Local_Internal_Reference/pds:local_identifier_reference)"/>
       <sch:let name="objtype" value="local-name(//parent::node()[pds:local_identifier=$objid])"/>
@@ -259,13 +225,6 @@
       <sch:assert test="if ($objtype = 'Table_Delimited') then (every $n in (tokenize($numlist,'\s*,\s*')) satisfies count(//parent::node()[pds:local_identifier=$objid]/pds:Record_Delimited/pds:Field_Delimited/pds:field_number[data(.)=$n])=1) else true()">
         <title>bwllist_eu/Rule</title>
         For Tabulated-Flat spectra, every value of sp:bin_width_field_number_list must correspond to the value of a field_number attribute in a Field_Delimited definition.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Field_of_View/pds:Internal_Reference">
-      <sch:assert test="pds:reference_type = ('spectral_characteristics_to_document')">
-        <title>fov_ir_type/Rule</title>
-        In sp:Field_of_View, the attribute pds:reference_type must have a value of "spectral_characteristics_to_document".</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -319,15 +278,26 @@
     <sch:rule context="sp:Spectral_Characteristics/pds:Local_Internal_Reference">
       <sch:let name="objid" value="string(pds:local_identifier_reference)"/>
       <sch:let name="objtype" value="local-name(//parent::node()[pds:local_identifier=$objid])"/>
-      <sch:assert test="pds:local_reference_type = ('spectral_characteristics_to_array_object', 'spectral_characteristics_to_table_object')">
-        <title>sc_lir/Rule</title>
-        sp:Spectral_Characteristics: The attribute pds:local_reference_type must be equal to either 'spectral_characteristics_to_array_object' or 'spectral_characteristics_to_table_object'.</sch:assert>
       <sch:assert test="if (pds:local_reference_type = ('spectral_characteristics_to_array_object')) then ($objtype = ('Array_2D_Spectrum', 'Array_3D_Spectrum')) else true()">
         <title>sc_lir/Rule</title>
         The Array-type object referenced by sp:Spectral_Characteristics must be either an Array_2D_Spectrum or an Array_3D_Spectrum.</sch:assert>
       <sch:assert test="if (pds:local_reference_type = ('spectral_characteristics_to_table_object')) then ($objtype = ('Table_Character', 'Table_Binary', 'Table_Delimited')) else true()">
         <title>sc_lir/Rule</title>
         In sp:Spectral_Characteristics must reference either a Table_Character, Table_Binary, or Table_Delimited object when pds:local_reference_type is 'spectral_characteristics_to_table_object'.</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:rule context="sp:Bin_Center_Lookup/pds:Internal_Reference/pds:reference_type">
+      <sch:assert test=". = ('spectral_characteristics_to_bin_center_values')">
+        <title>sp:Bin_Center_Lookup/pds:Internal_Reference/pds:reference_type/sp:Bin_Center_Lookup_Internal_Reference_reference_type</title>
+        The attribute sp:Bin_Center_Lookup/pds:Internal_Reference/pds:reference_type must be equal to the value 'spectral_characteristics_to_bin_center_values'.</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:rule context="sp:Bin_Center_Lookup/pds:Local_Internal_Reference/pds:local_reference_type">
+      <sch:assert test=". = ('spectral_characteristics_to_bin_center_values')">
+        <title>sp:Bin_Center_Lookup/pds:Local_Internal_Reference/pds:local_reference_type/sp:Bin_Center_Lookup_Local_Internal_Reference_local_reference_type</title>
+        The attribute sp:Bin_Center_Lookup/pds:Local_Internal_Reference/pds:local_reference_type must be equal to the value 'spectral_characteristics_to_bin_center_values'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -454,6 +424,20 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
+    <sch:rule context="sp:Bin_Width_Lookup/pds:Internal_Reference/pds:reference_type">
+      <sch:assert test=". = ('spectral_characteristics_to_bin_width_values')">
+        <title>sp:Bin_Width_Lookup/pds:Internal_Reference/pds:reference_type/sp:Bin_Width_Lookup_Internal_Reference_reference_type</title>
+        The attribute sp:Bin_Width_Lookup/pds:Internal_Reference/pds:reference_type must be equal to the value 'spectral_characteristics_to_bin_width_values'.</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:rule context="sp:Bin_Width_Lookup/pds:Local_Internal_Reference/pds:local_reference_type">
+      <sch:assert test=". = ('spectral_characteristics_to_bin_width_values')">
+        <title>sp:Bin_Width_Lookup/pds:Local_Internal_Reference/pds:local_reference_type/sp:Bin_Width_Lookup_Local_Internal_Reference_local_reference_type</title>
+        The attribute sp:Bin_Width_Lookup/pds:Local_Internal_Reference/pds:local_reference_type must be equal to the value 'spectral_characteristics_to_bin_width_values'.</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
     <sch:rule context="sp:Circular_FOV/sp:diameter_angle">
       <sch:assert test="@unit = ('arcmin', 'arcsec', 'deg', 'hr', 'mrad', 'rad')">
         <title>sp:Circular_FOV/sp:diameter_angle/sp:diameter_angle</title>
@@ -486,6 +470,13 @@
       <sch:assert test="@unit = ('arcmin', 'arcsec', 'deg', 'hr', 'mrad', 'rad')">
         <title>sp:Complex_FOV/sp:width_angle/sp:width_angle</title>
         The attribute @unit must be equal to one of the following values 'arcmin', 'arcsec', 'deg', 'hr', 'mrad', 'rad'.</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:rule context="sp:Field_of_View/pds:Internal_Reference/pds:reference_type">
+      <sch:assert test=". = ('spectral_characteristics_to_document')">
+        <title>sp:Field_of_View/pds:Internal_Reference/pds:reference_type/sp:Field_of_View_Internal_Reference_reference_type</title>
+        The attribute sp:Field_of_View/pds:Internal_Reference/pds:reference_type must be equal to the value 'spectral_characteristics_to_document'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -565,17 +556,24 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
+    <sch:rule context="sp:Spectral_Characteristics/pds:Local_Internal_Reference/pds:local_reference_type">
+      <sch:assert test=". = ('spectral_characteristics_to_array_object', 'spectral_characteristics_to_table_object')">
+        <title>sp:Spectral_Characteristics/pds:Local_Internal_Reference/pds:local_reference_type/sp:Spectral_Characteristics_Local_Internal_Reference_local_reference_type</title>
+        The attribute sp:Spectral_Characteristics/pds:Local_Internal_Reference/pds:local_reference_type must be equal to one of the following values 'spectral_characteristics_to_array_object', 'spectral_characteristics_to_table_object'.</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
     <sch:rule context="sp:Spectral_Characteristics/sp:spectral_bin_type">
       <sch:assert test=". = ('energy', 'frequency', 'wavelength', 'wavenumber')">
         <title>sp:Spectral_Characteristics/sp:spectral_bin_type/sp:spectral_bin_type</title>
-        The attribute sp:spectral_bin_type must be equal to one of the following values 'energy', 'frequency', 'wavelength', 'wavenumber'.</sch:assert>
+        The attribute sp:Spectral_Characteristics/sp:spectral_bin_type must be equal to one of the following values 'energy', 'frequency', 'wavelength', 'wavenumber'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
     <sch:rule context="sp:Spectral_Characteristics/sp:spectrum_format">
       <sch:assert test=". = ('1D', '2D', '3D', 'Tabulated-Flat', 'Tabulated-Parameter Groups', 'Tabulated-Point Group')">
         <title>sp:Spectral_Characteristics/sp:spectrum_format/sp:spectrum_format</title>
-        The attribute sp:spectrum_format must be equal to one of the following values '1D', '2D', '3D', 'Tabulated-Flat', 'Tabulated-Parameter Groups', 'Tabulated-Point Group'.</sch:assert>
+        The attribute sp:Spectral_Characteristics/sp:spectrum_format must be equal to one of the following values '1D', '2D', '3D', 'Tabulated-Flat', 'Tabulated-Parameter Groups', 'Tabulated-Point Group'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -610,7 +608,7 @@
     <sch:rule context="sp:Uniformly_Sampled_Energy/sp:sampling_scale">
       <sch:assert test=". = ('Linear', 'Logarithmic')">
         <title>sp:Uniformly_Sampled_Energy/sp:sampling_scale/sp:sampling_scale</title>
-        The attribute sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
+        The attribute sp:Uniformly_Sampled_Energy/sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -645,7 +643,7 @@
     <sch:rule context="sp:Uniformly_Sampled_Frequency/sp:sampling_scale">
       <sch:assert test=". = ('Linear', 'Logarithmic')">
         <title>sp:Uniformly_Sampled_Frequency/sp:sampling_scale/sp:sampling_scale</title>
-        The attribute sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
+        The attribute sp:Uniformly_Sampled_Frequency/sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -680,7 +678,7 @@
     <sch:rule context="sp:Uniformly_Sampled_Wavelength/sp:sampling_scale">
       <sch:assert test=". = ('Linear', 'Logarithmic')">
         <title>sp:Uniformly_Sampled_Wavelength/sp:sampling_scale/sp:sampling_scale</title>
-        The attribute sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
+        The attribute sp:Uniformly_Sampled_Wavelength/sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -767,7 +765,7 @@
     <sch:rule context="sp:Uniformly_Sampled_Wavenumber/sp:sampling_scale">
       <sch:assert test=". = ('Linear', 'Logarithmic')">
         <title>sp:Uniformly_Sampled_Wavenumber/sp:sampling_scale/sp:sampling_scale</title>
-        The attribute sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
+        The attribute sp:Uniformly_Sampled_Wavenumber/sp:sampling_scale must be equal to one of the following values 'Linear', 'Logarithmic'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>

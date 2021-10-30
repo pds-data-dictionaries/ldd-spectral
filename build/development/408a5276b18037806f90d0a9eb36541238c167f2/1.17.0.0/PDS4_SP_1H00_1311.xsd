@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <!-- PDS4 XML/Schema for Name Space Id:sp  Version:1.3.1.0 - Tue Jun 22 19:26:44 UTC 2021 -->
-  <!-- Generated from the PDS4 Information Model Version 1.15.0.0 - System Build 11a -->
+  <!-- PDS4 XML/Schema for Name Space Id:sp  Version:1.3.1.1 - Wed Oct 27 21:24:35 UTC 2021 -->
+  <!-- Generated from the PDS4 Information Model Version 1.17.0.0 - System Build 12.0 -->
   <!-- *** This PDS4 product schema is an operational deliverable. *** -->
   <!--                                                                           -->
   <!--               Dictionary Stack                                            -->
-  <!-- 1.15.0.0 - pds: - Common Dictionary                                       -->
-  <!-- 1.3.1.0 - sp: - Spectral Discipline Dictionary                            -->
+  <!-- 1.17.0.0 - pds: - Common Dictionary                                       -->
+  <!-- 1.3.1.1 - sp: - Spectral Discipline Dictionary                            -->
   <!--   file:/home/runner/work/ldd-spectral/ldd-spectral/src/PDS4_SPECTRAL_Inge -->
   <!--                                                                           -->
   <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -14,9 +14,9 @@
     xmlns:pds="http://pds.nasa.gov/pds4/pds/v1"
     elementFormDefault="qualified"
     attributeFormDefault="unqualified"
-    version="1.3.1.0">
+    version="1.3.1.1">
  
-    <xs:import namespace="http://pds.nasa.gov/pds4/pds/v1" schemaLocation="https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1F00.xsd"/>
+    <xs:import namespace="http://pds.nasa.gov/pds4/pds/v1" schemaLocation="https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1H00.xsd"/>
  
   <xs:annotation>
     <xs:documentation>
@@ -48,6 +48,9 @@
                                              Ingest_LDD.
            2021-06-21  ACR  Version 1.3.1.0  Bug fix for a Schematron error. "Table_Delimited" was not included
                                              in the acceptable object types for Spectral_Characteristics.
+           2021-10-27  ACR  Version 1.3.1.1  Replace "pds.Local_Internal_Reference" syntax and related
+                                             Schematron rule to define reference_type with new 
+                                             DD_Associate_External_Class.
     
     </xs:documentation>
   </xs:annotation>

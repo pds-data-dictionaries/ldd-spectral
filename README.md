@@ -53,6 +53,7 @@ The ([Change Log](ChangeLog.md)) begins with version 1.1.0.0 and provides more d
 - [1.2.0.0](src/archive/1.2.0.0): Minor upgrades to make for more uniform use of features across arrays and tables
 - [1.3.0.0](src/archive/1.3.0.0): Added support for energy (X-ray) spectra; cleanup of some internal details
 - [1.3.1.0](src/archive/1.3.1.0): Bugfix to remove spurious error message in the case of Table_Delimited data
+- [1.3.1.1](src/archive/1.3.1.1): Coding changes to replace deprecated syntax with _DD_Associate_External_Class_; no functional changes
 
 ## Builds
 
@@ -62,9 +63,9 @@ where you will find the XSD Schema and Schematron files needed to use the Spectr
 directory for each release of the PDS IM.
 
 The table below shows the versions of the IM for which each version of the Spectral Dictionary is supported. The first
-column links to the specific [build/](build) directory in this repository.
+column links to the specific [build/](build) directory in this repository. 
 
-Spectral Dictionary Version | v1.0.0.0 | v1.1.0.0 | v1.2.0.0  | v1.3.0.0 | v1.3.1.0
+Spectral Dictionary Version | v1.0.0.0 | v1.1.0.0 | v1.2.0.0  | v1.3.0.0 | v1.3.1.x
 --------------------------- | -------- | -------- | --------  | -------- | --------
 [IM 1700 (1.7.0.0)](build/release/1.7.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | :x:
 [IM 1800 (1.8.0.0)](build/release/1.8.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | :x:
@@ -77,6 +78,7 @@ Spectral Dictionary Version | v1.0.0.0 | v1.1.0.0 | v1.2.0.0  | v1.3.0.0 | v1.3.
 [IM 1E00 (1.14.0.0)](build/release/1.14.0.0) | :x: | :x: | :x: | :heavy_check_mark: | :heavy_check_mark:
 [IM 1F00 (1.15.0.0)](build/release/1.15.0.0) | :x: | :x: | :x: | :heavy_check_mark: | :heavy_check_mark:
 [IM 1G00 (1.16.0.0)](build/release/1.16.0.0) | :x: | :x: | :x: | :heavy_check_mark: | :heavy_check_mark:
+[IM 1H00 (1.17.0.0)](build/release/1.17.0.0) | :x: | :x: | :x: | :heavy_check_mark: | :heavy_check_mark:
 
 The [test/](test/) subdirectory contains test labels, a *Validate* tool 
 configuration file, and the validation report for the test labels.  These are used for regression testing of the schema 
