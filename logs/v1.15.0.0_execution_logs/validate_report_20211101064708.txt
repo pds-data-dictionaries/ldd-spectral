@@ -3,13 +3,13 @@ PDS Validate Tool Report
 
 Configuration:
    Version                       2.1.0
-   Date                          2021-10-31T00:04:50Z
+   Date                          2021-11-01T06:47:10Z
 
 Parameters:
    Targets                       [file:/home/runner/work/ldd-spectral/ldd-spectral/test/SP-Test2-FAIL.xml]
    Rule Type                     pds4.label
-   User Specified Schemas        [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/bab322bd777ac763f5301deb7b979f2d09199451/1.16.0.0/PDS4_SP_1G00_1311.xsd, file:/tmp/PDS4_PDS_1G00.xsd]
-   User Specified Schematrons    [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/bab322bd777ac763f5301deb7b979f2d09199451/1.16.0.0/PDS4_SP_1G00_1311.sch, file:/tmp/PDS4_PDS_1G00.sch]
+   User Specified Schemas        [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/da651967d8bd34eafea010a5e18f90b42d4003e0/1.15.0.0/PDS4_SP_1F00_1311.xsd, file:/tmp/PDS4_PDS_1F00.xsd]
+   User Specified Schematrons    [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/da651967d8bd34eafea010a5e18f90b42d4003e0/1.15.0.0/PDS4_SP_1F00_1311.sch, file:/tmp/PDS4_PDS_1F00.sch]
    Severity Level                WARNING
    Recurse Directories           true
    File Filters Used             [*.xml, *.XML]
@@ -58,5 +58,5 @@ Summary:
     1            warning.label.missing_schematron_spec
 
 End of Report
-Completed execution in 6184 ms
+Completed execution in 7262 ms
 

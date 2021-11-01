@@ -3,13 +3,13 @@ PDS Validate Tool Report
 
 Configuration:
    Version                       2.1.0
-   Date                          2021-10-31T20:45:45Z
+   Date                          2021-11-01T06:46:27Z
 
 Parameters:
-   Targets                       [file:/home/runner/work/ldd-spectral/ldd-spectral/test/SP-Test2-VALID.xml]
+   Targets                       [file:/home/runner/work/ldd-spectral/ldd-spectral/test/SP-Test1-VALID.xml]
    Rule Type                     pds4.label
-   User Specified Schemas        [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/bb12ab4c67e403c4b209c0057075ac1d662d4b69/1.17.0.0/PDS4_SP_1H00_1311.xsd, file:/tmp/PDS4_PDS_1H00.xsd]
-   User Specified Schematrons    [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/bb12ab4c67e403c4b209c0057075ac1d662d4b69/1.17.0.0/PDS4_SP_1H00_1311.sch, file:/tmp/PDS4_PDS_1H00.sch]
+   User Specified Schemas        [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/da651967d8bd34eafea010a5e18f90b42d4003e0/1.15.0.0/PDS4_SP_1F00_1311.xsd, file:/tmp/PDS4_PDS_1F00.xsd]
+   User Specified Schematrons    [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/da651967d8bd34eafea010a5e18f90b42d4003e0/1.15.0.0/PDS4_SP_1F00_1311.sch, file:/tmp/PDS4_PDS_1F00.sch]
    Severity Level                WARNING
    Recurse Directories           true
    File Filters Used             [*.xml, *.XML]
@@ -22,7 +22,7 @@ Parameters:
 
 Product Level Validation Results
 
-  PASS: file:/home/runner/work/ldd-spectral/ldd-spectral/test/SP-Test2-VALID.xml
+  PASS: file:/home/runner/work/ldd-spectral/ldd-spectral/test/SP-Test1-VALID.xml
       WARNING  [warning.label.missing_schematron_spec]   No schematron specification found in the label.
         1 product validation(s) completed
 
@@ -45,5 +45,5 @@ Summary:
     1            warning.label.missing_schematron_spec
 
 End of Report
-Completed execution in 5408 ms
+Completed execution in 7253 ms
 

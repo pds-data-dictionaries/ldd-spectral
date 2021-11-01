@@ -1,9 +1,9 @@
 
 >>  INFO LDDTOOL Version: 13.1.0
->>  INFO IM Version Id: 1.15.0.0
+>>  INFO IM Version Id: 1.17.0.0
 >>  INFO IM Namespace Id: pds
->>  INFO IM Label Version Id: 1.21
->>  INFO Date: Wed Oct 27 21:24:35 UTC 2021
+>>  INFO IM Label Version Id: 1.23
+>>  INFO Date: Mon Nov 01 06:47:42 UTC 2021
 >>  INFO PARENT_DIR: /tmp/lddtool-13.1.0
 >>  INFO SCRIPT_DIR: /tmp/lddtool-13.1.0/bin
 >>  INFO LIB_DIR: /tmp/lddtool-13.1.0/lib
@@ -75,19 +75,18 @@
 
 Input:
 
-     - IM Version: 1F00
+     - IM Version: 1H00
      - PDS4 Flag: true
      - LDD Flag: true
-     - IM Version: true
      - Export JSON Flag: true
 
      - Ingest LDD(s): /home/runner/work/ldd-spectral/ldd-spectral/src/PDS4_SPECTRAL_IngestLDD.xml
 
 Output:
 
-     - ./PDS4_SP_1F00_1311.xsd
-     - ./PDS4_SP_1F00_1311.sch
-     - ./PDS4_SP_1F00_1311.xml
-     - ./PDS4_SP_1F00_1311.JSON
+     - ./PDS4_SP_1H00_1311.xsd
+     - ./PDS4_SP_1H00_1311.sch
+     - ./PDS4_SP_1H00_1311.xml
+     - ./PDS4_SP_1H00_1311.JSON
 
 >>  INFO Exit(0)

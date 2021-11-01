@@ -3,13 +3,13 @@ PDS Validate Tool Report
 
 Configuration:
    Version                       2.1.0
-   Date                          2021-10-27T21:24:50Z
+   Date                          2021-11-01T06:47:10Z
 
 Parameters:
-   Targets                       [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/408a5276b18037806f90d0a9eb36541238c167f2/1.17.0.0/PDS4_SP_1H00_1311.xml]
+   Targets                       [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/da651967d8bd34eafea010a5e18f90b42d4003e0/1.16.0.0/PDS4_SP_1G00_1311.xml]
    Rule Type                     pds4.label
-   User Specified Schemas        [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/408a5276b18037806f90d0a9eb36541238c167f2/1.17.0.0/PDS4_SP_1H00_1311.xsd, file:/tmp/PDS4_PDS_1H00.xsd]
-   User Specified Schematrons    [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/408a5276b18037806f90d0a9eb36541238c167f2/1.17.0.0/PDS4_SP_1H00_1311.sch, file:/tmp/PDS4_PDS_1H00.sch]
+   User Specified Schemas        [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/da651967d8bd34eafea010a5e18f90b42d4003e0/1.16.0.0/PDS4_SP_1G00_1311.xsd, file:/tmp/PDS4_PDS_1G00.xsd]
+   User Specified Schematrons    [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/da651967d8bd34eafea010a5e18f90b42d4003e0/1.16.0.0/PDS4_SP_1G00_1311.sch, file:/tmp/PDS4_PDS_1G00.sch]
    Severity Level                WARNING
    Recurse Directories           true
    File Filters Used             [*.xml, *.XML]
@@ -22,7 +22,7 @@ Parameters:
 
 Product Level Validation Results
 
-  PASS: file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/408a5276b18037806f90d0a9eb36541238c167f2/1.17.0.0/PDS4_SP_1H00_1311.xml
+  PASS: file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/da651967d8bd34eafea010a5e18f90b42d4003e0/1.16.0.0/PDS4_SP_1G00_1311.xml
         1 product validation(s) completed
 
 Summary:
@@ -42,5 +42,5 @@ Summary:
 
 
 End of Report
-Completed execution in 7697 ms
+Completed execution in 6655 ms
 
