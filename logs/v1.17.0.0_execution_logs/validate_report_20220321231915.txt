@@ -1,0 +1,58 @@
+
+PDS Validate Tool Report
+
+Configuration:
+   Version                       2.1.4
+   Date                          2022-03-21T23:19:17Z
+
+Parameters:
+   Targets                       [file:/home/runner/work/ldd-spectral/ldd-spectral/test/SP-Test1-VALID.xml]
+   Rule Type                     pds4.label
+   User Specified Schemas        [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/1a41738d933ef363666d062249e87c12a4780f7c/1.17.0.0/PDS4_SP_1H00_1311.xsd, file:/tmp/PDS4_PDS_1H00.xsd]
+   User Specified Schematrons    [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/1a41738d933ef363666d062249e87c12a4780f7c/1.17.0.0/PDS4_SP_1H00_1311.sch, file:/tmp/PDS4_PDS_1H00.sch]
+   Severity Level                WARNING
+   Recurse Directories           true
+   File Filters Used             [*.xml, *.XML]
+   Data Content Validation       off
+   Product Level Validation      on
+   Max Errors                    100000
+   Registered Contexts File      /tmp/validate-2.1.4/resources/registered_context_products.json
+
+
+
+Product Level Validation Results
+
+  FAIL: file:/home/runner/work/ldd-spectral/ldd-spectral/test/SP-Test1-VALID.xml
+      ERROR  [error.label.schema]   line 60, 43: cvc-complex-type.2.4.a: Invalid content was found starting with element '{"http://pds.nasa.gov/pds4/pds/v1":Local_Internal_Reference}'. One of '{"http://pds.nasa.gov/pds4/sp/v1":logical_identifier}' is expected.
+      ERROR  [error.label.schema]   line 103, 43: cvc-complex-type.2.4.a: Invalid content was found starting with element '{"http://pds.nasa.gov/pds4/pds/v1":Local_Internal_Reference}'. One of '{"http://pds.nasa.gov/pds4/sp/v1":logical_identifier}' is expected.
+      ERROR  [error.label.schema]   line 151, 43: cvc-complex-type.2.4.a: Invalid content was found starting with element '{"http://pds.nasa.gov/pds4/pds/v1":Local_Internal_Reference}'. One of '{"http://pds.nasa.gov/pds4/sp/v1":logical_identifier}' is expected.
+      ERROR  [error.label.schema]   line 215, 43: cvc-complex-type.2.4.a: Invalid content was found starting with element '{"http://pds.nasa.gov/pds4/pds/v1":Local_Internal_Reference}'. One of '{"http://pds.nasa.gov/pds4/sp/v1":logical_identifier}' is expected.
+      ERROR  [error.label.schema]   line 271, 43: cvc-complex-type.2.4.a: Invalid content was found starting with element '{"http://pds.nasa.gov/pds4/pds/v1":Local_Internal_Reference}'. One of '{"http://pds.nasa.gov/pds4/sp/v1":logical_identifier}' is expected.
+      ERROR  [error.label.schema]   line 322, 43: cvc-complex-type.2.4.a: Invalid content was found starting with element '{"http://pds.nasa.gov/pds4/pds/v1":Local_Internal_Reference}'. One of '{"http://pds.nasa.gov/pds4/sp/v1":logical_identifier}' is expected.
+      ERROR  [error.label.schema]   line 368, 43: cvc-complex-type.2.4.a: Invalid content was found starting with element '{"http://pds.nasa.gov/pds4/pds/v1":Local_Internal_Reference}'. One of '{"http://pds.nasa.gov/pds4/sp/v1":logical_identifier}' is expected.
+      ERROR  [error.label.schema]   line 407, 43: cvc-complex-type.2.4.a: Invalid content was found starting with element '{"http://pds.nasa.gov/pds4/pds/v1":Local_Internal_Reference}'. One of '{"http://pds.nasa.gov/pds4/sp/v1":logical_identifier}' is expected.
+      WARNING  [warning.label.missing_schematron_spec]   No schematron specification found in the label.
+        1 product validation(s) completed
+
+Summary:
+
+  8 error(s)
+  1 warning(s)
+
+  Product Validation Summary:
+    0          product(s) passed
+    1          product(s) failed
+    0          product(s) skipped
+
+  Referential Integrity Check Summary:
+    0          check(s) passed
+    0          check(s) failed
+    0          check(s) skipped
+
+  Message Types:
+    8            error.label.schema
+    1            warning.label.missing_schematron_spec
+
+End of Report
+Completed execution in 5551 ms
+
