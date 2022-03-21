@@ -2775,6 +2775,14 @@
         </DD_Association>
          -->
         
+        <-- Testing dot-notation -->
+        <DD_Association>
+            <identifier_reference>pds.logical_identifier</identifier_reference>
+            <reference_type>attribute_of</reference_type>
+            <minimum_occurrences>1</minimum_occurrences>
+            <maximum_occurrences>1</maximum_occurrences>
+        </DD_Association>
+        
         <DD_Associate_External_Class>
             <namespace_id>pds</namespace_id>
             <class_name>Local_Internal_Reference</class_name>
