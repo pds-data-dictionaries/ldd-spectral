@@ -2775,7 +2775,7 @@
         </DD_Association>
          -->
         
-        <-- Testing dot-notation -->
+        <!-- Testing dot-notation -->
         <DD_Association>
             <identifier_reference>pds.logical_identifier</identifier_reference>
             <reference_type>attribute_of</reference_type>
