@@ -62,7 +62,7 @@
                     <local_reference_type>spectral_characteristics_to_array_object</local_reference_type>
                 </Local_Internal_Reference>
                 <sp:spectrum_format>2D</sp:spectrum_format>
-                <sp:spectral_bin_type>wavelength</sp:spectral_bin_type>
+                <sp:spectral_bin_type>Something else</sp:spectral_bin_type>
                 
                 <sp:Observation_Parameters>
                     <sp:number_of_exposures>1</sp:number_of_exposures>
