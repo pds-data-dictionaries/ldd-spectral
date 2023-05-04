@@ -505,7 +505,7 @@
         
         <Array_3D_Spectrum>
             <local_identifier>Cube</local_identifier>
-            <offset unit="byte">1000</offset>
+            <offset unit="byte">25000</offset>
             <axes>3</axes>
             <axis_index_order>Last Index Fastest</axis_index_order>
             <Element_Array>
@@ -532,7 +532,7 @@
         
         <Array_2D_Map>
             <local_identifier>BinCenterMap</local_identifier>
-            <offset unit="byte">1</offset>
+            <offset unit="byte">11000000</offset>
             <axes>2</axes>
             <axis_index_order>Last Index Fastest</axis_index_order>
             <Element_Array>
@@ -554,7 +554,7 @@
         
         <Array_2D_Map>
             <local_identifier>BinWidthMap</local_identifier>
-            <offset unit="byte">1</offset>
+            <offset unit="byte">12000000</offset>
             <axes>2</axes>
             <axis_index_order>Last Index Fastest</axis_index_order>
             <Element_Array>
@@ -576,7 +576,7 @@
         
         <Array_3D_Spectrum>
             <local_identifier>RGBSpec</local_identifier>
-            <offset unit="byte">3</offset>
+            <offset unit="byte">13000000</offset>
             <axes>3</axes>
             <axis_index_order>Last Index Fastest</axis_index_order>
             <Element_Array>
@@ -603,7 +603,7 @@
         
         <Table_Character>
             <local_identifier>TableChar1D</local_identifier>
-            <offset unit="byte">4</offset>
+            <offset unit="byte">26000000</offset>
             <records>100</records>
             <description>
                 This is just one of many possible structures for a set of 
@@ -652,7 +652,7 @@
         <Table_Character>
             <name>Flat Spectra Table</name>
             <local_identifier>TabFlat</local_identifier>
-            <offset unit="byte">0</offset>
+            <offset unit="byte">26100000</offset>
             <records>1000</records>
             <description>
                 In this format, each row of the table contains a single spectrum, and the fields (columns) are defined without
