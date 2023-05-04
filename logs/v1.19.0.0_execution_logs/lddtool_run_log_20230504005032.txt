@@ -1,12 +1,12 @@
 
->>  INFO LDDTOOL Version: 14.1.2
->>  INFO IM Version Id: 1.17.0.0
+>>  INFO LDDTOOL Version: 14.2.3
+>>  INFO IM Version Id: 1.19.0.0
 >>  INFO IM Namespace Id: pds
->>  INFO IM Label Version Id: 1.23
->>  INFO Date: Thu Oct 20 21:57:55 UTC 2022
->>  INFO PARENT_DIR: /tmp/lddtool-14.1.2
->>  INFO SCRIPT_DIR: /tmp/lddtool-14.1.2/bin
->>  INFO LIB_DIR: /tmp/lddtool-14.1.2/lib
+>>  INFO IM Label Version Id: 1.25
+>>  INFO Date: Thu May 04 00:50:35 UTC 2023
+>>  INFO PARENT_DIR: /tmp/lddtool-14.2.3
+>>  INFO SCRIPT_DIR: /tmp/lddtool-14.2.3/bin
+>>  INFO LIB_DIR: /tmp/lddtool-14.2.3/lib
 
 >>> INFO Init:  - Config.Properties Namespace Id Found:sp
 >>> INFO Init:  - Config.Properties Namespace Id Using:sp
@@ -73,7 +73,7 @@
 
 Input:
 
-     - IM Version: 1H00
+     - IM Version: 1J00
      - PDS4 Flag: true
      - LDD Flag: true
      - IM Version: true
@@ -83,9 +83,9 @@ Input:
 
 Output:
 
-     - ./PDS4_SP_1H00_1311.xsd
-     - ./PDS4_SP_1H00_1311.sch
-     - ./PDS4_SP_1H00_1311.xml
-     - ./PDS4_SP_1H00_1311.JSON
+     - ./PDS4_SP_1J00_1311.xsd
+     - ./PDS4_SP_1J00_1311.sch
+     - ./PDS4_SP_1J00_1311.xml
+     - ./PDS4_SP_1J00_1311.JSON
 
 >>  INFO Exit(0)
