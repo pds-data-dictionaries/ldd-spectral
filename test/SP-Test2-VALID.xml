@@ -369,7 +369,7 @@
         <Table_Binary>
             <name>Grouped Parameters Spectra Table</name>
             <local_identifier>TabParamGroups</local_identifier>
-            <offset unit="byte">1000</offset>
+            <offset unit="byte">100000</offset>
             <records>132</records>
             <description>
                 This table contains one spectrum per row, but the values for intensity, error, bin center, and bin width occur 
@@ -472,7 +472,7 @@
         <Table_Delimited>
             <name>Point Groups Spectra Table</name>
             <local_identifier>TabPointGroups</local_identifier>
-            <offset unit="byte">3500</offset>
+            <offset unit="byte">300000</offset>
             <parsing_standard_id>PDS DSV 1</parsing_standard_id>
             <description>
                 This table contains one spectrum per row, but in this case all the parameters associated with each point are 
