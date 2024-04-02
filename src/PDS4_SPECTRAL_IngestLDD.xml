@@ -4,7 +4,7 @@
 <Ingest_LDD xmlns="http://pds.nasa.gov/pds4/pds/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xsi:schemaLocation="http://pds.nasa.gov/pds4/pds/v1 http://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1H00.xsd">
     <name>Spectral Discipline Dictionary</name>
-    <ldd_version_id>1.3.1.1</ldd_version_id>
+    <ldd_version_id>1.3.2.0</ldd_version_id>
     <dictionary_type>Discipline</dictionary_type>
     <full_name>Anne Raugh</full_name>
     <steward_id>sbn</steward_id>
@@ -21,27 +21,28 @@
         
         Modification History:
         
-           2018-05-25  ACR  Version 1.0.0.0  First release
-           
-           2018-11-02  ACR  Version 1.1.0.0  Added support for tabulated spectra
-           2019-03-08  ACR  Version 1.1.0.0  Replaced "data()" with equivalent "data(.)" to work around
+          2018-05-25  ACR   Version 1.0.0.0  First release
+          2018-11-02  ACR   Version 1.1.0.0  Added support for tabulated spectra
+          2019-03-08  ACR   Version 1.1.0.0  Replaced "data()" with equivalent "data(.)" to work around
                                              a Validate Tool issue
-           2019-03-15  ACR  Version 1.1.0.0  Fixed bug in range checking for Uniformly Sampled data by
+          2019-03-15  ACR   Version 1.1.0.0  Fixed bug in range checking for Uniformly Sampled data by
                                              adding "number()" function
-           2019-07-29  ACR  Version 1.2.0.0  Added table support for rows and fields in Uniformly_Sampled;
+          2019-07-29  ACR   Version 1.2.0.0  Added table support for rows and fields in Uniformly_Sampled;
                                              Moved Bin_Width_Constant class (unusable as designed) into Spectral_Lookup;
                                              Made bin-width nillable for cases where it is unknown;
                                              Removed references to "original bin number" (mission-specific);
                                              Expanded Axis_Bin_Set class for tabular (row and field) spectra 
-           2020-08-05  ACR  Version 1.3.0.0  Added support for X-ray spectra with energy bins; minor changes to 
+          2020-08-05  ACR   Version 1.3.0.0  Added support for X-ray spectra with energy bins; minor changes to 
                                              Ingest_LDD.
-           2021-06-21  ACR  Version 1.3.1.0  Bug fix for a Schematron error. "Table_Delimited" was not included
+          2021-06-21  ACR   Version 1.3.1.0  Bug fix for a Schematron error. "Table_Delimited" was not included
                                              in the acceptable object types for Spectral_Characteristics.
-           2021-10-27  ACR  Version 1.3.1.1  Replace "pds.Local_Internal_Reference" syntax and related
+          2021-10-27  ACR   Version 1.3.1.1  Replace "pds.Local_Internal_Reference" syntax and related
                                              Schematron rule to define reference_type with new 
                                              DD_Associate_External_Class.
+          2024-04-01 cgobat Version 1.3.2.0  Add missing Axis_Bin_Set_Energy and Uniformly_Sampled_Energy as
+                                             permissible options within the Bin_Description class.
     </comment>
-    <last_modification_date_time>2021-10-27</last_modification_date_time>
+    <last_modification_date_time>2024-04-02</last_modification_date_time>
     <!--
         This file also contains extensive comments to illustrate various techniques available to those
         creating input IngestLDD files for local dicitionaries.  
@@ -2569,7 +2570,7 @@
 
     <DD_Class>
         <name>Bin_Description</name>
-        <version_id>2.0</version_id>
+        <version_id>2.1</version_id>
         <local_identifier>Bin_Description</local_identifier>
         <submitter_name>ACR</submitter_name>
         <definition>
@@ -2586,12 +2587,11 @@
 
         <DD_Association>
             <identifier_reference>XSChoice#</identifier_reference>
-            <!-- Remove 2019-07-29 from here to Spectral_Lookup
-            <identifier_reference>Bin_Width_Constant</identifier_reference>
-            -->
+            <identifier_reference>Uniformly_Sampled_Energy</identifier_reference>
             <identifier_reference>Uniformly_Sampled_Frequency</identifier_reference>
             <identifier_reference>Uniformly_Sampled_Wavelength</identifier_reference>
             <identifier_reference>Uniformly_Sampled_Wavenumber</identifier_reference>
+            <identifier_reference>Axis_Bin_Set_Energy</identifier_reference>
             <identifier_reference>Axis_Bin_Set_Frequency</identifier_reference>
             <identifier_reference>Axis_Bin_Set_Wavelength</identifier_reference>
             <identifier_reference>Axis_Bin_Set_Wavenumber</identifier_reference>

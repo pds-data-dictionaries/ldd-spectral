@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+    This test label domenostrates that the energy option is now properly in place 
+    for the Bin_Set_Description (issue #277). 
+    
+    NOTE: This is copied from the SP-Test1-VALID label and probably doesn't make
+          sense in any real terms for an energy spectrum, since I have not idea
+          what that would look like. 
+          
+    DO NOT ATTEMPT TO USE THIS AS A LABEL TEMPLATE FOR REAL DATA.
+-->
+
+<Product_Observational xmlns="http://pds.nasa.gov/pds4/pds/v1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:sp="http://pds.nasa.gov/pds4/sp/v1">
+    
+    <Identification_Area>
+        <logical_identifier>urn:nasa:pds:bundle:collection:product</logical_identifier>
+        <version_id>1.0</version_id>
+        <title>Test Label 1 for Spectral Dictionary - Valid Label</title>
+        <information_model_version>[IM_VERSION]</information_model_version>
+        <product_class>Product_Observational</product_class>
+    </Identification_Area>
+    
+    <Observation_Area>
+        <Time_Coordinates>
+            <start_date_time xsi:nil="true" nilReason="inapplicable"/>
+            <stop_date_time xsi:nil="true" nilReason="inapplicable"/>
+        </Time_Coordinates>
+        
+        <Investigation_Area>
+            <name>None</name>
+            <type>Individual Investigation</type>
+            <Internal_Reference>
+                <lid_reference>urn:nasa:pds:context:investigation:individual.none</lid_reference>
+                <reference_type>data_to_investigation</reference_type>
+            </Internal_Reference>
+        </Investigation_Area>
+        <Observing_System>
+            <Observing_System_Component>
+                <name>None</name>
+                <type>Telescope</type>
+            </Observing_System_Component>
+        </Observing_System>
+        <Target_Identification>
+            <name>None</name>
+            <type>Comet</type>
+        </Target_Identification>
+        
+        <Discipline_Area>
+            
+            <!-- Bin Definitions using Axis_Bin_Set -->
+            
+            <sp:Spectral_Characteristics>
+                <Local_Internal_Reference>
+                    <local_identifier_reference>RGBSpec</local_identifier_reference>
+                    <local_reference_type>spectral_characteristics_to_array_object</local_reference_type>
+                </Local_Internal_Reference>
+                <sp:description>
+                    The spectrum in this case is a shallow cube - only three bands corresponding 
+                    to Red, Green, and Blue.
+                </sp:description>
+                <sp:spectrum_format>3D</sp:spectrum_format>
+                <sp:spectral_bin_type>energy</sp:spectral_bin_type>
+                
+                <sp:Observation_Parameters>
+                    <sp:number_of_exposures>1</sp:number_of_exposures>
+                    <sp:net_integration_time unit="s">1</sp:net_integration_time>
+                    <sp:resolution_limit_energy unit="keV">10</sp:resolution_limit_energy>
+                </sp:Observation_Parameters>
+                
+                <sp:Field_of_View>
+                    <sp:description>
+                        This FOV is square aligned with the image.
+                    </sp:description>
+                    <sp:Rectangular_FOV>
+                        <sp:width_angle unit="arcsec">20</sp:width_angle>
+                        <sp:length_angle unit="arcsec">20</sp:length_angle>
+                        <sp:body_positive_pole_position_angle unit="deg">0</sp:body_positive_pole_position_angle>
+                    </sp:Rectangular_FOV>
+                </sp:Field_of_View>
+                
+                <sp:Bin_Description>
+                    <sp:bin_profile_description>
+                        Bin profiles were determined during ground-testing with known sources.
+                    </sp:bin_profile_description>
+                    <sp:Axis_Bin_Set_Energy>
+                        <sp:axis_name>Band</sp:axis_name>
+                        <sp:Bin_Energy>
+                            <sp:bin_sequence_number>1</sp:bin_sequence_number>
+                            <sp:center_energy unit="eV">0.1</sp:center_energy>
+                            <sp:bin_width_energy unit="eV">0.035</sp:bin_width_energy>
+                        </sp:Bin_Energy>
+                        <sp:Bin_Energy>
+                            <sp:bin_sequence_number>2</sp:bin_sequence_number>
+                            <sp:center_energy unit="eV">0.15</sp:center_energy>
+                            <sp:bin_width_energy unit="eV">0.2</sp:bin_width_energy>
+                        </sp:Bin_Energy>
+                        <sp:Bin_Energy>
+                            <sp:bin_sequence_number>3</sp:bin_sequence_number>
+                            <sp:center_energy unit="eV">0.35</sp:center_energy>
+                            <sp:bin_width_energy unit="eV">0.3</sp:bin_width_energy>
+                        </sp:Bin_Energy>
+                    </sp:Axis_Bin_Set_Energy>
+                </sp:Bin_Description>
+            </sp:Spectral_Characteristics>
+        </Discipline_Area>
+    </Observation_Area>
+    
+    <File_Area_Observational>
+        <File>
+            <file_name>No.Data</file_name>
+        </File>
+
+        <!-- Shallow spectral cube with separately defined bins ("planes") -->
+        
+        <Array_3D_Spectrum>
+            <local_identifier>RGBSpec</local_identifier>
+            <offset unit="byte">13000000</offset>
+            <axes>3</axes>
+            <axis_index_order>Last Index Fastest</axis_index_order>
+            <Element_Array>
+                <data_type>IEEE754LSBSingle</data_type>
+            </Element_Array>
+            <Axis_Array>
+                <axis_name>Right Ascension</axis_name>
+                <elements>1000</elements>
+                <sequence_number>3</sequence_number>
+            </Axis_Array>
+            <Axis_Array>
+                <axis_name>Declination</axis_name>
+                <elements>1020</elements>
+                <sequence_number>2</sequence_number>
+            </Axis_Array>
+            <Axis_Array>
+                <axis_name>Band</axis_name>
+                <elements>3</elements>
+                <sequence_number>1</sequence_number>
+            </Axis_Array>
+        </Array_3D_Spectrum>
+        
+    </File_Area_Observational>
+</Product_Observational>

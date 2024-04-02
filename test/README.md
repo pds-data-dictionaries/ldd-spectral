@@ -14,6 +14,8 @@ The test file set includes:
 * *SP-Test1-FAIL.xml* and *SP-Test2-FAIL.xml* - Two test labels identical to the corresponding *VALID*
               labels, except with specific, documented errors to demonstrate proper behavior of key
               Spectral class features
+* *SP-Energy-VALID.xml* - A label to demonstrate that the Axis_Bin_Set_Energy class has now been 
+              included in Bin_Description (it was omitted) [#277]
 * *No.Data* - A zero-length data file included to satisfy the *Validate Tool* requirement for a data file to exist
 
 The labels are formatted to work with the automated build process in this repo, so all references to 
