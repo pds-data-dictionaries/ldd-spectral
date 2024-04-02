@@ -42,7 +42,7 @@
           2024-04-01 cgobat Version 1.3.2.0  Add missing Axis_Bin_Set_Energy and Uniformly_Sampled_Energy as
                                              permissible options within the Bin_Description class.
     </comment>
-    <last_modification_date_time>2024-04-01</last_modification_date_time>
+    <last_modification_date_time>2024-04-02</last_modification_date_time>
     <!--
         This file also contains extensive comments to illustrate various techniques available to those
         creating input IngestLDD files for local dicitionaries.  
@@ -2587,9 +2587,6 @@
 
         <DD_Association>
             <identifier_reference>XSChoice#</identifier_reference>
-            <!-- Remove 2019-07-29 from here to Spectral_Lookup
-            <identifier_reference>Bin_Width_Constant</identifier_reference>
-            -->
             <identifier_reference>Uniformly_Sampled_Energy</identifier_reference>
             <identifier_reference>Uniformly_Sampled_Frequency</identifier_reference>
             <identifier_reference>Uniformly_Sampled_Wavelength</identifier_reference>
