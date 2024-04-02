@@ -41,6 +41,9 @@
                                              DD_Associate_External_Class.
           2024-04-01 cgobat Version 1.3.2.0  Add missing Axis_Bin_Set_Energy and Uniformly_Sampled_Energy as
                                              permissible options within the Bin_Description class.
+          2024-04-02  ACR   Version 1.3.2.0  Clearing some additional issues from the queue:
+                                             Issue #275: Conside units when comparing values of first_center_*
+                                                and last_center_*
     </comment>
     <last_modification_date_time>2024-04-02</last_modification_date_time>
     <!--
@@ -3322,8 +3325,8 @@
             This context has a number of rules to make sure that the appropriate type of classes are
             being used, and the references to information elsewhere in the label are resolvable.
             The specifics vary, but the techniques are the same as already seen.  They are used
-            a lot in this dictionary because of the range of spectral types covered.  Consequently
-            There is a DD_Rule for each spectral type of Uniformly_Sampled_* (energy, frequenct,
+            a lot in this dictionary because of the range of spectral types covered.  Consequently,
+            there is a DD_Rule for each spectral type of Uniformly_Sampled_* (energy, frequency,
             wavelength, and wavenumber).
         -->
         <local_identifier>us_energy</local_identifier>
@@ -3356,6 +3359,16 @@
             <rule_type>Assert</rule_type>
             <rule_test>if (sp:sampling_scale ne 'Linear') then (sp:sampling_base) else true()</rule_test>
             <rule_message>The sp:sampling_base attribute is required for non-Linear sampling scales.</rule_message>
+        </DD_Rule_Statement>
+        <!-- 
+            The next rule requires that the same unit of measure is used for the first and last wavelengths, so that
+            the comparison is valid for the desired constraint (i.e., first < last). Note that in this case we're 
+            comparing the value if the "unit" XML attribute ("unit='keV'", e.g.), not of the PDS attribute.  
+        -->
+        <DD_Rule_Statement>
+            <rule_type>Assert</rule_type>
+            <rule_test>sp:first_center_energy/@unit eq sp:last_center_energy/@unit</rule_test>
+            <rule_message>In the Uniformly_Sampled classes, the first_center and last_center values must have the same units of measure.</rule_message>
         </DD_Rule_Statement>
         <DD_Rule_Statement>
             <rule_type>Assert</rule_type>
@@ -3398,6 +3411,11 @@
         </DD_Rule_Statement>
         <DD_Rule_Statement>
             <rule_type>Assert</rule_type>
+            <rule_test>sp:first_center_frequency/@unit eq sp:last_center_frequency/@unit</rule_test>
+            <rule_message>In the Uniformly_Sampled classes, the first_center and last_center values must have the same units of measure.</rule_message>
+        </DD_Rule_Statement>
+        <DD_Rule_Statement>
+            <rule_type>Assert</rule_type>
             <rule_test>number(sp:first_center_frequency) lt number(sp:last_center_frequency)</rule_test>
             <rule_message>In the Uniformly_Sampled classes, the first_center value must be less than the last_center value.</rule_message>
         </DD_Rule_Statement>
@@ -3437,6 +3455,11 @@
         </DD_Rule_Statement>
         <DD_Rule_Statement>
             <rule_type>Assert</rule_type>
+            <rule_test>sp:first_center_wavelength/@unit eq sp:last_center_wavelength/@unit</rule_test>
+            <rule_message>In the Uniformly_Sampled classes, the first_center and last_center values must have the same units of measure.</rule_message>
+        </DD_Rule_Statement>
+        <DD_Rule_Statement>
+            <rule_type>Assert</rule_type>
             <rule_test>number(sp:first_center_wavelength) lt number(sp:last_center_wavelength)</rule_test>
             <rule_message>In the Uniformly_Sampled classes, the first_center value must be less than the last_center value.</rule_message>
         </DD_Rule_Statement>
@@ -3473,6 +3496,11 @@
             <rule_type>Assert</rule_type>
             <rule_test>if (sp:sampling_scale ne 'Linear') then (sp:sampling_base) else true()</rule_test>
             <rule_message>The sp:sampling_base attribute is required for non-Linear sampling scales.</rule_message>
+        </DD_Rule_Statement>
+        <DD_Rule_Statement>
+            <rule_type>Assert</rule_type>
+            <rule_test>sp:first_center_wavenumber/@unit eq sp:last_center_wavenumber/@unit</rule_test>
+            <rule_message>In the Uniformly_Sampled classes, the first_center and last_center values must have the same units of measure.</rule_message>
         </DD_Rule_Statement>
         <DD_Rule_Statement>
             <rule_type>Assert</rule_type>
