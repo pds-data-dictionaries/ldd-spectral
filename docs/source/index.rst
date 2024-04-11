@@ -20,4 +20,14 @@ Example Namespace Documentation
     :maxdepth: 3
     :caption: Detailed Documentation
 
-    detailed/example
+    detailed/outline
+    detailed/classList
+    detailed/attributeList
+    
+.. toctree::
+    :glob:
+    :maxdepth: 3
+    :caption: Examples
+    
+    examples/AboutTheDemos
+    examples/*
