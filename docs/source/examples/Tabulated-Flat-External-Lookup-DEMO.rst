@@ -17,7 +17,7 @@ Tabulated-Flat Spectra, external Spectral Lookup, unknown bin widths
         and provided merely to remove any validation errors that might otherwise occur.
             
         Note, in particular, that any conscientious reviewer would consider the data structure classes
-        to be inadequate without appropriate descriptions, extrema, null data indicates, and similar
+        to be inadequate without appropriate descriptions, extrema, null data indicators, and similar
         essential metadata.
     
         This label demonstrates:
