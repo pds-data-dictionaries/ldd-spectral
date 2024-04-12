@@ -1,5 +1,26 @@
 # Spectral Discipline Namespace Change Log
 
+## Changes from v1.3.1.1 ro v1.3.2.0
+
+### Issue #278: Port Documentation
+
+The SBN wiki documentation for the Spectral namespace has been ported to the
+pds-data-dictionaries.github.io site using the Sphinx format and templates
+developed for other SBN-curated namespaces. The SBN wiki is going to be 
+decommissioned over the course of the coming year.
+
+### Issue #277: Missing Energy Classes
+
+The new energy spectrum classes Uniformly_Sampled_Energy and Axis_Bin_Set_Energy were
+inadvertently omitted from the Bin_Description class. They have now been added.
+
+### Issue #275: First/Last Bin Comparison Unit Check
+
+In the Uniformly_Sampled classes, the first_center and last_center values were compared
+numerically, but there was no constraint requiring that they have the same unit of 
+measure. This invalidates a simple numeric check for first < last. They are now 
+required to have the same units for all spectrum types.
+
 ## Changes from v1.3.1.0 to 1.3.1.1
 
 These changes should be transparent to users creating labels with the Spectral Discipline
@@ -8,7 +29,7 @@ classes.
 ### Recoding for issue #52
 
 Replaced the "pds." syntax-kludge notation for referencing the _pds:_ namespace with
-the _DD_Associate_External_Class_ class, which providef a mechanism for defining 
+the _DD_Associate_External_Class_ class, which provides a mechanism for defining 
 reference type values as the external reference is made.  These superseded both the
 corresponding _DD_Associate_ classes and the _DD_Rule_ Schematron rule classes 
 needed to define the permissible values in each context.

@@ -1,105 +1,149 @@
-# Spectral Discipline Dictionary
+# Spectral/Spectroscopy Discipline (sp:) Dictionary
 
-The Spectral Discipline Dictionary provides classes used to define the spectral characteristics of light spectra 
-(frequency, wavelength, wavenumber, or energy).
+The Spectral Discipline Dictionary provides classes used to define the spectral characteristics 
+of light spectra (frequency, wavelength, wavenumber, or energy).
 
-## Steward
+### Steward
+Anne Raugh (@acraugh), Small Bodies Node (SBN) at University of Maryland
 
-The current steward for this dictionary, and your primary point of contact for questions and requests, is Anne Raugh (@acraugh),
-located at the Small Bodies Node at the University of Maryland.
+# Documentation
 
-## Namespace
+The User's Guide and detailed documentation for using this dictionary in
+label design and processing
+are located at https://pds-data-dictionaries.github.io/ldd-spectral.
 
-The namespace for the Spectral Discipline Dictionary is:
+# Latest Release
 
-    http://pds.nasa.gov/pds4/sp/v1
-    
-and the reserved abbreviation is "**sp:**".
+* Download dictionary files from the [PDS Data Dictionaries Page](https://pds.nasa.gov/datastandards/dictionaries/#sp})
+* On [GitHub](../../releases/latest)
+* Review the [Change log](ChangeLog.md)
 
-## Schemas
+# About This Repository
 
-The schemas needed for creating, validating, and working with the Spectral Dictionary classes are in the [build/release](build/release) directory.
-Unless you are familiar with GitHub, though, it's probably easier to download the file set you want from 
-the [PDS Data Dictionaries](https://pds.nasa.gov/datastandards/dictionaries) page. Look for the "Spectral Discipline Dictionary". Other spectral/spectrum
-dictionaries are _not_ the same thing.
-
-## Entry Points
-
-There is a single wrapper class defined for the Spectral Dictionary. All other classes are contained within it.  
-You must use the wrapper class to access the **sp:** namespace content:
-
-    <sp:Spectral_Characteristics>
-    ...
-    </sp:Spectral_Characteristics>
-    
-The ```<sp:Spectral_Characteristics>``` class should be placed in the ```<Discipline_Area>``` of your product label.    
-
-## Documentation
-
-User documentation for the Spectral Discipline Dictionary is maintained on the SBN PDS4 wiki:
-
-https://sbnwiki.astro.umd.edu/wiki/Filling_Out_the_Spectral_Dictionary_Classes
-
-## Examples
-
-Code samples demonstrating how to use various features of the Spectral Discipline dictionary are in the [examples](examples) directory.
-
-## Version Summaries
-
-The ([Change Log](ChangeLog.md)) begins with version 1.1.0.0 and provides more details.
-
-- [1.0.0.0](src/archive/1.0.0.0): A complete re-design of the prototype dictionary
-- [1.1.0.0](src/archive/1.1.0.0): Upgrades as suggested by early adopters
-- [1.2.0.0](src/archive/1.2.0.0): Minor upgrades to make for more uniform use of features across arrays and tables
-- [1.3.0.0](src/archive/1.3.0.0): Added support for energy (X-ray) spectra; cleanup of some internal details
-- [1.3.1.0](src/archive/1.3.1.0): Bugfix to remove spurious error message in the case of Table_Delimited data
-- [1.3.1.1](src/archive/1.3.1.1): Coding changes to replace deprecated syntax with _DD_Associate_External_Class_; no functional changes
-
-## Builds
-
-The Spectral Dictionary (LDD) is built for each version of the [PDS4 Information Model](https://pds.nasa.gov/datastandards/documents/).
-The build process insures compatiblity of the LDD with the core information model. The ```build/release``` directory tree is 
-where you will find the XSD Schema and Schematron files needed to use the Spectral Dictionary classes in labels. There is one
-directory for each release of the PDS IM.
-
-The table below shows the versions of the IM for which each version of the Spectral Dictionary is supported. The first
-column links to the specific [build/](build) directory in this repository. 
-
-Spectral Dictionary Version | v1.0.0.0 | v1.1.0.0 | v1.2.0.0  | v1.3.0.0 | v1.3.1.x
---------------------------- | -------- | -------- | --------  | -------- | --------
-[IM 1700 (1.7.0.0)](build/release/1.7.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | :x:
-[IM 1800 (1.8.0.0)](build/release/1.8.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | :x:
-[IM 1900 (1.9.0.0)](build/release/1.9.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | :x:
-[IM 1A00 (1.10.0.0)](build/release/1.A.0.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | :x:
-[IM 1A10 (1.10.1.0)](build/release/1.A.1.0) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | :x:
-[IM 1B00 (1.11.0.0)](build/release/1.B.0.0) | :x: | :heavy_check_mark: | :heavy_check_mark: | :x: | :x:
-[IM 1C00 (1.12.0.0)](build/release/1.C.0.0) | :x: | :heavy_check_mark: | :heavy_check_mark: | :x: | :x:
-[IM 1D00 (1.13.0.0)](build/release/1.D.0.0) | :x: | :x: | :heavy_check_mark: | :heavy_check_mark: | :x:
-[IM 1E00 (1.14.0.0)](build/release/1.14.0.0) | :x: | :x: | :x: | :heavy_check_mark: | :heavy_check_mark:
-[IM 1F00 (1.15.0.0)](build/release/1.15.0.0) | :x: | :x: | :x: | :heavy_check_mark: | :heavy_check_mark:
-[IM 1G00 (1.16.0.0)](build/release/1.16.0.0) | :x: | :x: | :x: | :heavy_check_mark: | :heavy_check_mark:
-[IM 1H00 (1.17.0.0)](build/release/1.17.0.0) | :x: | :x: | :x: | :heavy_check_mark: | :heavy_check_mark:
-
-The [test/](test/) subdirectory contains test labels, a *Validate* tool 
-configuration file, and the validation report for the test labels.  These are used for regression testing of the schema 
-files.  The ```test/``` files are not needed to use the Spectral Dictionary for developing labels.
-
-> If you need a back-port of a specific version of the Spectral Dictionary to an earlier IM that is not currently supported,
-> please contact the dictionary steward, @acraugh, or raise an Issue in the [PDS4 Issue Repo](https://github.com/pds-data-dictionaries/PDS4-LDD-Issue-Repo/issues/new/choose).
-
-## Source
-
-The source file for each version of the Spectral Discipline Dictionary is in the [src/archive/](src/archive) subdirectory for the 
-corresponding Spectral Dictionary version. This source file, also known as the "Ingest_LDD" file for the root document 
-structure used, is heavily annotated so it can be used as a set of working examples for other dictionary writers.
+* **[build](build)/** - This directory holds the files generated by the
+  build processing, including the schema files used in designing and
+  validating labels, JSON for inclusion in code, and report files from the
+  LDDTool execution that created the files. There are separate
+  subdirectories for development versions and releases.
+* **[doc](docs)/** - This directory contains the source tree for the 
+  documentation at https://pds-data-dictionaries.github.io/ldd-spectral. The
+  PDF of that documentation can also be found here in the `main` branch.
+* **[logs](logs)/** - This directory contains the logs generated by the
+  GitHub-automated build and test processes of LDDTool and Validate.
+* **[src](src)/** - The directory containing the managed *IngestLDD* file
+  that defines this namespace. This is where changes to the namespace
+  itself are made.
+* **[test](test)/** - This directory contains regression tests (in the
+  form of documented labels) for this namespace.
+* **[.github](.github)/** - This (possibly hidden) directory contains
+  internal files used to manage the automated build processes.
 
 
-# Contribute
+The `main` branch is where you should merge your final changes to documentation and LDD structure.
+The `gh-pages` branch is auto-generated and used to run the documentation site. **DO NOT MAKE CHANGES HERE**.
 
-Have a bug or feature request? Create an entry in the [PDS4 Issue Repo](https://github.com/pds-data-dictionaries/PDS4-LDD-Issue-Repo/issues/new/choose).
 
+# Contributing to this Dictionary
 
-# Support
+## Suggest a Feature or Report a Bug
+<!-- replace "repo id" below with the "ldd-xxx" string from the
+GitHub repo URL.-->
 
-See the [PDS4 Local Data Dictionaries (LDDs) page](https://pds-data-dictionaries.github.io/) *SUPPORT* topics for more information 
-on how to report issues, request new features, and otherwise contact the dictionary stewards.
+There is a common place to request enhancements and report problems for
+any PDS-curated dictionary - the [PDS4 Issue Repo](https://github.com/pds-data-dictionaries/PDS4-LDD-Issue-Repo/issues/new/choose).
+Search for the **\[ldd-spectral\]** update request block and click the green
+"Get Started" button.
+
+## Contribute Code or documentation
+If you'd like to actively contribute to development, begin with the
+feature/bug process described above. Then familiarize yourself with
+the [LDD Update Process](https://pds-data-dictionaries.github.io/development/ldd-update.html)
+and contact the dictionary steward to coordinate development, testing,
+and release. And thanks!
+
+# General Support for Dictionary Developers
+See the [PDS Data Dictionaries pages](https://pds-data-dictionaries.github.io)
+for documentation and tutorials describing the procedures
+required to reserve a namespace,
+establish a new repo, and build your dictionary.
+
+<!-- NOTE
+
+     PDS needs a better suggestion than the following, but I'm hesitant
+     to point to my wiki and I don't see the information clearly
+     identified elsewhere...
+-->
+If you need help creating your *IngestLDD* file, contact the [Dictionary Stewards Group](https://pds-data-dictionaries.github.io/teams/pds-dd-stewards.html). Documentation is in preparation.
+
+# For Dictionary Stewards
+
+See the [tutorial on updating and building an IngestLDD](https://pds-data-dictionaries.github.io/support/tutorials.html#ldd-update-and-build-tutorial) and the [LDD Update Process](https://pds-data-dictionaries.github.io/development/ldd-update.html) for documentation of those procedures.
+
+## Building the dictionary
+
+Each build is auto-generated using Github Actions, PDS4 LDDTool, and Validate Tool.
+
+You can also download the *IngestLDD* file and build the dictionary locally.
+You will need to install *[LDDTool]* (https://nasa-pds.github.io/pds4-information-model/model-lddtool/index.html) on your system. Once you do,
+you can manually run [LDDTool](https://nasa-pds.github.io/pds4-information-model/model-lddtool/index.html) on the IngestLDD using the following command:
+
+```
+lddtool -lpsnJ {IngestLDD file name}.xml
+```
+
+# Generating Namespace Documentation
+The documentation website is managed by GitHub Pages. When changes are made on the `main` branch, GitHub will process those changes and update the `gh-pages` branch, which drives the website on pds-data-dictionaries.github.io. 
+
+If you would like to test your changes and generate the site on your own system:
+
+1. Clone the repository
+2. Install Python dependencies (preferably within a Python virtual environment[^1]) using this command:
+```
+pip install -r requirements.txt
+```
+3. Follow steps below
+
+[^1]: [Python Virtual Environment How-To at docs.python.org](https://docs.python.org/3/library/venv.html)
+
+## To Generate HTML
+
+1. Build the HTML documents
+```
+cd docs
+make clean html
+```
+   Note that in Windows environments you will need to run the "clean" and "html" operations as separate invocations of "make":
+```
+cd docs
+make clean
+make html
+````
+
+2. Preview the HTML in your browser
+```
+open build/html/index.html
+```
+
+## To Generate PDF
+
+1. Install some additional dependencies:
+
+   On a Mac:
+   ```
+   brew install texlive
+   ```
+
+   On Linux:
+   ```
+   apt-get install texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
+   ```
+
+2. Make the PDF
+```
+cd docs
+make latexpdf
+```
+
+The output PDF will be written into the *docs/* directory.
+The output file name will depend on the value for the ```project``` variable
+in the *docs/source/conf.py* file.
