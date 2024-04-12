@@ -2,6 +2,13 @@
 
 ## Changes from v1.3.1.1 ro v1.3.2.0
 
+### Issue #278: Port Documentation
+
+The SBN wiki documentation for the Spectral namespace has been ported to the
+pds-data-dictionaries.github.io site using the Sphinx format and templates
+developed for other SBN-curated namespaces. The SBN wiki is going to be 
+decommissioned over the course of the coming year.
+
 ### Issue #277: Missing Energy Classes
 
 The new energy spectrum classes Uniformly_Sampled_Energy and Axis_Bin_Set_Energy were
