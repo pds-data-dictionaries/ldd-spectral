@@ -1,0 +1,51 @@
+
+PDS Validate Tool Report
+
+Configuration:
+   Version                       3.4.1
+   Date                          2024-05-22T18:13:32Z
+
+Parameters:
+   Targets                       [file:/home/runner/work/ldd-spectral/ldd-spectral/test/SP-Test2-VALID.xml]
+   Rule Type                     pds4.label
+   User Specified Schemas        [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/4dd082ebea834f41efa596e121c3010b78723f49/1.17.0.0/PDS4_SP_1H00_1320.xsd, file:/tmp/PDS4_PDS_1H00.xsd]
+   User Specified Schematrons    [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/4dd082ebea834f41efa596e121c3010b78723f49/1.17.0.0/PDS4_SP_1H00_1320.sch, file:/tmp/PDS4_PDS_1H00.sch]
+   Severity Level                WARNING
+   Recurse Directories           true
+   File Filters Used             [*.xml, *.XML]
+   Data Content Validation       off
+   Product Level Validation      on
+   Max Errors                    100000
+   Registered Contexts File      /tmp/validate-3.4.1/resources/registered_context_products.json
+
+
+
+Product Level Validation Results
+
+  PASS: file:/home/runner/work/ldd-spectral/ldd-spectral/test/SP-Test2-VALID.xml
+      WARNING  [warning.label.schema]   Cannot check versioning because no Schema given.
+      WARNING  [warning.label.missing_schematron_spec]   No schematron specification found in the label.
+        1 product validation(s) completed
+
+Summary:
+
+  0 error(s)
+  2 warning(s)
+
+  Product Validation Summary:
+    1          product(s) passed
+    0          product(s) failed
+    0          product(s) skipped
+
+  Referential Integrity Check Summary:
+    0          check(s) passed
+    0          check(s) failed
+    0          check(s) skipped
+
+  Message Types:
+    1            warning.label.schema
+    1            warning.label.missing_schematron_spec
+
+End of Report
+Completed execution in 4815 ms
+
