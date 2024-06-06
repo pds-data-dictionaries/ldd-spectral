@@ -1,6 +1,6 @@
 # Spectral Discipline Namespace Change Log
 
-## Changes from v1.3.1.1 ro v1.3.2.0
+## Changes from v1.3.1.1 to v1.3.2.0
 
 ### Issue #278: Port Documentation
 
