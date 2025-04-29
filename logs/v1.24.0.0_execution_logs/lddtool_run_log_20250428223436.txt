@@ -1,0 +1,88 @@
+
+>>  INFO LDDTOOL Version: 15.3.0
+>>  INFO IM Version Id: 1.24.0.0
+>>  INFO IM Namespace Id: pds
+>>  INFO IM Label Version Id: 1.0
+>>  INFO Date: Mon Apr 28 22:34:36 UTC 2025
+>>  INFO PARENT_DIR: /tmp/lddtool-15.3.0/Data/
+
+>>> INFO Init:  - Config.Properties Namespace Id Found:sp
+>>> INFO Init:  - Config.Properties Namespace Id Using:sp
+>>> INFO Init:  - LDD Dictionary_Type is Discipline
+>>> INFO Attribute: <axis_name> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <body_positive_pole_position_angle> - The default minimum value provided by the attribute's data type is being overridden with 0.0
+>>> INFO Attribute: <body_positive_pole_position_angle> - The default maximum value provided by the attribute's data type is being overridden with 180.0
+>>> INFO Attribute: <celestial_north_position_angle> - The default minimum value provided by the attribute's data type is being overridden with 0.0
+>>> INFO Attribute: <celestial_north_position_angle> - The default maximum value provided by the attribute's data type is being overridden with 180.0
+>>> INFO Attribute: <comment> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <comment> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <comment> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <comment> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <comment> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <comment> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <comment> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <description> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <description> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <description> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <description> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <description> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <description> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <description> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <diameter_angle> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <detector_number> - The default minimum value provided by the attribute's data type is being overridden with 1
+>>> INFO Attribute: <detector_number> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <filter_number> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <grating_position> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <length_angle> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <net_integration_time> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <number_of_exposures> - The default minimum value provided by the attribute's data type is being overridden with 1
+>>> INFO Attribute: <sampling_base> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <width_angle> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <bin_width_energy> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <bin_width_frequency> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <bin_width_wavelength> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <bin_width_wavenumber> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <center_energy> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <center_frequency> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <center_wavelength> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <center_wavelength> - This local attribute has a duplicate in the PDS4 data dictionary.
+>>> INFO Attribute: <center_wavenumber> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <first_center_energy> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <first_center_frequency> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <first_center_wavelength> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <first_center_wavenumber> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <last_center_energy> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <last_center_frequency> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <last_center_wavelength> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <last_center_wavenumber> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <sampling_interval_energy> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <sampling_interval_frequency> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <sampling_interval_wavelength> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <sampling_interval_wavenumber> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <resolution_limit_energy> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <resolution_limit_frequency> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <resolution_limit_wavelength> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+>>> INFO Attribute: <resolution_limit_wavenumber> - The default minimum value provided by the attribute's data type is being overridden with 5.0e-324
+
+ -- LDDTool Execution Summary --
+     0 warning(s)
+     0 error(s)
+     0 fatal error(s)
+
+Input:
+
+     - IM Version: 1O00
+     - PDS4 Flag: true
+     - LDD Flag: true
+     - Export JSON Flag: true
+
+     - Ingest LDD(s): /home/runner/work/ldd-spectral/ldd-spectral/src/PDS4_SPECTRAL_IngestLDD.xml
+
+Output:
+
+     - ./PDS4_SP_1O00_1320.xsd
+     - ./PDS4_SP_1O00_1320.sch
+     - ./PDS4_SP_1O00_1320.xml
+     - ./export/PDS4_PDS_1O00.JSON
+
+>>  INFO Exit(0)
