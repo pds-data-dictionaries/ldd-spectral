@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1O00.sch"
+    schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="https://pds.nasa.gov/pds4/disp/v1/PDS4_DISP_1J00_1510.sch"
+    schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="https://pds.nasa.gov/pds4/sp/v1/PDS4_SP_1O00_1321.sch"
+    schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="https://pds.nasa.gov/pds4/mission/cassini/v1/PDS4_CASSINI_1J00_1700.sch"
+    schematypens="http://purl.oclc.org/dsdl/schematron"?>
+
+<!--This test label exercises:
+        o Array_1D_Spectrum (under <File_Area_Observational>) rules, so that a value of '1D' is permitted in <sp:Spectral_Characteristics>.sp:spectrum_format>
+          and so a spectrum_format of '1D' is permitted with Array_1D_Spectrum-type (and not just table-type) objects.
+-->
+
+<Product_Observational
+    xmlns="http://pds.nasa.gov/pds4/pds/v1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:disp="http://pds.nasa.gov/pds4/disp/v1"
+    xmlns:sp="http://pds.nasa.gov/pds4/sp/v1"
+    xmlns:cassini="http://pds.nasa.gov/pds4/mission/cassini/v1"
+
+    xsi:schemaLocation="
+    http://pds.nasa.gov/pds4/pds/v1 https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1O00.xsd
+    http://pds.nasa.gov/pds4/disp/v1 https://pds.nasa.gov/pds4/disp/v1/PDS4_DISP_1J00_1510.xsd
+    http://pds.nasa.gov/pds4/sp/v1 https://pds.nasa.gov/pds4/sp/v1/PDS4_SP_1O00_1321.xsd
+    http://pds.nasa.gov/pds4/mission/cassini/v1 https://pds.nasa.gov/pds4/mission/cassini/v1/PDS4_CASSINI_1J00_1700.xsd">
+
+    <Identification_Area>
+        <logical_identifier>urn:nasa:pds:cassini_uvis_euvfuv_cruise:data_raw:euv2000_311_20_47</logical_identifier>
+        <version_id>1.0</version_id>
+        <title>Cassini UVIS EUV Spectrum euv2000_311_20_47.dat</title>
+        <information_model_version>1.24.0.0</information_model_version>
+        <product_class>Product_Observational</product_class>
+	    <Citation_Information>
+            <publication_year>2025</publication_year>
+            <description>Cassini UVIS EUV observation obtained at 2000-11-07T20:47:16.014Z.</description>
+        </Citation_Information>
+        <Modification_History>
+            <Modification_Detail>
+                <modification_date>2025-02-07</modification_date>
+                <version_id>1.0</version_id>
+                <description>Initial PDS4 Version. Migrated from the PDS3 data product.</description>
+            </Modification_Detail>
+        </Modification_History>
+        <License_Information>
+            <name>Creative Common Public License CC0 1.0 (2024)</name>
+	    <description>Creative Commons Zero (CC0) license information</description>
+	    <Internal_Reference>
+		<lid_reference>urn:nasa:pds:system_bundle:document_pds4_standards:creative_commons_1.0.0</lid_reference>
+	        <reference_type>product_to_license</reference_type>
+	    </Internal_Reference>
+        </License_Information>
+    </Identification_Area>
+    <Observation_Area>
+        <comment>
+	    This product was migrated from the original PDS3 product by the RMS Node. Values for
+	    attributes in this label are based on the corresponding values in the PDS3 label.
+	    During the migration, we corrected a few errors in the metadata. For those products, we
+	    include additional comments in the XML labels.
+
+	    Most UVIS EUV/FUV raw data files consist of a 3-D array with two spatial dimensions (Sample, Line) and one
+	    spectral dimension (Band).
+	    For raw data files, the Line dimension is the detector's 64 pixel spatial dimension, the Band is the 1024 pixel
+	    spectral dimension, and the Sample dimension corresponds to time where each integration of the detector is arrayed
+	    in this dimension. That is, the array represents a time series of 2-D (spectral x spatial) arrays. Each array
+	    contains the number of counts received by the detector during a fixed time interval, which is specified by the
+	    integration_duration attribute. If the raw data 2-D array has a Line magnitude of 1, then the array is effectively
+	    a time series of 1-D spectra. If the raw data array also has a Sample magnitude of 1, then it is a single 1-D spectrum.
+	    The EUV and FUV channels can be configured to take data from sub-regions of the 1024x64 detector called windows,
+	    specified by the Detector_Window class.
+
+	    For each raw data file, there is a corresponding calibration file, with Sample magnitude of 1; effectively
+	    resulting in a 2-D array (the calibration matrix), with axes Line and Band.
+	    In order to calibrate a raw data object, multiply each 2-D plane in the Sample direction of the data cube
+	    by the matrix contained in the calibration cube, then multiply each element of the resulting cube
+	    by the scaling_factor (equivalent to the PDS3 'CORE_MULTIPLIER') value contained in the XML label file
+	    for the calibration cube object.
+	    The name of a calibration data file contains the name of the data file containing the raw data
+	    followed by cal_[N] where N is a version number. For example, fuv2000_278_17_10.dat is a data file and
+	    fuv2000_278_17_10_cal_2.dat is version 2 of the corresponding calibration data file. The calibration file
+	    with the highest version number is the nominal calibration.
+	    Refer to UVIS User's Guide for further details.
+
+	    Additional improved and enhanced metadata will eventually be archived by the RMS node in a separate bundle.
+	    In the meantime, enhanced metadata can be obtained at https://pds-rings.seti.org/viewmaster/metadata/COUVIS_0xxx/COUVIS_0999.
+        </comment>
+        <Time_Coordinates>
+            <start_date_time>2000-11-07T20:47:16.014Z</start_date_time>
+            <stop_date_time>2000-11-07T20:49:16.014Z</stop_date_time>
+        </Time_Coordinates>
+        <Primary_Result_Summary>
+            <purpose>Science</purpose>
+            <processing_level>Raw</processing_level>
+            <Science_Facets>
+                <wavelength_range>Ultraviolet</wavelength_range>
+                <discipline_name>Spectroscopy</discipline_name>
+                <facet1>Linear</facet1>
+            </Science_Facets>
+        </Primary_Result_Summary>
+        <Investigation_Area>
+            <name>Cassini-Huygens</name>
+            <type>Mission</type>
+            <Internal_Reference>
+                <lid_reference>urn:nasa:pds:context:investigation:mission.cassini-huygens</lid_reference>
+                <reference_type>data_to_investigation</reference_type>
+            </Internal_Reference>
+        </Investigation_Area>
+        <Observing_System>
+            <name>Cassini Orbiter Ultraviolet Imaging Spectrograph</name>
+            <Observing_System_Component>
+                <name>Cassini Orbiter</name>
+		<type>Host</type>
+                <Internal_Reference>
+                    <lid_reference>urn:nasa:pds:context:instrument_host:spacecraft.co</lid_reference>
+                    <reference_type>is_instrument_host</reference_type>
+                </Internal_Reference>
+            </Observing_System_Component>
+            <Observing_System_Component>
+                <name>Ultraviolet Imaging Spectrograph</name>
+                <type>Instrument</type>
+                <description>UVIS</description>
+                <Internal_Reference>
+                    <lid_reference>urn:nasa:pds:context:instrument:uvis.co</lid_reference>
+                    <reference_type>is_instrument</reference_type>
+                </Internal_Reference>
+            </Observing_System_Component>
+        </Observing_System>
+        <Target_Identification>
+            <name>Solar Wind</name>
+            <type>Plasma Stream</type>
+            <Internal_Reference>
+                <lid_reference>urn:nasa:pds:context:target:plasma_stream.solar_wind</lid_reference>
+                <reference_type>data_to_target</reference_type>
+            </Internal_Reference>
+        </Target_Identification>
+        <Mission_Area>
+            <cassini:Cassini>
+                <cassini:UVIS_Specific_Attributes>
+                    <cassini:mission_phase_name>Outer Cruise</cassini:mission_phase_name>
+                    <cassini:spacecraft_clock_count_partition>1</cassini:spacecraft_clock_count_partition>
+                    <cassini:spacecraft_clock_start_count>1352235501.192</cassini:spacecraft_clock_start_count>
+<!--                <cassini:spacecraft_clock_stop_count>UNK</cassini:spacecraft_clock_stop_count>  (Not provided) -->
+                    <cassini:compression_type>SQRT 9</cassini:compression_type>
+                    <cassini:high_voltage_power_supply_state>ON</cassini:high_voltage_power_supply_state>
+                    <cassini:integration_duration unit="s">120.</cassini:integration_duration>
+                    <cassini:observation_id>UNK</cassini:observation_id>
+		    <cassini:occultation_port_state>CLOSED</cassini:occultation_port_state>
+		    <cassini:odc_id>53</cassini:odc_id>
+                    <cassini:slit_state>HIGH RESOLUTION</cassini:slit_state>
+                    <cassini:start_time_doy>2000-311T20:47:16.014Z</cassini:start_time_doy>
+                    <cassini:stop_time_doy>2000-311T20:49:16.014Z</cassini:stop_time_doy>
+                    <cassini:test_pulse_state>OFF</cassini:test_pulse_state>
+                    <cassini:Detector_Window>
+                        <cassini:ul_corner_line>0</cassini:ul_corner_line>
+                        <cassini:ul_corner_band>0</cassini:ul_corner_band>
+                        <cassini:lr_corner_line>63</cassini:lr_corner_line>
+                        <cassini:lr_corner_band>1023</cassini:lr_corner_band>
+                        <cassini:band_bin>1</cassini:band_bin>
+                        <cassini:line_bin>1</cassini:line_bin>
+                    </cassini:Detector_Window>
+                </cassini:UVIS_Specific_Attributes>
+            </cassini:Cassini>
+        </Mission_Area>
+        <Discipline_Area>
+            <sp:Spectral_Characteristics>
+                <Local_Internal_Reference>
+                    <local_identifier_reference>spectrum</local_identifier_reference>
+                    <local_reference_type>spectral_characteristics_to_array_object</local_reference_type> <!-- MJTM: Since changed from Table_Binary below to Array_1D_Spectrum, have to change 'spectral_characteristics_to_table_object' -->
+                </Local_Internal_Reference>
+                <sp:spectrum_format>2D</sp:spectrum_format> <!--MJTM: testing this -->
+                <sp:value_field_name>Raw Data Number</sp:value_field_name>
+                <sp:spectral_bin_type>wavelength</sp:spectral_bin_type>
+                <sp:Field_of_View>
+                    <sp:description>
+                        There is no optical distortion in the detector, so the pointing geometry of any pixel
+                        on the detector can be computed from these numbers and the location of the center of the
+                        detector.
+                    </sp:description>
+                    <sp:Rectangular_FOV>
+                        <sp:width_angle unit="mrad">60.</sp:width_angle>
+                        <sp:length_angle unit="mrad">1.</sp:length_angle>
+                    </sp:Rectangular_FOV>
+                    <Internal_Reference>
+                        <lid_reference>urn:nasa:pds:cassini_documents:uvis:uvis_instrument_description_catalog</lid_reference>
+                        <reference_type>spectral_characteristics_to_document</reference_type>
+                    </Internal_Reference>
+                </sp:Field_of_View>
+                <sp:Bin_Description>
+                    <sp:bin_profile_description>
+                        Most UVIS EUV/FUV data files consist of a 3-D array with two spatial dimensions (Sample, Line) and one
+                        spectral dimension (Band). The array represents a time series of 2-D (spectral x spatial) arrays. Each
+                        array contains the number of counts received by the detector during a fixed time interval, which is
+                        specified by the integration_duration attribute. If the 2-D array has a Line magnitude of 1, then the
+                        array is effectively a time series of 1-D spectra. If the array also has a Sample magnitude of 1, then
+                        it is a single 1-D spectrum. The region(s) of the detector in which data was taken is defined by the
+                        Detector_Window class.
+                        Refer to UVIS User's Guide for further details.
+                    </sp:bin_profile_description>
+                    <sp:Spectral_Lookup>
+                        <sp:Bin_Center_Lookup>
+                            <Internal_Reference>
+                                <lid_reference>urn:nasa:pds:cassini_uvis_euvfuv_saturn:document:euv-wavelength-bin-centers</lid_reference>
+                                <reference_type>spectral_characteristics_to_bin_center_values</reference_type>
+                                <comment>
+                                    This file contains wavelength bin center values that were extracted from the PDS3 labels of the calibration files.
+                                    The values are the same for every EUV data product so they are captured in a single file.
+                                </comment>
+                            </Internal_Reference>
+                        </sp:Bin_Center_Lookup>
+			            <sp:Bin_Width_Lookup> <!-- Required by Spectral dictionary -->
+                            <Internal_Reference>
+                                <lid_reference>urn:nasa:pds:cassini_uvis_euvfuv_saturn:document:euv-wavelength-bin-widths</lid_reference>
+                                <reference_type>spectral_characteristics_to_bin_width_values</reference_type>
+                                <comment>
+                                    Wavelength bin widths were not provided with the original PDS3 data set.
+                                    If this information becomes available, we will place it in the indicated file and update this comment.
+                                </comment>
+                            </Internal_Reference>
+                        </sp:Bin_Width_Lookup>
+                  </sp:Spectral_Lookup>
+                </sp:Bin_Description>
+            </sp:Spectral_Characteristics>
+        </Discipline_Area>
+    </Observation_Area>
+    <Reference_List>
+        <Internal_Reference>
+	    <lid_reference>urn:nasa:pds:misc:document_cassini:pds3_cassini_uvis_ug_20180706</lid_reference>
+            <reference_type>data_to_document</reference_type>
+            <comment>The Cassini UVIS User's Guide (PDS3); DOI: 10.17189/1522470</comment>
+        </Internal_Reference>
+        <Internal_Reference>
+            <lid_reference>urn:nasa:pds:cassini_uvis_euvfuv_cruise:calibration:euv2000_311_20_47_cal_3</lid_reference>
+            <reference_type>data_to_calibration_product</reference_type>
+            <comment>
+                A calibration file associated with this observation. The version number from
+                PDS3 is embedded in the file name as "cal_2", "cal_3", "cal_4", or "cal_5".
+            </comment>
+        </Internal_Reference>
+        <Internal_Reference>
+            <lid_reference>urn:nasa:pds:cassini_uvis_euvfuv_cruise:browse_raw:euv2000_311_20_47_full</lid_reference>
+            <reference_type>data_to_browse</reference_type>
+            <comment>
+		       The browse image in PNG format that illustrates the scientific content
+	           of this data.
+            </comment>
+        </Internal_Reference>
+        <Internal_Reference>
+            <lid_reference>urn:nasa:pds:cassini_documents:uvis:uvis_instrument_description_catalog</lid_reference>
+            <reference_type>data_to_document</reference_type>
+            <comment>
+                A document providing an overview of the instrument and its components.
+                The information was extracted from the PDS3 instrument catalog file.
+            </comment>
+        </Internal_Reference>
+        <Internal_Reference>
+            <lid_reference>urn:nasa:pds:cassini_documents:uvis:uvis_pds3_sis</lid_reference>
+            <reference_type>data_to_document</reference_type>
+            <comment>
+                PDS Data Product Software Interface Specification. A document describing the UVIS PDS3 data products.
+            </comment>
+        </Internal_Reference>
+        <Internal_Reference>
+            <lid_reference>urn:nasa:pds:cassini_documents:multi-inst:cassini_final_report_vol1_full</lid_reference>
+            <reference_type>data_to_document</reference_type>
+            <comment>
+                Cassini Final Mission Report 2019: Volume 1 -- Mission Overview, Science Objectives, and Results.
+            </comment>
+        </Internal_Reference>
+        <Internal_Reference>
+            <lid_reference>urn:nasa:pds:cassini_documents:multi-inst:cassini_final_report_vol1_sec3_uvis</lid_reference>
+            <reference_type>data_to_document</reference_type>
+            <comment>
+                UVIS chapter in Section 3 (Science Mission Results) of Cassini Final Report 2019, Volume 1.
+            </comment>
+        </Internal_Reference>
+        <Internal_Reference>
+            <lid_reference>urn:nasa:pds:cassini_documents:multi-inst:cassini_final_report_vol1_sec3_icysatellites</lid_reference>
+            <reference_type>data_to_document</reference_type>
+            <comment>
+                Icy Satellites chapter in Section 3 (Science Mission Results) of Cassini Final Report 2019, Volume 1.
+            </comment>
+        </Internal_Reference>
+        <Internal_Reference>
+            <lid_reference>urn:nasa:pds:cassini_documents:multi-inst:cassini_final_report_vol1_sec3_rings</lid_reference>
+            <reference_type>data_to_document</reference_type>
+            <comment>
+                Rings chapter in Section 3 (Science Mission Results) of Cassini Final Report 2019, Volume 1.
+            </comment>
+        </Internal_Reference>
+	<Internal_Reference>
+            <lid_reference>urn:nasa:pds:cassini_documents:multi-inst:cassini_final_report_vol1_sec3_saturn</lid_reference>
+            <reference_type>data_to_document</reference_type>
+            <comment>
+                Saturn chapter in Section 3 (Science Mission Results) of Cassini Final Report 2019, Volume 1.
+            </comment>
+        </Internal_Reference>
+	<Internal_Reference>
+            <lid_reference>urn:nasa:pds:cassini_documents:multi-inst:cassini_final_report_vol1_sec3_titan</lid_reference>
+            <reference_type>data_to_document</reference_type>
+            <comment>
+                Titan chapter in Section 3 (Science Mission Results) of Cassini Final Report 2019, Volume 1.
+            </comment>
+        </Internal_Reference>
+	<Internal_Reference>
+            <lid_reference>urn:nasa:pds:cassini_documents:multi-inst:cassini_final_report_attachments</lid_reference>
+            <reference_type>data_to_document</reference_type>
+            <comment>
+                Glossary of Acronyms, References &amp; Bibliographies, Cassini Science Bibliographies chapters for
+                Cassini Final Report 2019.
+            </comment>
+        </Internal_Reference>
+	<External_Reference>
+            <doi>10.1007/s11214-004-1455-8</doi>
+            <reference_text>
+                Esposito, L. W. et al., The Cassini Ultraviolet Imaging Spectrograph Investigation,
+                Space Science Reviews, Volume 115: Issue 1-4, pp. 299-361, 2004.
+            </reference_text>
+        </External_Reference>
+        <Source_Product_External>
+            <external_source_product_identifier>CO-J-UVIS-2-SPEC-V1.2:EUV2000_311_20_47</external_source_product_identifier>
+            <reference_type>data_to_raw_source_product</reference_type>
+            <curating_facility>PDS RMS Node</curating_facility>
+            <description>
+                The original PDS3 version of this product. The form of the reference is
+                dataset_id:product_id.
+            </description>
+        </Source_Product_External>
+    </Reference_List>
+    <File_Area_Observational>
+        <File>
+            <file_name>euv2000_311_20_47.dat</file_name>
+            <creation_date_time>2012-04-15T18:48:12Z</creation_date_time>
+            <md5_checksum>29ddd3068cb48ce23564cd66bf4dd669</md5_checksum>
+        </File>
+<!-- The Spectrum -->
+        <Array_1D_Spectrum> <!-- MJTM: testing this – changed from Table_Binary, also needed to change <sp:Spectral_Characteristics> above -->
+            <name>Spectrum</name>
+            <local_identifier>spectrum</local_identifier>
+            <offset unit="byte">0</offset>
+            <axes>1</axes>
+            <axis_index_order>Last Index Fastest</axis_index_order>
+            <description>  <!--DESCRIPTION from the original PDS3 label--> 
+                    This SPECTRUM is stored as a
+              one column table with 1024 rows where each row contains a sample
+              of the spectrum. Each sample contains counts taken from a set
+              of detector columns. The mapping of sample to detector columns
+              is defined by the binning and windowing of the detector. All
+              counts were accumulated during 120 second time intervals.
+                    The purpose of this observation is to measure the HeI 584A and HI
+                Lyman Series emissions from the interplanetary/local interstellar
+                medium, while S/C is downlinking S/C may be rotating or
+                not-rotating.
+            </description>
+            <Element_Array>
+                <data_type>UnsignedMSB2</data_type>
+                <unit>counts per integration</unit> <!-- Note: Array_3D_Spectrum says "counts per bin" -->
+                <scaling_factor>1.0</scaling_factor>  <!--Equivalent to PDS3 keyword CORE_MULTIPLIER; value is always 1.-->
+                <value_offset>0.0</value_offset>      <!--Equivalent to PDS3 keyword CORE_BASE; value is always 0.-->
+            </Element_Array>
+            <Axis_Array>
+                <axis_name>Band</axis_name> 
+                <elements>1024</elements>
+                <sequence_number>1</sequence_number>
+            </Axis_Array>
+            <Special_Constants>
+                <missing_constant>65535</missing_constant>
+            </Special_Constants>
+        </Array_1D_Spectrum>
+    </File_Area_Observational>
+</Product_Observational>

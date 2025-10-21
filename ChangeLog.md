@@ -1,5 +1,10 @@
 # Spectral Discipline Namespace Change Log
 
+## Changes from v1.3.2.0.to v1.3.2.1
+
+Added rules for Array_1D_Spectrum that were overlooked in [CCB#42](https://github.com/NASA-PDS/PDS4-CCB/issues/42). 
+Added VALID and FAIL tests for Array_1D_Spectrum.
+
 ## Changes from v1.3.1.1 to v1.3.2.0
 
 ### Issue #278: Port Documentation
