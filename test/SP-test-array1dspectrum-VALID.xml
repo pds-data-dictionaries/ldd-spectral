@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1O00.sch"
     schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-model href="https://pds.nasa.gov/pds4/disp/v1/PDS4_DISP_1J00_1510.sch"
-    schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <?xml-model href="https://pds.nasa.gov/pds4/sp/v1/PDS4_SP_1O00_1321.sch"
-    schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-model href="https://pds.nasa.gov/pds4/mission/cassini/v1/PDS4_CASSINI_1J00_1700.sch"
     schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
 <!--This test label exercises:
@@ -16,15 +12,11 @@
 <Product_Observational
     xmlns="http://pds.nasa.gov/pds4/pds/v1"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:disp="http://pds.nasa.gov/pds4/disp/v1"
     xmlns:sp="http://pds.nasa.gov/pds4/sp/v1"
-    xmlns:cassini="http://pds.nasa.gov/pds4/mission/cassini/v1"
 
     xsi:schemaLocation="
     http://pds.nasa.gov/pds4/pds/v1 https://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1O00.xsd
-    http://pds.nasa.gov/pds4/disp/v1 https://pds.nasa.gov/pds4/disp/v1/PDS4_DISP_1J00_1510.xsd
-    http://pds.nasa.gov/pds4/sp/v1 https://pds.nasa.gov/pds4/sp/v1/PDS4_SP_1O00_1321.xsd
-    http://pds.nasa.gov/pds4/mission/cassini/v1 https://pds.nasa.gov/pds4/mission/cassini/v1/PDS4_CASSINI_1J00_1700.xsd">
+    http://pds.nasa.gov/pds4/sp/v1 https://pds.nasa.gov/pds4/sp/v1/PDS4_SP_1O00_1321.xsd">
 
     <Identification_Area>
         <logical_identifier>urn:nasa:pds:cassini_uvis_euvfuv_cruise:data_raw:euv2000_311_20_47</logical_identifier>
@@ -134,34 +126,6 @@
                 <reference_type>data_to_target</reference_type>
             </Internal_Reference>
         </Target_Identification>
-        <Mission_Area>
-            <cassini:Cassini>
-                <cassini:UVIS_Specific_Attributes>
-                    <cassini:mission_phase_name>Outer Cruise</cassini:mission_phase_name>
-                    <cassini:spacecraft_clock_count_partition>1</cassini:spacecraft_clock_count_partition>
-                    <cassini:spacecraft_clock_start_count>1352235501.192</cassini:spacecraft_clock_start_count>
-<!--                <cassini:spacecraft_clock_stop_count>UNK</cassini:spacecraft_clock_stop_count>  (Not provided) -->
-                    <cassini:compression_type>SQRT 9</cassini:compression_type>
-                    <cassini:high_voltage_power_supply_state>ON</cassini:high_voltage_power_supply_state>
-                    <cassini:integration_duration unit="s">120.</cassini:integration_duration>
-                    <cassini:observation_id>UNK</cassini:observation_id>
-		    <cassini:occultation_port_state>CLOSED</cassini:occultation_port_state>
-		    <cassini:odc_id>53</cassini:odc_id>
-                    <cassini:slit_state>HIGH RESOLUTION</cassini:slit_state>
-                    <cassini:start_time_doy>2000-311T20:47:16.014Z</cassini:start_time_doy>
-                    <cassini:stop_time_doy>2000-311T20:49:16.014Z</cassini:stop_time_doy>
-                    <cassini:test_pulse_state>OFF</cassini:test_pulse_state>
-                    <cassini:Detector_Window>
-                        <cassini:ul_corner_line>0</cassini:ul_corner_line>
-                        <cassini:ul_corner_band>0</cassini:ul_corner_band>
-                        <cassini:lr_corner_line>63</cassini:lr_corner_line>
-                        <cassini:lr_corner_band>1023</cassini:lr_corner_band>
-                        <cassini:band_bin>1</cassini:band_bin>
-                        <cassini:line_bin>1</cassini:line_bin>
-                    </cassini:Detector_Window>
-                </cassini:UVIS_Specific_Attributes>
-            </cassini:Cassini>
-        </Mission_Area>
         <Discipline_Area>
             <sp:Spectral_Characteristics>
                 <Local_Internal_Reference>
