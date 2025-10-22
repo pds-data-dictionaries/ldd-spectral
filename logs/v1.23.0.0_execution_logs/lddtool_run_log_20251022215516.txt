@@ -1,9 +1,9 @@
 
 >>  INFO LDDTOOL Version: 15.3.0
->>  INFO IM Version Id: 1.24.0.0
+>>  INFO IM Version Id: 1.23.0.0
 >>  INFO IM Namespace Id: pds
 >>  INFO IM Label Version Id: 1.0
->>  INFO Date: Wed Oct 22 21:27:49 UTC 2025
+>>  INFO Date: Wed Oct 22 21:55:18 UTC 2025
 >>  INFO PARENT_DIR: /tmp/lddtool-15.3.0/Data/
 
 >>> INFO Init:  - Config.Properties Namespace Id Found:sp
@@ -71,18 +71,19 @@
 
 Input:
 
-     - IM Version: 1O00
+     - IM Version: 1N00
      - PDS4 Flag: true
      - LDD Flag: true
+     - IM Version: true
      - Export JSON Flag: true
 
      - Ingest LDD(s): /home/runner/work/ldd-spectral/ldd-spectral/src/PDS4_SPECTRAL_IngestLDD.xml
 
 Output:
 
-     - ./PDS4_SP_1O00_1321.xsd
-     - ./PDS4_SP_1O00_1321.sch
-     - ./PDS4_SP_1O00_1321.xml
-     - ./export/PDS4_PDS_1O00.JSON
+     - ./PDS4_SP_1N00_1321.xsd
+     - ./PDS4_SP_1N00_1321.sch
+     - ./PDS4_SP_1N00_1321.xml
+     - ./export/PDS4_PDS_1N00.JSON
 
 >>  INFO Exit(0)
