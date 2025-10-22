@@ -12,64 +12,13 @@
     xmlns:sp="http://pds.nasa.gov/pds4/sp/v1">
 
     <Identification_Area>
-        <logical_identifier>urn:nasa:pds:cassini_uvis_euvfuv_cruise:data_raw:euv2000_311_20_47</logical_identifier>
+        <logical_identifier>urn:nasa:pds:bundle:collection:product</logical_identifier>
         <version_id>1.0</version_id>
-        <title>Cassini UVIS EUV Spectrum euv2000_311_20_47.dat</title>
+        <title>Test label for Array_1D_Spectrum – Fail </title>
         <information_model_version>1.24.0.0</information_model_version>
         <product_class>Product_Observational</product_class>
-	    <Citation_Information>
-            <publication_year>2025</publication_year>
-            <description>Cassini UVIS EUV observation obtained at 2000-11-07T20:47:16.014Z.</description>
-        </Citation_Information>
-        <Modification_History>
-            <Modification_Detail>
-                <modification_date>2025-02-07</modification_date>
-                <version_id>1.0</version_id>
-                <description>Initial PDS4 Version. Migrated from the PDS3 data product.</description>
-            </Modification_Detail>
-        </Modification_History>
-        <License_Information>
-            <name>Creative Common Public License CC0 1.0 (2024)</name>
-	    <description>Creative Commons Zero (CC0) license information</description>
-	    <Internal_Reference>
-		<lid_reference>urn:nasa:pds:system_bundle:document_pds4_standards:creative_commons_1.0.0</lid_reference>
-	        <reference_type>product_to_license</reference_type>
-	    </Internal_Reference>
-        </License_Information>
     </Identification_Area>
     <Observation_Area>
-        <comment>
-	    This product was migrated from the original PDS3 product by the RMS Node. Values for
-	    attributes in this label are based on the corresponding values in the PDS3 label.
-	    During the migration, we corrected a few errors in the metadata. For those products, we
-	    include additional comments in the XML labels.
-
-	    Most UVIS EUV/FUV raw data files consist of a 3-D array with two spatial dimensions (Sample, Line) and one
-	    spectral dimension (Band).
-	    For raw data files, the Line dimension is the detector's 64 pixel spatial dimension, the Band is the 1024 pixel
-	    spectral dimension, and the Sample dimension corresponds to time where each integration of the detector is arrayed
-	    in this dimension. That is, the array represents a time series of 2-D (spectral x spatial) arrays. Each array
-	    contains the number of counts received by the detector during a fixed time interval, which is specified by the
-	    integration_duration attribute. If the raw data 2-D array has a Line magnitude of 1, then the array is effectively
-	    a time series of 1-D spectra. If the raw data array also has a Sample magnitude of 1, then it is a single 1-D spectrum.
-	    The EUV and FUV channels can be configured to take data from sub-regions of the 1024x64 detector called windows,
-	    specified by the Detector_Window class.
-
-	    For each raw data file, there is a corresponding calibration file, with Sample magnitude of 1; effectively
-	    resulting in a 2-D array (the calibration matrix), with axes Line and Band.
-	    In order to calibrate a raw data object, multiply each 2-D plane in the Sample direction of the data cube
-	    by the matrix contained in the calibration cube, then multiply each element of the resulting cube
-	    by the scaling_factor (equivalent to the PDS3 'CORE_MULTIPLIER') value contained in the XML label file
-	    for the calibration cube object.
-	    The name of a calibration data file contains the name of the data file containing the raw data
-	    followed by cal_[N] where N is a version number. For example, fuv2000_278_17_10.dat is a data file and
-	    fuv2000_278_17_10_cal_2.dat is version 2 of the corresponding calibration data file. The calibration file
-	    with the highest version number is the nominal calibration.
-	    Refer to UVIS User's Guide for further details.
-
-	    Additional improved and enhanced metadata will eventually be archived by the RMS node in a separate bundle.
-	    In the meantime, enhanced metadata can be obtained at https://pds-rings.seti.org/viewmaster/metadata/COUVIS_0xxx/COUVIS_0999.
-        </comment>
         <Time_Coordinates>
             <start_date_time>2000-11-07T20:47:16.014Z</start_date_time>
             <stop_date_time>2000-11-07T20:49:16.014Z</stop_date_time>
@@ -186,87 +135,6 @@
             <reference_type>data_to_document</reference_type>
             <comment>The Cassini UVIS User's Guide (PDS3); DOI: 10.17189/1522470</comment>
         </Internal_Reference>
-        <Internal_Reference>
-            <lid_reference>urn:nasa:pds:cassini_uvis_euvfuv_cruise:calibration:euv2000_311_20_47_cal_3</lid_reference>
-            <reference_type>data_to_calibration_product</reference_type>
-            <comment>
-                A calibration file associated with this observation. The version number from
-                PDS3 is embedded in the file name as "cal_2", "cal_3", "cal_4", or "cal_5".
-            </comment>
-        </Internal_Reference>
-        <Internal_Reference>
-            <lid_reference>urn:nasa:pds:cassini_uvis_euvfuv_cruise:browse_raw:euv2000_311_20_47_full</lid_reference>
-            <reference_type>data_to_browse</reference_type>
-            <comment>
-		       The browse image in PNG format that illustrates the scientific content
-	           of this data.
-            </comment>
-        </Internal_Reference>
-        <Internal_Reference>
-            <lid_reference>urn:nasa:pds:cassini_documents:uvis:uvis_instrument_description_catalog</lid_reference>
-            <reference_type>data_to_document</reference_type>
-            <comment>
-                A document providing an overview of the instrument and its components.
-                The information was extracted from the PDS3 instrument catalog file.
-            </comment>
-        </Internal_Reference>
-        <Internal_Reference>
-            <lid_reference>urn:nasa:pds:cassini_documents:uvis:uvis_pds3_sis</lid_reference>
-            <reference_type>data_to_document</reference_type>
-            <comment>
-                PDS Data Product Software Interface Specification. A document describing the UVIS PDS3 data products.
-            </comment>
-        </Internal_Reference>
-        <Internal_Reference>
-            <lid_reference>urn:nasa:pds:cassini_documents:multi-inst:cassini_final_report_vol1_full</lid_reference>
-            <reference_type>data_to_document</reference_type>
-            <comment>
-                Cassini Final Mission Report 2019: Volume 1 -- Mission Overview, Science Objectives, and Results.
-            </comment>
-        </Internal_Reference>
-        <Internal_Reference>
-            <lid_reference>urn:nasa:pds:cassini_documents:multi-inst:cassini_final_report_vol1_sec3_uvis</lid_reference>
-            <reference_type>data_to_document</reference_type>
-            <comment>
-                UVIS chapter in Section 3 (Science Mission Results) of Cassini Final Report 2019, Volume 1.
-            </comment>
-        </Internal_Reference>
-        <Internal_Reference>
-            <lid_reference>urn:nasa:pds:cassini_documents:multi-inst:cassini_final_report_vol1_sec3_icysatellites</lid_reference>
-            <reference_type>data_to_document</reference_type>
-            <comment>
-                Icy Satellites chapter in Section 3 (Science Mission Results) of Cassini Final Report 2019, Volume 1.
-            </comment>
-        </Internal_Reference>
-        <Internal_Reference>
-            <lid_reference>urn:nasa:pds:cassini_documents:multi-inst:cassini_final_report_vol1_sec3_rings</lid_reference>
-            <reference_type>data_to_document</reference_type>
-            <comment>
-                Rings chapter in Section 3 (Science Mission Results) of Cassini Final Report 2019, Volume 1.
-            </comment>
-        </Internal_Reference>
-	<Internal_Reference>
-            <lid_reference>urn:nasa:pds:cassini_documents:multi-inst:cassini_final_report_vol1_sec3_saturn</lid_reference>
-            <reference_type>data_to_document</reference_type>
-            <comment>
-                Saturn chapter in Section 3 (Science Mission Results) of Cassini Final Report 2019, Volume 1.
-            </comment>
-        </Internal_Reference>
-	<Internal_Reference>
-            <lid_reference>urn:nasa:pds:cassini_documents:multi-inst:cassini_final_report_vol1_sec3_titan</lid_reference>
-            <reference_type>data_to_document</reference_type>
-            <comment>
-                Titan chapter in Section 3 (Science Mission Results) of Cassini Final Report 2019, Volume 1.
-            </comment>
-        </Internal_Reference>
-	<Internal_Reference>
-            <lid_reference>urn:nasa:pds:cassini_documents:multi-inst:cassini_final_report_attachments</lid_reference>
-            <reference_type>data_to_document</reference_type>
-            <comment>
-                Glossary of Acronyms, References &amp; Bibliographies, Cassini Science Bibliographies chapters for
-                Cassini Final Report 2019.
-            </comment>
-        </Internal_Reference>
 	<External_Reference>
             <doi>10.1007/s11214-004-1455-8</doi>
             <reference_text>
@@ -274,21 +142,10 @@
                 Space Science Reviews, Volume 115: Issue 1-4, pp. 299-361, 2004.
             </reference_text>
         </External_Reference>
-        <Source_Product_External>
-            <external_source_product_identifier>CO-J-UVIS-2-SPEC-V1.2:EUV2000_311_20_47</external_source_product_identifier>
-            <reference_type>data_to_raw_source_product</reference_type>
-            <curating_facility>PDS RMS Node</curating_facility>
-            <description>
-                The original PDS3 version of this product. The form of the reference is
-                dataset_id:product_id.
-            </description>
-        </Source_Product_External>
     </Reference_List>
     <File_Area_Observational>
         <File>
-            <file_name>euv2000_311_20_47.dat</file_name>
-            <creation_date_time>2012-04-15T18:48:12Z</creation_date_time>
-            <md5_checksum>29ddd3068cb48ce23564cd66bf4dd669</md5_checksum>
+            <file_name>No.Data</file_name>
         </File>
 <!-- The Spectrum -->
         <Array_1D_Spectrum> <!-- MJTM: testing this – changed from Table_Binary, also needed to change <sp:Spectral_Characteristics> above -->
