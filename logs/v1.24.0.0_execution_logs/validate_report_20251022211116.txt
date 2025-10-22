@@ -3,13 +3,13 @@ PDS Validate Tool Report
 
 Configuration:
    Version     3.7.1
-   Date        2025-10-21T21:45:28Z
+   Date        2025-10-22T21:11:16Z
 
 Parameters:
-   Targets                        [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/8d16b760d44fb5304793bf312aca9af5d9efbef0/1.24.0.0/PDS4_SP_1O00_1321.xml]
+   Targets                        [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/5ee30fed37e59f62ff24d308d276b047f8ec2e94/1.24.0.0/PDS4_SP_1O00_1321.xml]
    Rule Type                      pds4.label
-   User Specified Schemas         [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/8d16b760d44fb5304793bf312aca9af5d9efbef0/1.24.0.0/PDS4_SP_1O00_1321.xsd, file:/tmp/PDS4_PDS_1O00.xsd]
-   User Specified Schematrons     [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/8d16b760d44fb5304793bf312aca9af5d9efbef0/1.24.0.0/PDS4_SP_1O00_1321.sch, file:/tmp/PDS4_PDS_1O00.sch]
+   User Specified Schemas         [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/5ee30fed37e59f62ff24d308d276b047f8ec2e94/1.24.0.0/PDS4_SP_1O00_1321.xsd, file:/tmp/PDS4_PDS_1O00.xsd]
+   User Specified Schematrons     [file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/5ee30fed37e59f62ff24d308d276b047f8ec2e94/1.24.0.0/PDS4_SP_1O00_1321.sch, file:/tmp/PDS4_PDS_1O00.sch]
    Severity Level                 WARNING
    Recurse Directories            true
    File Filters Used              [*.xml, *.XML]
@@ -22,7 +22,7 @@ Parameters:
 
 Product Level Validation Results
 
-  PASS: file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/8d16b760d44fb5304793bf312aca9af5d9efbef0/1.24.0.0/PDS4_SP_1O00_1321.xml
+  PASS: file:/home/runner/work/ldd-spectral/ldd-spectral/build/development/5ee30fed37e59f62ff24d308d276b047f8ec2e94/1.24.0.0/PDS4_SP_1O00_1321.xml
         1 product validation(s) completed
 
 Summary:
@@ -45,5 +45,5 @@ Summary:
 
 
 End of Report
-Completed execution in 6614 ms
+Completed execution in 6609 ms
 
