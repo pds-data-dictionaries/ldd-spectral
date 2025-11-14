@@ -4,7 +4,7 @@
 <Ingest_LDD xmlns="http://pds.nasa.gov/pds4/pds/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xsi:schemaLocation="http://pds.nasa.gov/pds4/pds/v1 http://pds.nasa.gov/pds4/pds/v1/PDS4_PDS_1O00.xsd">
     <name>Spectral Discipline Dictionary</name>
-    <ldd_version_id>1.3.2.1</ldd_version_id>
+    <ldd_version_id>1.3.3.0</ldd_version_id>
     <dictionary_type>Discipline</dictionary_type>
     <full_name>Anne Raugh</full_name>
     <steward_id>sbn</steward_id>
@@ -42,13 +42,32 @@
           2024-04-01 cgobat Version 1.3.2.0  Add missing Axis_Bin_Set_Energy and Uniformly_Sampled_Energy as
                                              permissible options within the Bin_Description class.
           2024-04-02  ACR   Version 1.3.2.0  Clearing some additional issues from the queue:
-                                             Issue #275: Conside units when comparing values of first_center_*
+                                             Issue #275: Considee units when comparing values of first_center_*
                                                 and last_center_*
-          2025-10-21  MJTM  Version 1.3.2.1  Bug fix – add missing schematron rules for Array_1D_Spectrum 
+          2025-10-21  MJTM  Version 1.3.2.1  Bug fix - add missing schematron rules for Array_1D_Spectrum 
                                              (Overlooked in CCB#42)
-
+          2025-11-14  ACR   Version 1.3.3.0  Various modifications based on review of the 2025-10-21 (issue #340)
+                                             changes:
+                                             o Bumped version number because the 2025-10-21 change is not
+                                               a bugfix in this namespace, it's added support for a new object.
+                                             o Replaced non-ASCII em-dash character in 2025-10-21 comment to 
+                                               remove validation error on this file.
+                                             o Note that no "new" Schematron rules were added for the 2025-10-21
+                                               change - existing rules were modified to include Array_1D_Spectrum
+                                               references. Specifically:
+                                               - DD_Rule "sc_lir" 
+                                               - DD_Rule "frmt1d_field" in several Rule_Statements
+                                             o References to 1D spectra were systematically chased down and 
+                                               updated to include Array_1D_Spectrum as well as table formats 
+                                               were needed in attribute and standard value definitions.
+                                             o Modified the "frmt1d_field" DD_Rule to properly restrict
+                                               the sp:value_field_name element to table-types only in the
+                                               '1D' case. Also tested and added to regression test label.
+                                             o Fixed the typo in the sp:absolute_calibration_star_name definition
+                                               reported back in April (issue #326).
+                                             
     </comment>
-    <last_modification_date_time>2025-10-21</last_modification_date_time>
+    <last_modification_date_time>2025-11-14</last_modification_date_time>
     <!--
         This file also contains extensive comments to illustrate various techniques available to those
         creating input IngestLDD files for local dicitionaries.  
@@ -164,7 +183,7 @@
 
     <DD_Attribute>
         <name>absolute_calibration_star_name</name>
-        <version_id>1.0</version_id>
+        <version_id>1.1</version_id>
         <local_identifier>absolute_calibration_star_name</local_identifier>
         <nillable_flag>false</nillable_flag>
         <submitter_name>ACR</submitter_name>
@@ -172,7 +191,7 @@
             The absolute_calibration_star_name attribute provides a name in a standard format 
             (i.e., one that is recognized by the SIMBAD system) for the star used to reduce
             the raw spectral data to the units presented in this spectrum.  This is the analog
-            to solar_calibration_star_name for non-reflectance spectra.
+            to solar_analog_star_name for non-reflectance spectra.
         </definition>
         <DD_Value_Domain>
             <enumeration_flag>false</enumeration_flag>
@@ -827,7 +846,7 @@
 
     <DD_Attribute>
         <name>spectrum_format</name>
-        <version_id>1.0</version_id>
+        <version_id>1.1</version_id>
         <local_identifier>spectrum_format</local_identifier>
         <nillable_flag>false</nillable_flag>
         <submitter_name>ACR</submitter_name>
@@ -842,9 +861,12 @@
             <DD_Permissible_Value>
                 <value>1D</value>
                 <value_meaning>
-                    Linear spectrum - each row of the table contains the information
-                    for one bin (one point) on the spectrum.  You must specify the
-                    name of the field containing the intensity information.
+                    Linear spectrum - The spectrum is presented either as a table,
+                    in which each row contains the information for one bin (one 
+                    point) of the sprectrum, which might include fields for bin
+                    parameters (and errors and related information) as well as the
+                    spectral measurement; or as a 1D array, in which each element 
+                    contains one spectral point measurement. 
                 </value_meaning>
             </DD_Permissible_Value>
             <DD_Permissible_Value>
@@ -901,16 +923,21 @@
 
     <DD_Attribute>
         <name>value_field_name</name>
-        <version_id>1.0</version_id>
+        <version_id>1.1</version_id>
         <local_identifier>value_field_name</local_identifier>
         <nillable_flag>false</nillable_flag>
         <submitter_name>ACR</submitter_name>
         <definition>
-            The value_field_name attribute is required for 1D (linear) spectra.
-            1D spectra are presented as a table, where each row presents one 
-            point in the spectrum.  This field must contain a string corresponding
+            The value_field_name attribute is required for 1D (linear) spectra
+            presented as a table in which each row presents one 
+            point in the spectrum, often with additional fields like error bars 
+            and bin parameters.  This field must contain a string corresponding
             to the 'name' attribute of the table field that contains the 
-            spectral value.
+            observed spectral value.
+            
+            The value_field_name is prohibited for 1D spectra presented as 1D 
+            array objects (Array_1D_Spectrum), because the array elements must
+            contain the spectral observations and only the spectral observations.
         </definition>
         <DD_Value_Domain>
             <enumeration_flag>false</enumeration_flag>
@@ -1882,7 +1909,7 @@
         <submitter_name>ACR</submitter_name>
         <definition>
             The Spectral_Lookup class references either specific Fields included
-            in a spectral table (for 1D and tabulated spectra), or a 2-dimensional 
+            in a spectral table (for table-based spectra), or a 
             lookup map providing spectral characteristics for a corresponding 
             spectral Array object.  In the latter case, the referenced lookup map 
             may either be to the referencing product, or an external stand-alone 
@@ -2746,9 +2773,9 @@
         <local_identifier>Spectral_Characteristics</local_identifier>
         <submitter_name>ACR</submitter_name>
         <definition>
-            The Spectral_Characteristics class provides information about the 
-            spectral characteristics of a 1D, 2D, or 3D spectral data object.
-            It is note used for tabulated spectra - tables in which each row
+            The Spectral_Characteristics class provides information needed to programmatically 
+            access the spectral characterics and parameters of a spectral observation
+            presented as either a table or an array of 1-3 dimensions.
         </definition>
         <!--
             Dictionary Preparation Hint - Wrapper Classes as Entry Points
@@ -3155,7 +3182,7 @@
         </DD_Rule_Statement>
         <DD_Rule_Statement>
             <rule_type>Assert</rule_type>
-            <rule_test>if (string(node()) = '1D') then ($objtype = ('Array_1D_Spectrum', 'Table_Character','Table_Binary','Table_Delimited')) else true()</rule_test>
+            <rule_test>if (string(node()) = '1D') then ($objtype = ('Array_1D_Spectrum','Table_Character','Table_Binary','Table_Delimited')) else true()</rule_test>
             <rule_message>sp:spectrum_format of '1D' must be used with an Array_1D_Spectrum-type object or a table-type object.</rule_message>
         </DD_Rule_Statement>
         <DD_Rule_Statement>
@@ -3177,21 +3204,33 @@
                 the name of the field in the table row (or Group_Field) that contains the measurement 
                 via <value_field_name>.
                 
+                In version 1.3.3.0, support for Array_1D_Spectrum objects was added, which introduced
+                a complication here because arrays don't have fields - so this requirement cannot be
+                applied to Array_1D_Spectrum objects even though they have a spectral type of "1D".
+                
                 If this isn't a 1D or Tabulated-Grouped spectrum, then a value_field_name is prohibited.
                 
-                if (string(node()) = ('1D', 'Tabulated-Parameter Groups', 'Tabulated-Point Group')
+                if ((string(node()) = ('Tabulated-Parameter Groups', 'Tabulated-Point Group')) 
                                               gets the value of the context node, converts it 
                                               to a string, and compares it to each item in the list.
-                                              If it matches any of then, the result is "true".
+                                              If it matches any of then, the result is "true", which 
+                                              covers the table formats...
+                    or ((string(node()) = ('1D'))) and not($objtype = ('Array_1D_Spectrum')))
+                                              checks the '1D' case to make sure it is referring to a
+                                              table object by checking the $objtype variable set at the 
+                                              top of the DD_Rule class.
                 then (parent::node()/sp:value_field_name)
-                                              the parent of the context node (i.e., this 
-                                              Spectral_Characteristics class) must have a
-                                              sp:value_field_name attribute.
+                                              Then the parent of the context node (i.e., this 
+                                              Spectral_Characteristics class) will be a table with
+                                              Fields and therefore must have a sp:value_field_name attribute
+                                              to identify which Field class describes the spectral
+                                              observations value.
                 else not(parent::node()/sp:value_field_name)
-                                              otherwise (the type isn't one of the listed types) it better not
+                                              otherwise it better not, because arrays don't have Fields.
+                                              
             -->
-            <rule_test>if (string(node()) = ('1D', 'Tabulated-Parameter Groups', 'Tabulated-Point Group')) then (parent::node()/sp:value_field_name) else not(parent::node()/sp:value_field_name)</rule_test>
-            <rule_message>sp:value_field_name is required when sp:spectrum_format is '1D', 'Tabulated-Parameter Groups', or 'Tabulated-Point Group' and prohibited otherwise.</rule_message>
+            <rule_test>if ((string(node()) = ('Tabulated-Parameter Groups', 'Tabulated-Point Group')) or ((string(node()) = ('1D'))) and not($objtype = ('Array_1D_Spectrum'))) then (parent::node()/sp:value_field_name) else not(parent::node()/sp:value_field_name)</rule_test>
+            <rule_message>sp:value_field_name is required when sp:spectrum_format is 'Tabulated-Parameter Groups', 'Tabulated-Point Group', or '1D' with an associated table object, and prohibited otherwise.</rule_message>
         </DD_Rule_Statement>
         <DD_Rule_Statement>
             <rule_type>Assert</rule_type>

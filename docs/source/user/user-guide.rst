@@ -81,11 +81,14 @@ Attributes of <sp:Spectral_Characteristics>
   This required attribute indicates the format of the spectral data. It should agreed
   with the format listed in the label *<pds:Primary_Result_Summary>* class, which in turn should
   include *<pds:Science_Facets>* with a *<pds:discipline>* of **Spectroscopy** and a
-  *<pds:facet1>* value that is consistent with one of these supported format values:
+  *<pds:facet1>* value that is consistent with one of the standard values described below.
+  (Use of the *<pds:Primary_Result_Summary>* and its subclasses is not required, but including them with accurate
+  values improves the findability of spectral data by identifying spectral observations and providing
+  a high-level description of format.)
   
   **1D**
-    The spectrum is a single, linear spectrum presented as a table object in which each row contains
-    the information about one point (i.e., bin) in the spectrun. In this case
+    The spectrum is a single, linear spectrum presented as either a table object in which each row contains
+    the information about one point (i.e., bin) in the spectrum, or as an *Array_1D_Spectrum* object. In this case
     *<pds:facet1>* should have a value of **Linear**.
   **2D**
     The spectrum is defined using an *Array_2D_Spectrum* object, or possible as an
@@ -119,14 +122,15 @@ They can be specified explicitly or referenced in other data objects or products
 .. _sp_value_field_name:
     
 <sp:value_field_name>
-  This attribute is required to be present when *<sp:spectrum_format>* is one of **1D**,
-  **Tabulated-Parameter Groups**, or **Tabulated-Point Group**. (It is prohibited for other
-  formats.) In these formats, the field containing the spectral values has a single field
+  This attribute is required to be present when *<sp:spectrum_format>* is one of 
+  **Tabulated-Parameter Groups**, **Tabulated-Point Group**, or **1D** associated with a table
+  typs. (It is prohibited for other formats, including *Array_1D_Spectrum*.) 
+  In these tabular formats, the field containing the spectral values has a single field
   definition, which should contain a unique name. The value of that *<pds:name>* attribute
   is supplied here.
   
-  *Note that in the names used to identify fields should be unique and devoid of problematic
-  characters like '<', '>', and '&'. Alphanumerics only, for best results.*
+  *Note that the names used to identify fields should be unique and devoid of problematic
+  characters like '<', '>', and '&'. Alphanumerics only is recommended for best results.*
 
 .. _sp_value_field_number_list:
 

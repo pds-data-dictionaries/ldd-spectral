@@ -1,9 +1,18 @@
 # Spectral Discipline Namespace Change Log
 
-## Changes from v1.3.2.0.to v1.3.2.1
+## Changes from v1.3.2.0.to v1.3.3.0
 
-Added rules for Array_1D_Spectrum that were overlooked in [CCB#42](https://github.com/NASA-PDS/PDS4-CCB/issues/42). 
-Added VALID and FAIL tests for Array_1D_Spectrum.
+### Issue #346: Array_1D_Spectrum
+
+Added support for Array_1D_Spectrum as needed to implement [CCB#42](https://github.com/NASA-PDS/PDS4-CCB/issues/42). 
+Added regression test for associated Schematron changes.
+
+### Minor Mods
+
+Fixed the attribute cross-reference typo in the *sp:absolute_calibration_star_name* description
+and noted in issue #326.
+
+Fixed some additional minor typos noted in passing.
 
 ## Changes from v1.3.1.1 to v1.3.2.0
 
