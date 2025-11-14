@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- 
-    This label should produce 3 errors in validation.
-
-    This label demonstrates that in the Uniformly_Sampled class, the units of first_center and 
-    last_center bin must be identical (so that the order can be properly checked). This is the 
-    failure case, and should produce three "mismatched units" failures - one for each 
-    Spectral_Characteristics class.
+    This label demonstrates implementation of support for the Array_1D_Spectrum format. This format
+    overlaps with the tabular 1D formats, so it is shown in context with a 2D array and a 1D table
+    spectrum to demonstrate that the two '1D' cases are being properly distinguished. This is needed
+    for reliable programmatic support.
+    
+    This is the VALID case and should produce no errors.
+    
+    FOR TESTING ONLY. DO NOT USE THIS FILE AS A LABEL TEMPLATE.
 -->
 
 <Product_Observational xmlns="http://pds.nasa.gov/pds4/pds/v1"
@@ -15,8 +17,8 @@
     <Identification_Area>
         <logical_identifier>urn:nasa:pds:bundle:collection:product</logical_identifier>
         <version_id>1.0</version_id>
-        <title>Test Label 1 for Spectral Dictionary - Valid Label</title>
-        <information_model_version>[IM VERSION]</information_model_version>
+        <title>Test Label for addition of Array_1D_Spectrum support to Spectral Dictionary - Valid Label</title>
+        <information_model_version>[IM_VERSION]</information_model_version>
         <product_class>Product_Observational</product_class>
     </Identification_Area>
     
@@ -47,50 +49,7 @@
         
         <Discipline_Area>
             
-            <!-- Uniformly Sampled Array Axis - Energy -->
-            
-            <sp:Spectral_Characteristics>
-                <Local_Internal_Reference>
-                    <local_identifier_reference>Spectrum2D</local_identifier_reference>
-                    <local_reference_type>spectral_characteristics_to_array_object</local_reference_type>
-                </Local_Internal_Reference>
-                <sp:spectrum_format>2D</sp:spectrum_format>
-                <sp:spectral_bin_type>energy</sp:spectral_bin_type>
-                
-                <sp:Observation_Parameters>
-                    <sp:number_of_exposures>1</sp:number_of_exposures>
-                    <sp:net_integration_time unit="s">100</sp:net_integration_time>
-                </sp:Observation_Parameters>
-                
-                <sp:Field_of_View>
-                    <sp:description>
-                        This FOV in this case is a simple slit.  
-                    </sp:description>
-                    <sp:Rectangular_FOV>
-                        <sp:width_angle unit="deg">0.01</sp:width_angle>
-                        <sp:length_angle unit="deg">0.1</sp:length_angle>
-                        <sp:celestial_north_position_angle unit="deg">47.6</sp:celestial_north_position_angle>
-                        <sp:body_positive_pole_position_angle unit="deg">90</sp:body_positive_pole_position_angle>
-                    </sp:Rectangular_FOV>
-                </sp:Field_of_View>
-                
-                <sp:Bin_Description>
-                    <sp:bin_profile_description>
-                        Bin widths are FWHM as described in the instrument documentation.
-                    </sp:bin_profile_description>
-                    <sp:Uniformly_Sampled_Energy>
-                        <sp:axis_name>Sample</sp:axis_name>
-                        <sp:sampling_interval_energy unit="eV">100</sp:sampling_interval_energy>
-                        <sp:sampling_scale>Linear</sp:sampling_scale>
-                        <sp:bin_width_energy unit="eV">100</sp:bin_width_energy>
-                        <sp:first_center_energy unit="eV">3550</sp:first_center_energy>
-                        <sp:last_center_energy unit="keV">3600</sp:last_center_energy>
-                    </sp:Uniformly_Sampled_Energy>
-                </sp:Bin_Description>
-                
-            </sp:Spectral_Characteristics>
-            
-            <!-- Uniformly Sampled Array Axis - Frequency -->
+            <!-- Array 2D Spectrum (Uniformly Sampled Bins) -->
             
             <sp:Spectral_Characteristics>
                 <Local_Internal_Reference>
@@ -126,15 +85,58 @@
                         <sp:sampling_interval_frequency unit="Hz">100</sp:sampling_interval_frequency>
                         <sp:sampling_scale>Linear</sp:sampling_scale>
                         <sp:bin_width_frequency unit="Hz">100</sp:bin_width_frequency>
-                        <sp:first_center_frequency unit="kHz">3550</sp:first_center_frequency>
+                        <sp:first_center_frequency unit="Hz">3550</sp:first_center_frequency>
                         <sp:last_center_frequency unit="Hz">3600</sp:last_center_frequency>
                     </sp:Uniformly_Sampled_Frequency>
                 </sp:Bin_Description>
                 
             </sp:Spectral_Characteristics>
             
+            <!-- 1D Array spectrum, uniformaly sampled bins -->
+
+            <sp:Spectral_Characteristics>
+                <Local_Internal_Reference>
+                    <local_identifier_reference>Spectrum1D</local_identifier_reference>
+                    <local_reference_type>spectral_characteristics_to_array_object</local_reference_type>
+                </Local_Internal_Reference>
+                <sp:spectrum_format>1D</sp:spectrum_format>
+                <sp:spectral_bin_type>wavelength</sp:spectral_bin_type>
+                
+                <sp:Observation_Parameters>
+                    <sp:number_of_exposures>1</sp:number_of_exposures>
+                    <sp:net_integration_time unit="s">100</sp:net_integration_time>
+                </sp:Observation_Parameters>
+                
+                <sp:Field_of_View>
+                    <sp:description>
+                        This FOV in this case is a simple slit.  
+                    </sp:description>
+                    <sp:Rectangular_FOV>
+                        <sp:width_angle unit="deg">0.01</sp:width_angle>
+                        <sp:length_angle unit="deg">0.1</sp:length_angle>
+                        <sp:celestial_north_position_angle unit="deg">47.6</sp:celestial_north_position_angle>
+                        <sp:body_positive_pole_position_angle unit="deg">90</sp:body_positive_pole_position_angle>
+                    </sp:Rectangular_FOV>
+                </sp:Field_of_View>
+                
+                <sp:Bin_Description>
+                    <sp:bin_profile_description>
+                        Bin widths are FWHM as described in the instrument documentation.
+                    </sp:bin_profile_description>
+                    <sp:Uniformly_Sampled_Wavelength>
+                        <sp:axis_name>Sample</sp:axis_name>
+                        <sp:sampling_interval_wavelength unit="nm">100</sp:sampling_interval_wavelength>
+                        <sp:sampling_scale>Linear</sp:sampling_scale>
+                        <sp:bin_width_wavelength unit="nm">100</sp:bin_width_wavelength>
+                        <sp:first_center_wavelength unit="nm">3550</sp:first_center_wavelength>
+                        <sp:last_center_wavelength unit="nm">3600</sp:last_center_wavelength>
+                    </sp:Uniformly_Sampled_Wavelength>
+                </sp:Bin_Description>
+                
+            </sp:Spectral_Characteristics>
             
-            <!-- Telescope Spectrum, uniformly sampled bins -->
+            
+            <!-- 1D Table, uniformly sampled bins -->
             
             <sp:Spectral_Characteristics>
                 <Local_Internal_Reference>
@@ -178,9 +180,9 @@
                         <sp:axis_name>Row</sp:axis_name>
                         <sp:sampling_interval_wavelength unit="nm">100</sp:sampling_interval_wavelength>
                         <sp:sampling_scale>Linear</sp:sampling_scale>
-                        <sp:bin_width_wavelength unit="micrometer">10</sp:bin_width_wavelength>
+                        <sp:bin_width_wavelength unit="nm">10</sp:bin_width_wavelength>
                         <sp:first_center_wavelength unit="nm">350</sp:first_center_wavelength>
-                        <sp:last_center_wavelength unit="Angstrom">480</sp:last_center_wavelength>
+                        <sp:last_center_wavelength unit="nm">480</sp:last_center_wavelength>
                     </sp:Uniformly_Sampled_Wavelength>
                 </sp:Bin_Description>
             </sp:Spectral_Characteristics>
@@ -214,6 +216,23 @@
                 <sequence_number>2</sequence_number>
             </Axis_Array>
         </Array_2D_Spectrum>
+        
+        <!-- 1D Array -->
+        
+        <Array_1D_Spectrum>
+            <local_identifier>Spectrum1D</local_identifier>
+            <offset unit="byte">100000</offset>
+            <axes>1</axes>
+            <axis_index_order>Last Index Fastest</axis_index_order>
+            <Element_Array>
+                <data_type>SignedMSB2</data_type>
+            </Element_Array>
+            <Axis_Array>
+                <axis_name>data</axis_name>
+                <elements>100</elements>
+                <sequence_number>1</sequence_number>
+            </Axis_Array>
+        </Array_1D_Spectrum>
         
         <!-- 1D Spectral Table  -->
         

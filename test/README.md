@@ -17,6 +17,9 @@ The general test file set includes:
 * *No.Data* - A zero-length data file included to satisfy the *Validate Tool* requirement for a data file to exist
 
 Specific tests for resolved issues:
+* *SP-array1D-VALID/FAIL.xml* - Labels to demonstrate implementation of support for Array_1D_Spectrum,
+              including checks for properly enforcing constraints in the "1D" format case where 
+              tables have a different requirement/constraint than arrays. [#340]
 * *SP-Energy-VALID.xml* - A label to demonstrate that the Axis_Bin_Set_Energy class has now been 
               included in Bin_Description (it was omitted) [#277]
 * *SP-usUnitMatch-VALID/FAIL.xml* - These labels demonstrate the enforcement of a requirement that the
