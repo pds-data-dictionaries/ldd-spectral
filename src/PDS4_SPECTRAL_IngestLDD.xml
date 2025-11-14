@@ -42,7 +42,7 @@
           2024-04-01 cgobat Version 1.3.2.0  Add missing Axis_Bin_Set_Energy and Uniformly_Sampled_Energy as
                                              permissible options within the Bin_Description class.
           2024-04-02  ACR   Version 1.3.2.0  Clearing some additional issues from the queue:
-                                             Issue #275: Considee units when comparing values of first_center_*
+                                             Issue #275: Consider units when comparing values of first_center_*
                                                 and last_center_*
           2025-10-21  MJTM  Version 1.3.2.1  Bug fix - add missing schematron rules for Array_1D_Spectrum 
                                              (Overlooked in CCB#42)
