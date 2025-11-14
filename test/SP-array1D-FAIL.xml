@@ -6,9 +6,9 @@
     spectrum to demonstrate that the two '1D' cases are being properly distinguished. This is needed
     for reliable programmatic support.
     
-    This is the FAIL case and should produce three errors:
+    This is the FAIL case and should produce four errors:
       o Invalid value of '1D' in the <sp:spectral_formt> of a 2D array object.
-      o Invalid use of <sp:value_field_name> for an Array_1D_Spectram object.
+      o Invalid use of <sp:value_field_name> for an array object (this occurs twice).
       o Invalid omission of <sp:value_field_name> for a 1D table spectrum object.
     
     FOR TESTING ONLY. DO NOT USE THIS FILE AS A LABEL TEMPLATE.
