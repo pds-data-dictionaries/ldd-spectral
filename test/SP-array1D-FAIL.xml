@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- 
+    This label should produce 4 errors in validation.
+
     This label demonstrates implementation of support for the Array_1D_Spectrum format. This format
     overlaps with the tabular 1D formats, so it is shown in context with a 2D array and a 1D table
     spectrum to demonstrate that the two '1D' cases are being properly distinguished. This is needed

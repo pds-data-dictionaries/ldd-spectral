@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- 
+    This label should produce 3 errors in validation.
+
     This label demonstrates that in the Uniformly_Sampled class, the units of first_center and 
     last_center bin must be identical (so that the order can be properly checked). This is the 
     failure case, and should produce three "mismatched units" failures - one for each 

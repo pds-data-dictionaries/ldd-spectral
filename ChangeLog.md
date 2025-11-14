@@ -12,6 +12,8 @@ Added regression test for associated Schematron changes.
 Fixed the attribute cross-reference typo in the *sp:absolute_calibration_star_name* description
 and noted in issue #326.
 
+Added ERROR counts to "FAIL" test labels to make regression test checking a bit easier.
+
 Fixed some additional minor typos noted in passing.
 
 ## Changes from v1.3.1.1 to v1.3.2.0
