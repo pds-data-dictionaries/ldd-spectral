@@ -78,7 +78,7 @@ Attributes of <sp:Spectral_Characteristics>
 .. _sp_spectrum_format:
 
 <sp:spectrum_format>
-  This required attribute indicates the format of the spectral data. It should agreed
+  This required attribute indicates the format of the spectral data. It should agree
   with the format listed in the label *<pds:Primary_Result_Summary>* class, which in turn should
   include *<pds:Science_Facets>* with a *<pds:discipline>* of **Spectroscopy** and a
   *<pds:facet1>* value that is consistent with one of the standard values described below.
