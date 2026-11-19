@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <!-- PDS4 Schematron for Name Space Id:sp  Version:1.3.3.0 - Sat Nov 15 16:36:40 UTC 2025 -->
+  <!-- PDS4 Schematron for Name Space Id:sp  Version:1.3.3.0 - Thu Nov 19 22:37:34 UTC 2026 -->
   <!-- Generated from the PDS4 Information Model Version 1.24.0.0 - System Build 15.1 -->
   <!-- *** This PDS4 schematron file is an operational deliverable. *** -->
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
@@ -144,39 +144,11 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:rule context="sp:Bin_Energy/sp:bin_width_energy">
-      <sch:assert test="@unit = ('J', 'MeV', 'eV', 'keV')">
-        <title>sp:Bin_Energy/sp:bin_width_energy/sp:bin_width_energy</title>
-        The attribute @unit must be equal to one of the following values 'J', 'MeV', 'eV', 'keV'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Bin_Energy/sp:center_energy">
-      <sch:assert test="@unit = ('J', 'MeV', 'eV', 'keV')">
-        <title>sp:Bin_Energy/sp:center_energy/sp:center_energy</title>
-        The attribute @unit must be equal to one of the following values 'J', 'MeV', 'eV', 'keV'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
     <sch:rule context="sp:Bin_Frequency">
       <sch:let name="binnum" value="count(../sp:Bin_Frequency)"/>
       <sch:assert test="sp:bin_sequence_number &gt;= 1 and sp:bin_sequence_number &lt;= $binnum">
         <title>sp:Bin_Frequency/Rule</title>
         In sp:Bin_Frequency, bin_sequence_numbers must be between 1 and the number of bins, inclusive.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Bin_Frequency/sp:bin_width_frequency">
-      <sch:assert test="@unit = ('GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz')">
-        <title>sp:Bin_Frequency/sp:bin_width_frequency/sp:bin_width_frequency</title>
-        The attribute @unit must be equal to one of the following values 'GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Bin_Frequency/sp:center_frequency">
-      <sch:assert test="@unit = ('GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz')">
-        <title>sp:Bin_Frequency/sp:center_frequency/sp:center_frequency</title>
-        The attribute @unit must be equal to one of the following values 'GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -188,39 +160,11 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:rule context="sp:Bin_Wavelength/sp:bin_width_wavelength">
-      <sch:assert test="@unit = ('AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm')">
-        <title>sp:Bin_Wavelength/sp:bin_width_wavelength/sp:bin_width_wavelength</title>
-        The attribute @unit must be equal to one of the following values 'AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Bin_Wavelength/sp:center_wavelength">
-      <sch:assert test="@unit = ('AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm')">
-        <title>sp:Bin_Wavelength/sp:center_wavelength/sp:center_wavelength</title>
-        The attribute @unit must be equal to one of the following values 'AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
     <sch:rule context="sp:Bin_Wavenumber">
       <sch:let name="binnum" value="count(../sp:Bin_Wavenumber)"/>
       <sch:assert test="sp:bin_sequence_number &gt;= 1 and sp:bin_sequence_number &lt;= $binnum">
         <title>sp:Bin_Wavenumber/Rule</title>
         In sp:Bin_Wavenumber, bin_sequence_numbers must be between 1 and the number of bins, inclusive.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Bin_Wavenumber/sp:bin_width_wavenumber">
-      <sch:assert test="@unit = ('1/cm', '1/m', '1/nm', 'cm**-1', 'm**-1', 'nm**-1')">
-        <title>sp:Bin_Wavenumber/sp:bin_width_wavenumber/sp:bin_width_wavenumber</title>
-        The attribute @unit must be equal to one of the following values '1/cm', '1/m', '1/nm', 'cm**-1', 'm**-1', 'nm**-1'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Bin_Wavenumber/sp:center_wavenumber">
-      <sch:assert test="@unit = ('1/cm', '1/m', '1/nm', 'cm**-1', 'm**-1', 'nm**-1')">
-        <title>sp:Bin_Wavenumber/sp:center_wavenumber/sp:center_wavenumber</title>
-        The attribute @unit must be equal to one of the following values '1/cm', '1/m', '1/nm', 'cm**-1', 'm**-1', 'nm**-1'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -238,34 +182,6 @@
       <sch:assert test="if ($spectype='wavenumber') then (sp:bin_width_wavenumber) else true()">
         <title>sp:Bin_Width_Constant/Rule</title>
         In sp:Bin_Width_Constant, sp:bin_width_wavenumber must be supplied for wavenumber spectra.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Bin_Width_Constant/sp:bin_width_energy">
-      <sch:assert test="@unit = ('J', 'MeV', 'eV', 'keV')">
-        <title>sp:Bin_Width_Constant/sp:bin_width_energy/sp:bin_width_energy</title>
-        The attribute @unit must be equal to one of the following values 'J', 'MeV', 'eV', 'keV'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Bin_Width_Constant/sp:bin_width_frequency">
-      <sch:assert test="@unit = ('GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz')">
-        <title>sp:Bin_Width_Constant/sp:bin_width_frequency/sp:bin_width_frequency</title>
-        The attribute @unit must be equal to one of the following values 'GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Bin_Width_Constant/sp:bin_width_wavelength">
-      <sch:assert test="@unit = ('AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm')">
-        <title>sp:Bin_Width_Constant/sp:bin_width_wavelength/sp:bin_width_wavelength</title>
-        The attribute @unit must be equal to one of the following values 'AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Bin_Width_Constant/sp:bin_width_wavenumber">
-      <sch:assert test="@unit = ('1/cm', '1/m', '1/nm', 'cm**-1', 'm**-1', 'nm**-1')">
-        <title>sp:Bin_Width_Constant/sp:bin_width_wavenumber/sp:bin_width_wavenumber</title>
-        The attribute @unit must be equal to one of the following values '1/cm', '1/m', '1/nm', 'cm**-1', 'm**-1', 'nm**-1'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -333,41 +249,6 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:rule context="sp:Circular_FOV/sp:diameter_angle">
-      <sch:assert test="@unit = ('arcmin', 'arcsec', 'deg', 'hr', 'microrad', 'mrad', 'rad')">
-        <title>sp:Circular_FOV/sp:diameter_angle/sp:diameter_angle</title>
-        The attribute @unit must be equal to one of the following values 'arcmin', 'arcsec', 'deg', 'hr', 'microrad', 'mrad', 'rad'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Complex_FOV/sp:body_positive_pole_position_angle">
-      <sch:assert test="@unit = ('arcmin', 'arcsec', 'deg', 'hr', 'microrad', 'mrad', 'rad')">
-        <title>sp:Complex_FOV/sp:body_positive_pole_position_angle/sp:body_positive_pole_position_angle</title>
-        The attribute @unit must be equal to one of the following values 'arcmin', 'arcsec', 'deg', 'hr', 'microrad', 'mrad', 'rad'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Complex_FOV/sp:celestial_north_position_angle">
-      <sch:assert test="@unit = ('arcmin', 'arcsec', 'deg', 'hr', 'microrad', 'mrad', 'rad')">
-        <title>sp:Complex_FOV/sp:celestial_north_position_angle/sp:celestial_north_position_angle</title>
-        The attribute @unit must be equal to one of the following values 'arcmin', 'arcsec', 'deg', 'hr', 'microrad', 'mrad', 'rad'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Complex_FOV/sp:length_angle">
-      <sch:assert test="@unit = ('arcmin', 'arcsec', 'deg', 'hr', 'microrad', 'mrad', 'rad')">
-        <title>sp:Complex_FOV/sp:length_angle/sp:length_angle</title>
-        The attribute @unit must be equal to one of the following values 'arcmin', 'arcsec', 'deg', 'hr', 'microrad', 'mrad', 'rad'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Complex_FOV/sp:width_angle">
-      <sch:assert test="@unit = ('arcmin', 'arcsec', 'deg', 'hr', 'microrad', 'mrad', 'rad')">
-        <title>sp:Complex_FOV/sp:width_angle/sp:width_angle</title>
-        The attribute @unit must be equal to one of the following values 'arcmin', 'arcsec', 'deg', 'hr', 'microrad', 'mrad', 'rad'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
     <sch:rule context="sp:Field_of_View/pds:Internal_Reference/pds:reference_type">
       <sch:assert test=". = ('spectral_characteristics_to_document')">
         <title>sp:Field_of_View/pds:Internal_Reference/pds:reference_type/sp:Field_of_View_Internal_Reference_reference_type</title>
@@ -389,69 +270,6 @@
       <sch:assert test="if ($spectype='wavenumber') then (sp:resolution_limit_wavenumber or not(sp:resolution_limit_energy or sp_resolution_limit_frequency or sp:resolution_limit_wavelength)) else true()">
         <title>sp:Observation_Parameters/Rule</title>
         In sp:Observation_Parameters, only sp:resolution_limit_wavenumber may be included for wavenumber spectra.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Observation_Parameters/sp:net_integration_time">
-      <sch:assert test="@unit = ('day', 'hr', 'julian day', 'microseconds', 'min', 'ms', 'ns', 's', 'yr')">
-        <title>sp:Observation_Parameters/sp:net_integration_time/sp:net_integration_time</title>
-        The attribute @unit must be equal to one of the following values 'day', 'hr', 'julian day', 'microseconds', 'min', 'ms', 'ns', 's', 'yr'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Observation_Parameters/sp:resolution_limit_energy">
-      <sch:assert test="@unit = ('J', 'MeV', 'eV', 'keV')">
-        <title>sp:Observation_Parameters/sp:resolution_limit_energy/sp:resolution_limit_energy</title>
-        The attribute @unit must be equal to one of the following values 'J', 'MeV', 'eV', 'keV'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Observation_Parameters/sp:resolution_limit_frequency">
-      <sch:assert test="@unit = ('GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz')">
-        <title>sp:Observation_Parameters/sp:resolution_limit_frequency/sp:resolution_limit_frequency</title>
-        The attribute @unit must be equal to one of the following values 'GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Observation_Parameters/sp:resolution_limit_wavelength">
-      <sch:assert test="@unit = ('AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm')">
-        <title>sp:Observation_Parameters/sp:resolution_limit_wavelength/sp:resolution_limit_wavelength</title>
-        The attribute @unit must be equal to one of the following values 'AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Observation_Parameters/sp:resolution_limit_wavenumber">
-      <sch:assert test="@unit = ('1/cm', '1/m', '1/nm', 'cm**-1', 'm**-1', 'nm**-1')">
-        <title>sp:Observation_Parameters/sp:resolution_limit_wavenumber/sp:resolution_limit_wavenumber</title>
-        The attribute @unit must be equal to one of the following values '1/cm', '1/m', '1/nm', 'cm**-1', 'm**-1', 'nm**-1'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Rectangular_FOV/sp:body_positive_pole_position_angle">
-      <sch:assert test="@unit = ('arcmin', 'arcsec', 'deg', 'hr', 'microrad', 'mrad', 'rad')">
-        <title>sp:Rectangular_FOV/sp:body_positive_pole_position_angle/sp:body_positive_pole_position_angle</title>
-        The attribute @unit must be equal to one of the following values 'arcmin', 'arcsec', 'deg', 'hr', 'microrad', 'mrad', 'rad'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Rectangular_FOV/sp:celestial_north_position_angle">
-      <sch:assert test="@unit = ('arcmin', 'arcsec', 'deg', 'hr', 'microrad', 'mrad', 'rad')">
-        <title>sp:Rectangular_FOV/sp:celestial_north_position_angle/sp:celestial_north_position_angle</title>
-        The attribute @unit must be equal to one of the following values 'arcmin', 'arcsec', 'deg', 'hr', 'microrad', 'mrad', 'rad'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Rectangular_FOV/sp:length_angle">
-      <sch:assert test="@unit = ('arcmin', 'arcsec', 'deg', 'hr', 'microrad', 'mrad', 'rad')">
-        <title>sp:Rectangular_FOV/sp:length_angle/sp:length_angle</title>
-        The attribute @unit must be equal to one of the following values 'arcmin', 'arcsec', 'deg', 'hr', 'microrad', 'mrad', 'rad'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Rectangular_FOV/sp:width_angle">
-      <sch:assert test="@unit = ('arcmin', 'arcsec', 'deg', 'hr', 'microrad', 'mrad', 'rad')">
-        <title>sp:Rectangular_FOV/sp:width_angle/sp:width_angle</title>
-        The attribute @unit must be equal to one of the following values 'arcmin', 'arcsec', 'deg', 'hr', 'microrad', 'mrad', 'rad'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -593,34 +411,6 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:rule context="sp:Uniformly_Sampled_Energy/sp:bin_width_energy">
-      <sch:assert test="@unit = ('J', 'MeV', 'eV', 'keV')">
-        <title>sp:Uniformly_Sampled_Energy/sp:bin_width_energy/sp:bin_width_energy</title>
-        The attribute @unit must be equal to one of the following values 'J', 'MeV', 'eV', 'keV'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Uniformly_Sampled_Energy/sp:first_center_energy">
-      <sch:assert test="@unit = ('J', 'MeV', 'eV', 'keV')">
-        <title>sp:Uniformly_Sampled_Energy/sp:first_center_energy/sp:first_center_energy</title>
-        The attribute @unit must be equal to one of the following values 'J', 'MeV', 'eV', 'keV'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Uniformly_Sampled_Energy/sp:last_center_energy">
-      <sch:assert test="@unit = ('J', 'MeV', 'eV', 'keV')">
-        <title>sp:Uniformly_Sampled_Energy/sp:last_center_energy/sp:last_center_energy</title>
-        The attribute @unit must be equal to one of the following values 'J', 'MeV', 'eV', 'keV'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Uniformly_Sampled_Energy/sp:sampling_interval_energy">
-      <sch:assert test="@unit = ('J', 'MeV', 'eV', 'keV')">
-        <title>sp:Uniformly_Sampled_Energy/sp:sampling_interval_energy/sp:sampling_interval_energy</title>
-        The attribute @unit must be equal to one of the following values 'J', 'MeV', 'eV', 'keV'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
     <sch:rule context="sp:Uniformly_Sampled_Energy/sp:sampling_scale">
       <sch:assert test=". = ('Linear', 'Logarithmic')">
         <title>sp:Uniformly_Sampled_Energy/sp:sampling_scale/sp:sampling_scale</title>
@@ -654,34 +444,6 @@
       <sch:assert test="number(sp:first_center_frequency) lt number(sp:last_center_frequency)">
         <title>sp:Uniformly_Sampled_Frequency/Rule</title>
         In the Uniformly_Sampled classes, the first_center value must be less than the last_center value.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Uniformly_Sampled_Frequency/sp:bin_width_frequency">
-      <sch:assert test="@unit = ('GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz')">
-        <title>sp:Uniformly_Sampled_Frequency/sp:bin_width_frequency/sp:bin_width_frequency</title>
-        The attribute @unit must be equal to one of the following values 'GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Uniformly_Sampled_Frequency/sp:first_center_frequency">
-      <sch:assert test="@unit = ('GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz')">
-        <title>sp:Uniformly_Sampled_Frequency/sp:first_center_frequency/sp:first_center_frequency</title>
-        The attribute @unit must be equal to one of the following values 'GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Uniformly_Sampled_Frequency/sp:last_center_frequency">
-      <sch:assert test="@unit = ('GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz')">
-        <title>sp:Uniformly_Sampled_Frequency/sp:last_center_frequency/sp:last_center_frequency</title>
-        The attribute @unit must be equal to one of the following values 'GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Uniformly_Sampled_Frequency/sp:sampling_interval_frequency">
-      <sch:assert test="@unit = ('GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz')">
-        <title>sp:Uniformly_Sampled_Frequency/sp:sampling_interval_frequency/sp:sampling_interval_frequency</title>
-        The attribute @unit must be equal to one of the following values 'GHz', 'Hz', 'MHz', 'THz', 'kHz', 'mHz'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -721,34 +483,6 @@
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
-    <sch:rule context="sp:Uniformly_Sampled_Wavelength/sp:bin_width_wavelength">
-      <sch:assert test="@unit = ('AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm')">
-        <title>sp:Uniformly_Sampled_Wavelength/sp:bin_width_wavelength/sp:bin_width_wavelength</title>
-        The attribute @unit must be equal to one of the following values 'AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Uniformly_Sampled_Wavelength/sp:first_center_wavelength">
-      <sch:assert test="@unit = ('AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm')">
-        <title>sp:Uniformly_Sampled_Wavelength/sp:first_center_wavelength/sp:first_center_wavelength</title>
-        The attribute @unit must be equal to one of the following values 'AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Uniformly_Sampled_Wavelength/sp:last_center_wavelength">
-      <sch:assert test="@unit = ('AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm')">
-        <title>sp:Uniformly_Sampled_Wavelength/sp:last_center_wavelength/sp:last_center_wavelength</title>
-        The attribute @unit must be equal to one of the following values 'AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Uniformly_Sampled_Wavelength/sp:sampling_interval_wavelength">
-      <sch:assert test="@unit = ('AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm')">
-        <title>sp:Uniformly_Sampled_Wavelength/sp:sampling_interval_wavelength/sp:sampling_interval_wavelength</title>
-        The attribute @unit must be equal to one of the following values 'AU', 'Angstrom', 'cm', 'km', 'm', 'micrometer', 'mm', 'nm'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
     <sch:rule context="sp:Uniformly_Sampled_Wavelength/sp:sampling_scale">
       <sch:assert test=". = ('Linear', 'Logarithmic')">
         <title>sp:Uniformly_Sampled_Wavelength/sp:sampling_scale/sp:sampling_scale</title>
@@ -782,34 +516,6 @@
       <sch:assert test="number(sp:first_center_wavenumber) lt number(sp:last_center_wavenumber)">
         <title>sp:Uniformly_Sampled_Wavenumber/Rule</title>
         In the Uniformly_Sampled classes, the first_center value must be less than the last_center value.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Uniformly_Sampled_Wavenumber/sp:bin_width_wavenumber">
-      <sch:assert test="@unit = ('1/cm', '1/m', '1/nm', 'cm**-1', 'm**-1', 'nm**-1')">
-        <title>sp:Uniformly_Sampled_Wavenumber/sp:bin_width_wavenumber/sp:bin_width_wavenumber</title>
-        The attribute @unit must be equal to one of the following values '1/cm', '1/m', '1/nm', 'cm**-1', 'm**-1', 'nm**-1'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Uniformly_Sampled_Wavenumber/sp:first_center_wavenumber">
-      <sch:assert test="@unit = ('1/cm', '1/m', '1/nm', 'cm**-1', 'm**-1', 'nm**-1')">
-        <title>sp:Uniformly_Sampled_Wavenumber/sp:first_center_wavenumber/sp:first_center_wavenumber</title>
-        The attribute @unit must be equal to one of the following values '1/cm', '1/m', '1/nm', 'cm**-1', 'm**-1', 'nm**-1'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Uniformly_Sampled_Wavenumber/sp:last_center_wavenumber">
-      <sch:assert test="@unit = ('1/cm', '1/m', '1/nm', 'cm**-1', 'm**-1', 'nm**-1')">
-        <title>sp:Uniformly_Sampled_Wavenumber/sp:last_center_wavenumber/sp:last_center_wavenumber</title>
-        The attribute @unit must be equal to one of the following values '1/cm', '1/m', '1/nm', 'cm**-1', 'm**-1', 'nm**-1'.</sch:assert>
-    </sch:rule>
-  </sch:pattern>
-  <sch:pattern>
-    <sch:rule context="sp:Uniformly_Sampled_Wavenumber/sp:sampling_interval_wavenumber">
-      <sch:assert test="@unit = ('1/cm', '1/m', '1/nm', 'cm**-1', 'm**-1', 'nm**-1')">
-        <title>sp:Uniformly_Sampled_Wavenumber/sp:sampling_interval_wavenumber/sp:sampling_interval_wavenumber</title>
-        The attribute @unit must be equal to one of the following values '1/cm', '1/m', '1/nm', 'cm**-1', 'm**-1', 'nm**-1'.</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
